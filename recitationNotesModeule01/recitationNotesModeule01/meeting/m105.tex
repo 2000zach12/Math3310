@@ -1,0 +1,175 @@
+\section{Boolean Equations}
+I recently read about a fascinating and practical way combine Venn diagrams with equations to actually solve problems.  Let my try to explain how this works.  
+
+Let's assign letters $A, B, C, D$ and $E$ to be arbitrary sets (i.e. socks in a drawer, students on a campus, pens in a top draw of a desk...) An important thing to remember is that each set exists in a universe, the drawer, the campus, and so on.  We will also use $x, y$, and $z$ to represent elements of a set. For example, $A$ could be all of my socks in a drawer, and $x\in A$ is a specific sock in the drawer.  Now we need to define a \emph{term}
+\begin{definition}[Term]  A term is any expression constructed according to the following rules.
+\begin{enumerate}
+\item Each set variable (i.e. $A$) standing alone is a term.
+\item For any term, $t_1$, $t_2$ the expression $(t_1\cup t_2)$, $(t_1\cap t_2)$, or $t_1'$ is also called a term.
+\end{enumerate}
+\end{definition}
+So a \emph{term} can be a variable on its own, like $B$, or some Boolean operations on sets, like $(A \cap \overline B)\cup C$.
+
+\begin{definition}[Boolean Equation]  A Boolean equation is an expression of the form $t_1=t_2$, where $t_i$ are Boolean terms.  A Boolean equation is called \emph{valid} if it is true no matter what sets the variables represent.
+\end{definition}
+
+It all seems simple enough.  
+\begin{example}
+Here are some examples of Boolean equations:
+\begin{enumerate}
+\item $A \cup B = A \cap B$
+\item $\overline A = B$
+\item $A \cup B = B \cup A$ \label{booleq03}
+\item $A \cup \overline B = A' \cup \overline B$
+\item $(A \cup B)' = (A \cup B)\cap C$
+\end{enumerate}
+Example, Eq. \ref{booleq03} is valid for any sets $A$ and $B$.  The rest are invalid.  
+\end{example}
+Now let's do something with this new construct.  
+
+\begin{example}
+In this diagram, the universe is broken into four sets, $1, 2, 3$, and $4$.  These sets (or regions) contain all the points in the universe. Moreover, these sets are disjoint, meaning there are no points in common between any sets.  Now we can identify any region with its set of indices. 
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+\def\firstcircle{ (0.0, 0.0) circle (1.5)}
+\def\secondcircle{(2.0, 0.0) circle (1.5)}
+\def\thirdcircle{ (1.0,-1.5) circle (1.5)}
+\def\rectangle{ (-1.5,-3.0) rectangle (3.5,1.0) }
+\colorlet{circle edge}{black}
+\colorlet{circle area}{blue!20}
+
+\begin{scope}
+\draw    (-2.5,-2.5) rectangle (5.0,2.5) ;
+%\clip (-2,-2) rectangle (2,2)
+        \clip \firstcircle;
+%        \fill[filled] \secondcircle;
+    \end{scope}
+    \draw[outline] \firstcircle node[above,xshift=-4em]  {$A$};
+    \draw[outline] \secondcircle node[above,xshift=4em] {$B$};
+    \node[anchor=north] at (current bounding box.north) {$4$};
+    \node at (1,0) {$1$};
+    \node at (0,0){$2$};
+    \node at (2,0){$3$};
+\end{tikzpicture}
+\end{center}
+
+For example, $A = (1,2)$ and $B = (1,3)$.  Also, $A\cup B = (1, 2, 3)$, and $A\cap B = (1)$.
+\end{example}
+
+\begin{problem}[Indices for $\overline A$, $A\cap \overline A$, $A\cup \overline A$?]
+What are the indices for $\overline A$, $A\cap \overline A$, $A\cup \overline A$?
+\notes{4}
+\end{problem}
+
+This indexing of sets is more than just fun.  We can use it to prove theorems.  
+
+\begin{theorem}[De Morgan Law]
+De Morgan law states $\overline {(A\cup B)} = \overline A\cap \overline B$.
+\begin{proof}
+When I was first introduced to this proof as an undergraduate, it struck as a tedious exercise in manipulating a bunch of set notation until I could get the answer I wanted.  But with indexing, it is strikingly straight forward.  Observe:
+
+\begin{enumerate}
+\item $A\cup B = (1, 2, 3)$ so $\overline{(A\cup B)} = (4)$
+\item $\overline{A} = (3, 4)$ and $\overline{B}=(2, 4)$, so $\overline{A} \cap \overline{B} = (4)$
+\end{enumerate}
+Thus $(4)$ is the set of indecies for the left hand and right hand side of De Morgan law, hense $\overline{(A\cup B)}= \overline{A} \cap \overline{B}$.
+\end{proof}
+\end{theorem}
+
+\begin{problem}[Consider the three sets, $A$, $B$, and $C$.]
+ Consider the three sets, $A$, $B$, and $C$.
+%\begin{center}
+%\begin{tikzpicture}[scale=0.75]
+%\begin{scope}
+%\draw    (-2.5,-2.5) rectangle (5.0,2.5) ;
+%        \clip \firstcircle;
+%        \clip \secondcircle;        
+%        \clip \thirdcircle ;
+%    \end{scope}
+%    \draw[outline] \firstcircle node[above,xshift=-4em]  {$A$};
+%    \draw[outline] \secondcircle node[above,xshift=4em] {$B$};
+%    \draw[outline] \thirdcircle node[above,xshift=4em] {$C$};
+%    \node[anchor=north] at (current bounding box.north) {$4$};
+%    \node at (1,0) {$1$};
+%    \node at (0,0){$2$};
+%    \node at (2,0){$3$};
+%\end{tikzpicture}
+%\end{center}
+
+%\begin{tikzpicture}[scale=0.75]
+%    \begin{scope}
+%    \draw    (-2.5,-2.5) rectangle (5.0,2.5) ;
+%        \clip  \firstcircle;
+%        \clip  \secondcircle;
+%        \fill[filled]   \thirdcircle ;
+%    \end{scope}
+%    \draw[outline] \firstcircle  node[left]  {$A$};
+%    \draw[outline] \secondcircle node[right] {$B$};
+%    \draw[outline] \thirdcircle  node[below] {$C$};
+%    \node[anchor=south] at (current bounding box.north) {$A \cap B \cap C$};
+%\end{tikzpicture} \qquad
+
+\def\firstcircle{ (0.0, 0.0) circle (1.5)}
+\def\secondcircle{(2.0, 0.0) circle (1.5)}
+\def\thirdcircle{ (1.0,-1.5) circle (1.5)}
+\def\rectangle{ (-3,-4.0) rectangle (5,3 )}
+\colorlet{circle edge}{black}
+\colorlet{circle area}{blue!20}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+%     \begin{scope}
+%        \clip
+         \firstcircle \secondcircle \thirdcircle;
+%        \fill[filled] \thirdcircleb;
+%    \end{scope}
+\draw \rectangle;
+    \draw[outline] \firstcircle  node[left]  {$4$};
+    \draw[outline] \secondcircle node[right] {$7$};
+    \draw[outline] \thirdcircle  node[below] {$6$};
+    \node at (1,2)  {$8$};
+    \node at (1,-0.5) {$1$};
+    \node at (0.0,-1){$2$};
+    \node at (1,0.75){$3$};
+    \node at (2,-1){$5$};
+    \node  at (-2,0) {$A$};
+    \node  at (4,0) {$B$};
+    \node  at (1,-3.5) {$C$};
+ \end{tikzpicture} 
+\end{center}
+\begin{enumerate}
+\item Identify the sets $A, B$, and $C$ in terms of their indices.
+\notes{3}
+\item Prove or disprove $A \cup(B\cap C) = (A\cup B) \cap (A \cup C)$.
+\notes{5}
+\item Prove or disprove $A \cap(B\cup C) = (A\cap B) \cup (A \cap C)$.
+\notes{5}
+\item Prove or disprove $\overline{(A\cup B)}\cap C = (C\cap \overline{A}) \cup (C \cap \overline{B})$.
+\notes{5}
+\end{enumerate}
+\end{problem}
+But we are not done.  This is where the approach using indices really shines.  Drawing a Venn diagram to illustrate the Boolean operations with a fourth circle is not possible (i.e. $A, B, C$, and $D$).  Why?
+\notes{3}
+
+How many regions will now be created with four sets, $A, B, C$, and $D$?
+In order to identify these regions by their indices, we need to \emph{generalize} the preceeding approach.  This is often what happens once math problems leave the comfortable realm of 2D or 3D representations.
+
+\begin{problem}[Consdier the regions created from the four sets]
+Consdier the regions created from the four sets, $A, B, C$, and $D$?  How many regions are there?
+
+\notes{2}
+\end{problem}
+
+
+\begin{problem}[Consdier the regions created from the five sets]
+Consdier the regions created from the five sets, $A, B, C, D$, and $E$?  How many regions are there?
+\notes{2}
+\end{problem}
+
+\begin{problem}[Consdier the regions created from the six sets]
+Consdier the regions created from the six sets, $A, B, C, D, E$, and $F$?  How many regions are there?
+\notes{2}
+\end{problem}
+
+This sequence may lead us to hypothesize the number of regions created by $n$ arbitrary sets.  It is common to look for patterns before setting about to prove something.  In fact, all to often, when a mathematician is trying to prove something, they have already convinced themself, by some other means, that it is true.  This can be dangerous.
+

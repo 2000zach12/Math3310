@@ -1,0 +1,71 @@
+\section{The Size of a Set}\label{section1_6}
+Until this point we have been considering \emph{finite} sets.  This wasn't even stated formally, but we all just went along with it.  But in the 19th century math got a little crazy, and the notion of \emph{infinite} sets were keeping people up at night.  At the heart of this notion of finite and infinite sets is the idea of 1-1 (one-to-one) correspondences.  
+
+\begin{example}  [Seats and Students]  Suppose a classroom has exactly 105 seats for students.  Assuming all students have a seat and that all of the seats are occupied by students.  Then to answer the question, ``How many students are in the classroom?"  we can just answer how many seats are in the classroom and construct a one-to-one correspondence between seats and students.  
+\end{example}
+The preceding example is so trivial and common that we don't even think about it.  But it illustrates the notion of something called \emph{one-to-one} (or 1-1).  For example, license plates and cars, credit card numbers and accounts, and so on.
+
+In general terms we talk about two sets, $A$ and $B$ being ``1-1'' meaning there is a way to assign each element in $A$ to one and only one element in $B$, and each element in $B$ is paired with one and only one element in $A$.  This pairing of elements is a correspondence.
+
+When discussing finite sets, we say a set is finite if there can be found a 1-1 correspondence with a subset of the natural numbers, $\mathbb{N}$.  
+
+\begin{example}[Fingers and Toes]
+We have a finite set of fingers and toes.  We can construct a 1-1 correspondence between our fingers and toes, and the numbers $\{1, 2, 3, \cdots 20\}$.  Simply start with the pinky on your left hand, and pair that to 1.  Continue through all of your digits from left to right and do the same with your toes.  Since there exists a 1-1 correspondence between your fingers and toes, and the finite set $\{1, 2, 3, \cdots 20\}$, the the set is finite.
+\end{example}
+
+Most of us call this \emph{counting}.  \smiley
+
+\begin{definition}[Finite Sets]
+Given a set $A$, if there exists an $n\in \mathbb{N}$, and a 1-1 correspondence between the set $\{1, 2, \cdots n\}$ and the set $A$, then $A$ is finite.
+\end{definition}\label{finitesets}
+
+This leads us directly to the idea of an infinite set.
+
+\begin{definition}[Infinite Sets]
+Given a set $A$, if it is not finite, then $A$ is infinite.
+\end{definition}
+
+Done!  So what was all the fuss about?  Shortly we will see that this stuff has driven people crazy over the years.  We won't go that far, but we will just walk up to the edge of the cliff and chuck a rock over.
+
+\begin{problem}[If a set $A$ has exactly three elements, how many subsets are there?]
+If a set $A$ has exactly three elements, how many subsets are there?
+\notes{3}
+\end{problem}
+
+\begin{problem}[If a set $A$ has exactly four elements, how many subsets are there?]
+If a set $A$ has exactly four elements, how many subsets are there?
+\notes{3}
+\end{problem}
+
+
+\begin{problem}[If a set $A$ has exactly five elements, how many subsets are there?]
+If a set $A$ has exactly five elements, how many subsets are there?
+\notes{3}
+\end{problem}
+
+\begin{problem}[In general a set $A$ has exactly $n$ elements, how many subsets are there?]In general a set $A$ has exactly $n$ elements, how many subsets are there?
+\notes{3}
+\end{problem}
+This leads us to the idea of a \emph{power set}
+\begin{definition}[The Power Set, $\powerset(A)$]
+Given a set, $A$, the set of all subsets of $A$ is the power set of $A$, $\powerset (A)$.
+\end{definition}
+The notion of the \emph{set of sets} can be a little confusing at first.  But with the next topic I will direct you to a nice little paper that discusses the topic from the perspective of helping teachers teach this material. The paper itself contains more than enough discussion on the topic of power sets, so I will let it speak for itself.  For now, let's build some anticipation.
+\subsection*{Just Count the Elements}
+We can probably agree that a set of one's fingers and toes has a size of 20.  We can just count the elements and let that be the size of the set.  Now we can also consider the relative size of sets.  We might conclude that a set with 5 elements is \emph{smaller} than a set with 10 elements.  Let's formalize this idea a little.
+
+\begin{idea}[Size of a Set]
+Set $A$ is \emph{smaller} than set $B$ if $A$ can be placed in a 1-1 correspondence with a proper subset of $B$.
+\end{idea}\label{setsize}
+Maybe an example with help this to make sense.  
+\begin{example} First, let's consider two sets that are the same size.
+Let $A = \{2, 4, 6\}$ and let $B =\{10, 11, 12\}$.  Consider a 1-1 correspondence between $A$ and $B$.  Just to make is more interesting, let's go with $(2, 12), (4, 10), (6, 11)$. We conclude that $A$ is the same size as $B$.
+\end{example}
+What about sets of different sizes?
+\begin{example}
+Let $A = \{2, 4, 6\}$ and let $B =\{1, 2, 3, 4, 5, 6\}$.  Consider the subset $\hat{B} \subset B$, where $\hat{B} = \{ 1, 2, 3\}$  There exists a 1-1 correspondence between $A$ and $\hat{B}$, namely $(2, 1), (4, 2), (6, 3)$.  Obviously this is not the only 1-1 correspondence, but nonetheless suffices.  We conclude that $A$ is smaller than $B$, because we have found a 1-1 correspondence with a \emph{subset}, $\hat B$, of the larger set, $B$.
+\end{example}
+Here we have used the idea of 1-1 correspondences to relate the size of one set to another set.  Next we will consider the question of infinite sets.  This is where things get a little wacky.
+
+
+

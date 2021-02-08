@@ -1,0 +1,224 @@
+\section{Trees}
+\begin{center}
+\tikzset{
+  treenode/.style = {align=center, inner sep=0pt, text centered,
+    font=\sffamily},
+%  j/.style = {treenode, circle, white, font=\sffamily\bfseries, draw=black,
+%    fill=black, text width=1.5em},% arbre rouge noir, noeud noir
+%  j/.style = {treenode, circle, red, draw=red, 
+%    text width=1.5em, very thick},% arbre rouge noir, noeud rouge
+%  j/.style = {treenode, rectangle, draw=black,
+%    minimum width=0.5em, minimum height=0.5em},% arbre rouge noir, nil
+ j/.style = {treenode, circle, draw=black,
+    minimum width=0.5em, minimum height=1.5em}% arbre rouge noir, nil
+}
+
+
+\begin{tikzpicture}[->,>=stealth',level/.style={
+  level distance = 1.5cm}] 
+\node [j] {0}
+	child[sibling distance=12em] { node[j]{1} node[xshift = -4em] {level $1$}} 
+	child[sibling distance=2em] { node [j] {2}
+		child[sibling distance=8em] { node [j] {4} 
+			child{ node [j] {8} node[xshift = -4em] {level $3$}} 
+			child[sibling distance=2em] { node [j] {9}
+			}node[xshift = -4em] {level $2$} 
+            }
+            child{  node [j] {5}
+							child{ node [j] {10}}
+							child{ node [j] {11}}
+							child{ node [j] {12}}
+            }                            
+    }
+    child [sibling distance=12em] { node [j] {3}
+            child{ node [j] {6} 
+%							child{ node [j] {12}}
+%							child{ node [j] {13}}
+            }
+            child{node [j] {7}
+							child{ node [j] {13} 
+								child[sibling distance=2em] {node[j]{15} node[xshift = -4em] {level $4$}}
+								child[sibling distance=2em]{node[j]{16}}
+								child[sibling distance=2em]{node[j]{16}}
+								child[sibling distance=2em]{node[j]{17}}}
+							child{ node [j] {14}}
+            }
+		}
+; 
+\end{tikzpicture}
+\end{center}
+
+\begin{definition}[Trees]I think that it is easiest to describe a tree if I just give you an example and we identify the pieces and parts by pointing to them.
+
+\begin{itemize}
+\item A tree consists of an \emph{origin}, connected to other elements called \emph{successors}.
+\item The origin has no \emph{predecessor}.
+\item Every successor has exactly one predecessor.
+\item Elements of a tree are called \emph{points} (or maybe people might say \emph{nodes}).
+\item Points can be \emph{end points} (e.g. 1, 9, or 16) or \emph{junction points} (e.g. 2, 5, or 13)
+\item The origin is at level zero, and its successor(s) level 1, and so on.
+\item For every point there is exactly one \emph{path} from the origin to that point.  For example, the path to 12 is $0-1-5-12$.
+\item The \emph{length} of a path is the level of the end point. For example, 12 is at level 3, because we start counting at zero (at this point CS majors may laugh mockingly at their fellow STEM majors).
+\item The \emph{descendents} of a point are all of the successors and the successors' sucessors, and so on.
+\item The point $x$ is a descendend of $y$ if there is a path between $x$ and $y$.
+\item A tree is finite if is has finitely many points.
+\end{itemize}
+..I think that about does it.
+\end{definition}
+
+\begin{problem}[Suppose we are given a tree]
+
+ Suppose we are given a tree that for each number $n$, there is at least one path of length $n$.  Can we say that there must be at least one infinite path?
+\notes{5}
+
+\ifKey
+\hfill \begin{minipage}{0.5\textwidth}
+\color{red} Support for recitation instructors goes here.
+\end{minipage}
+\color{black}
+\fi
+
+\end{problem}
+
+\begin{definition}[Finitely Generated Tree]
+A tree is finitely generated if each node has only finitely many successors.  It may, however, have infinitely many descendents.
+\end{definition}
+
+\begin{problem}[Suppose a tree is finitely generated.] Suppose a tree is finitely generated.  Does this mean that each level contains only finitely many points?
+\notes{5}
+
+%+++++++++++++++++++++++++++++++++++++++++
+\ifKey
+\hfill \begin{minipage}{0.75\textwidth}
+\color{red} In short, yes.  but why?  Proof by induction: Each $n^{th}$ level contains only finitely many points (by definition).  For a base case, $P(0)$ means there is one node at level zero (base case).  Now suppose for some level, $n$ there are finitely many nodes at this level.  Let's say that there are $k$ nodes at this level.  For example in the illistration level 2 has four nodes, $(4, 5, 6, 7)$. In general this is $x_1, x_2, x_3, \cdots x_k$.  Each one of these nodes at level $n$ has a finite number of successors.  This means that $x_1$ have some successors, call them $y_1, y_2, \cdots y_p$, but in any case, there are $p$ of them.  Similarly there are $q$ successors of $x_2$ and $r$ successors of $x_3$, and so on.  This means that there are $p+q+r+\cdots+ t$ successors to level $n$.  By induction, which we now understand (philosophically), there are always a finite number of points at the $k+1$ level if there are a finite number of points at the $k$ level.  
+\end{minipage}
+\color{black}
+\fi
+%+++++++++++++++++++++++++++++++++++++++++
+\end{problem}
+
+\newpage
+\begin{mytheorem}[The K\"onig's Lemma]
+Every finitely generated tree with infinite nodes must have an infinite path.\label{koenigsLemma}
+\begin{proof}:
+\notes{5}
+
+%+++++++++++++++++++++++++++++++++++++++++
+\ifKey
+\hfill \begin{minipage}{0.75\textwidth}
+\color{red} There are two possibilities for the number of decendents of a node.  There can be finitely many or infinitely many descendents.  If a node had finitely many descendents, then each of its successors must have finitely many descendents (If there are $n$ descendents from the $k$ level, then there are $n-1$ descendents from the next level.) 
+
+If a node has infinitely many descendents  but only finitely many sucessors, then at least one of those descendents must have infiintely many descendents.
+
+Therefore in a finitely generated tree, each node with infinit descendents must itself have (at least one) node with infinite descendents.
+
+Ok,...now where do we go?  The question is to show ``Every finitely generated tree with infinite nodes must have an infinite path.''.  So suppose we have  tree with infinite nodes, but each node has only finitely many successors.  This means that at least one of the successors must have infinite descendents.  Now more down to that level, and we have another node with finitely many successors but the tree still have infinite nodes, so there must exist a successor who has infinite descendents.  It is the spirit of induction that leads us to conclude that there is an infinite path through all of these nodes having infinite descendents.
+\end{minipage}
+\color{black}
+\fi
+%+++++++++++++++++++++++++++++++++++++++++
+
+\end{proof}
+
+\end{mytheorem}
+
+\begin{mytheorem}[The Fan Theorem]
+If a tree is finitely generated and if all the paths are finite, then the tree is finite.
+\begin{proof}:
+
+\notes{5}
+
+%+++++++++++++++++++++++++++++++++++++++++
+\ifKey
+\hfill \begin{minipage}{0.75\textwidth}
+\color{red} If a tree is finitely generated (see definition) AND all paths are finite.  Then consider the contra-positive of Theorem \ref{koenigsLemma}.
+\emph{If a finite tree has no infinite path, then it has finite nodes}.  I realize that the book says somethign else, but I think this is more straight forward.
+
+\end{minipage}
+\color{black}
+\fi
+%+++++++++++++++++++++++++++++++++++++++++
+
+\end{proof}
+\end{mytheorem}
+
+\begin{remark} The Fan theorem is the contrapositive of the K\"onig's lemma.  In classical logic the contrapostive of ``if $p$ then $q$" is `` if not $q$, then not $p$"
+\end{remark}
+
+\begin{problem}[Vladamir and the Countess are still at the game of BINGO balls ]
+Vladamir and the Countess are still at the game of BINGO balls %(Problm \ref{ballsGame}). 
+
+Recalll:
+\begin{quotation}Suppose Vladamir is playing a game with the Countess (these lovebirds are always playing games together).  He gives her a bag containing an infinite supply of ping pong balls used for BINGO (each ball has a positive number printed on it).  For each number $n$ there are infinitely many of those balls (numbered $n$).  Then Vladamir places a box with infinite capacity on the table.  This box contains similar balls as in the bag, however there are only finitely many, instead of infinitely many as in the bag.  
+Each day, the Countess must remove one ball from the box, and replace it with a \emph{finite} number of balls from the bag - but those balls must be of a lower number.  For example, she can pull out a 51 from the box and replace it with a thousand 48's.  If the box on the table gets emptied, the Countess has to drink holy water and stand in the sun.  Otherwise, Vladamir has to eat raw garlic.  
+
+Is there a strategy by which the Countess can win?  If so, how.
+\end{quotation}
+
+ This time use the Fan theorem to determine if the Countess can win.
+\notes{10}
+
+
+%+++++++++++++++++++++++++++++++++++++++++
+\ifKey
+\hfill \begin{minipage}{0.5\textwidth}
+\color{red} Let's build a tree: The origin of the tree is a number greater than any of the  balls in the box.
+\end{minipage}
+\color{black}
+\fi
+%+++++++++++++++++++++++++++++++++++++++++
+
+\end{problem}
+
+\begin{comment}
+\subsection*{Generalized Induction}
+Here we discuss an extension of induction that applies to sets.  Recall that the principle of mathematical induction applied to the natural numbers.  Generalized induction includes Theorem \ref{pmi}, but extends the idea to sets.  But first we need an extra tool, a relation called \emph{component}.  The usage of this word might be a little new, so let's look at the word in context.
+
+Consider a set $A$ of any size and a relation $C(x,y)$ between the elements of the set $A$. We are using the letter $C$ here to imply component.  When speaking of sets, the relation $xCy$ or $C(x,y)$ is read ``$x$ is a component of $y$.''  
+
+\begin{definition}[Descending Chain]
+A descending chain is a sequence of elements of $A$, related to one another by component relation, whereby each element is a component of another (except for the first one).  In other words if we have a sequence $(x_1, x_2, x_3, \cdots)$, then $x_2$ is a component of $x_1$, and $x_3$ is a component of $x_2$, and so on.
+\end{definition}\label{dc}
+
+Ok, this is where some math definitions become so abstract that they are practically incomprehensible to normal mortal humans.  So let's move forward slowly as we build toward this idea.
+
+\begin{example}[Components of the natural numbers]
+What are the components of the natural numbers?  Grab an $x\in \mathbb{N}$, now construct a descending chain by letting $x+1 = y$, or to be consistent with the sequence in Definition \ref{dc}, $x_1+1 = x_2$, $x_2+1 = x_3 \cdots$.  Really, we are just creating a situation where ``2 is a component of 1, 3 is a component of 2, and 4 is a component of 3,...''
+
+Who cares?  Well we are generalizing the thing that we have already done intuitively.  But this was we aren't tied to just a sequence like $(1, 2, 3, 4, \cdots)$, but instead can consider any component relation between elements in a set.
+\end{example}
+
+Now the generalized induction principle.  Start with a component relation, $xCy$, on a set $A$.  Now consider a property $P$.  We say that this property $P$ is \emph{inductive} if for every element $x\in A$, if $P$ holds for all components of $x$, then $P$ holds for $x$.  
+
+\begin{remark}  Note that if $x$ has no components at all then $P$ holds for $x$,...since there are no components of $x$ and therefore $P$ holds for all of these non-existing compents.
+\end{remark}
+
+
+\begin{definition}[Generalized Induction Principle]
+If the component $xCy$ obeys the generalized induction principle, then for any property $P$, to show that $P$ holds for all elements of $A$, it suffices to show that for all elements $x\in A$, if $P$ holds for all  components of $x$, then $P$ holds for $x$ too.
+\end{definition}\label{gip}
+
+
+\begin{example}[Back to the components of the natural numbers]
+So back to the simplest example, the Principle of Mathematical Induction (for the natural numbers) \ref{pmi}.  This ``principle'' is that the component relation $x+1 = y$ obeys the generalized induction principle.   Furthermore, the Complete (Strong) Principle of Mathematical Induction for the natural numbers \ref{psmi} is that the relation $x<y$ obeys the generalized induction principle. We see that these two theorems, \ref{pmi} and \ref{psmi} are included under the umbrella of the Generalized Induction Principle \ref{gip}.
+\end{example}
+
+\begin{mytheorem}[Generalized Induction Theorem]
+A sufficient condition for a component relation $xCy$ on a set $A$ to obey the generalized induction principle is that all descending chains be finite.
+\end{mytheorem}\label{git}
+
+So why have we gone through all the hassle of \emph{abstracting} induction like this.  At this point if you are not at least midly puzzled (or even out right boggled), stay with me for a minute.  We can now use this generalized version of induction to things other than the set of natural numbers (i.e. \ref{pmi}).  We can use it on trees!
+
+If all branches of a tree are finite, then to show that a given property $P$ holds for all points in the tree, is suffices to show that for any point $x$, that $P$ holds for that $x$ if $P$ holds for all the successors of $x$. In this special instance, the components of $x$ are the successors of $x$.  Notice how we are no longer bound to considering the natural numbers like ``1 is a component of 2'' and ``2 is a component of 3'', but rather succession in a tree structure.
+
+\begin{problem}[Prove the Fan Theorem Using Generalized Induction]
+Here we want to prove that if a tree is finitely generated and is sich that all its paths are finite, then the tree itself must be finite.  Pause for a moment to reflect on this objective.  Ironically it makes total sense you us, however we can't actually prove it with only \ref{pmi}, since the tree structure is more complex that simply counting numbers $1, 2, 3, 4, \cdots$
+\notes{10}
+\end{problem}
+\newpage
+\begin{problem}[Prove the converse of last problem]
+Here we are proving that if the component relation obeys the generalized induction principle, then all the descending chains must be finite.
+\notes{10}
+\end{problem}
+
+\end{comment}

@@ -1,0 +1,303 @@
+\section{First-Order Logic}
+We will now define  tableaux for \emph{First-Order Logic}.  We build on the previous eight talueaux rules of Propositional Logic along with  fours rules for the quantifiers.  Just as in the previous discussion, let's set up the tableau rules for $\forall$ and $\exists$.  There are four of these, and none of them introduce branches to the tableau.
+
+
+
+\begin{example}[$T ~\forall~x\phi(x)$]
+In the tableau this takes the form:
+		\AxiomC{$T ~\forall~x\phi(x)$}
+		\UnaryInfC{$T~\phi(a)$}	
+		 \DisplayProof
+~~where $a$ is any parameter
+
+\vspace{1em}
+\ifKey 
+\color{red} If $T ~\forall~x\phi(x)$, then we can directly infer that $T \phi(a)$, where $a$ is any parameter.  Basicallys, the statement says, ``For all $x$'s, there is a $\phi(x)$, meaning that it is true for whatever $a=x$ that we choose.
+ \else
+\notes{5}	 
+\fi    		
+\end{example}
+
+\begin{example}[$T ~\exists~x\phi(x)$]
+In the tableau this takes the form:
+		\AxiomC{$T ~\exists~x\phi(x)$}
+		\UnaryInfC{$T~\phi(a)$}	
+		 \DisplayProof
+~~where $a$ is a parameter \emph{that has not yet shown up in the tableau}.
+
+\vspace{1em}
+\ifKey 
+\color{red}If $F~\exists~x\phi(x)$, then we can directly infer that $F \phi(a)$, where $a$ is any parameter.  Basicallys, the statement says, ``For all $x$'s, there is a $\phi(x)$, meaning that it is true for whatever $a=x$ that we choose.
+ \else
+\notes{5}	 
+\fi    		
+\end{example}
+
+\begin{example}[$F ~\forall~x\phi(x)$]
+In the tableau this takes the form:
+		\AxiomC{$F ~\forall~x\phi(x)$}
+		\UnaryInfC{$F~\phi(a)$}	
+		 \DisplayProof
+~~where $a$ is a parameter \emph{that has not yet shown up in the tableau}.
+
+
+\vspace{1em}
+\ifKey 
+\color{red}If $F~\forall~x\phi(x)$, then we can directly infer that $F \phi(a)$, where $a$ is any parameter.  Basicallys, the statement says, ``For all $x$'s, there is a $\phi(x)$, meaning that it is true for whatever $a=x$ that we choose.
+ \else
+\notes{5}	 
+\fi  
+		
+\end{example}
+
+
+\begin{example}[$F ~\exists~x\phi(x)$]
+In the tableau this takes the form:
+		\AxiomC{$F ~\exists~x\phi(x)$}
+		\UnaryInfC{$F~\phi(a)$}	
+		 \DisplayProof
+~~where $a$ is any parameter
+
+\vspace{1em}
+\ifKey 
+\color{red}If $F~\exists~x\phi(x)$, then we can directly infer that $F \phi(a)$, where $a$ is any parameter.  Basicallys, the statement says, ``For all $x$'s, there is a $\phi(x)$, meaning that it is true for whatever $a=x$ that we choose.
+ \else
+\notes{5}	 
+\fi  
+		
+\end{example}
+
+
+\newpage
+Keeping things real, let's start off with an example.
+\begin{example}[$\exists~x~Px \rightarrow\neg \forall~x\neg (Px \lor Qx)$]
+Suppose we want to prove the formula
+\[\exists~x~Px \rightarrow\neg \forall~x\neg (Px \lor Qx)\]
+We begin as before with the negation, i.e assume false.  If we can prove that this statement is never false, then,...it is always true.
+\[F ~\exists~x~Px \rightarrow\neg \forall~x\neg (Px \lor Qx)\]
+\begin{minipage}{0.5\textwidth}
+\begin{tableau}
+{
+to prove={F ~\exists~x~Px \rightarrow\neg \forall~x\neg (Px \lor Qx)},
+close with=\ensuremath{\times}
+}
+[F ~\exists x~Px \rightarrow\neg \forall~x\neg (Px \lor Qx)
+[T~ \exists x~Px, just= by (1)
+[F~ \forall x\neg (Px \lor Qx), just= by (1)
+[T~\forall x~\neg (Px\lor Qx), just =by (3)
+[T~ Pa, just= by (2)
+[T~\neg(Pa\lor Qa), just= by (4)
+[F~Pa\lor Qa, just= by (6)
+[F~Pa, just= by (7), close]]]]]]]]
+\end{tableau}
+
+And we can close because line (8) contradicts (5).
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\begin{enumerate}
+\item  $F ~\exists x~Px \rightarrow\neg \forall~x\neg (Px \lor Qx)$
+\vspace{1em}
+\notes{2} 
+\item $T~ \exists x~Px, just= by (1)$
+\vspace{1em}
+\notes{2} 
+\item $F~ \forall x\neg (Px \lor Qx)$
+\vspace{1em}
+\notes{2} 
+\item $T~\forall x~\neg (Px\lor Qx)$
+\vspace{1em}
+\notes{2} 
+\item $T~ Pa$
+\vspace{1em}
+\notes{2} 
+\item $T~\neg(Pa\lor Qa)$
+\vspace{1em}
+\notes{2} 
+\item $F~Pa\lor Qa$
+\vspace{1em}
+\notes{2} 
+\item $F~Pa$
+\vspace{1em}
+\notes{2} 
+\end{enumerate}
+\end{minipage}
+\end{example}
+
+
+\newpage
+\begin{problem}[$(\forall x~Px\lor \exists x(Px\rightarrow Qx)) \rightarrow \exists x~Qx.$]
+Prove
+\[(\forall x~Px\lor \exists x(Px\rightarrow Qx)) \rightarrow \exists x~Qx\]
+\begin{minipage}{0.5\textwidth}
+
+%
+%\begin{tableau}
+%{
+%to prove={F ~(\forall x~Px\lor \exists x(Px\rightarrow Qx)) \rightarrow \exists x~Qx},
+%close with=\ensuremath{\times}
+%}
+%[F ~(\forall x~Px\lor \exists x(Px\rightarrow Qx)) \rightarrow \exists x~Qx
+%[T~ \forall x~Px\lor \exists x(Px\rightarrow Qx), just= by (1)
+%[F~  \exists x~Qx, just= by (1)
+%[T~\forall x~Px, just =by (2)
+%[T~ \exists  x~(Px\rightarrow Qx), just= by (2)
+%[T~Pa\rightarrow Qa, just= by (5)
+%[T~Pa, just= by (4)
+%[F~Qa, just= by (3)[F~Pa][T~Qa, just = both by(6)] ]]]]]]]]
+%\end{tableau}
+
+\begin{tableau}
+{
+to prove={F ~(\forall x~Px\lor \exists x(Px\rightarrow Qx)) \rightarrow \exists x~Qx},
+close with=\ensuremath{\times}
+}
+[F ~(\forall x~Px\lor \exists x(Px\rightarrow Qx)) \rightarrow \exists x~Qx
+[T~ \underline{\hspace{10em}}, just= by (1)
+[F~  \underline{\hspace{10em}}, just= by (1)
+[T~ \underline{\hspace{10em}}, just =by (2)
+[T~  \underline{\hspace{10em}}, just= by (2)
+[T~ \underline{\hspace{10em}}, just= by (5)
+[T~ \underline{\hspace{10em}}, just= by (4)
+[F~ \underline{\hspace{5em}}, just= by (3)[F~Pa][T~Qa, just = both by(6)] ]]]]]]]]
+\end{tableau}
+
+
+And we can close because line (9) contradicts (6).
+
+
+\ifKey
+\vspace{3em}
+\color{red}
+\begin{tableau}
+{
+to prove={F ~(\forall x~Px\land \exists x(Px\rightarrow Qx)) \rightarrow \exists x~Qx},
+close with=\ensuremath{\times}
+}
+[F ~(\forall x~Px\land \exists x(Px\rightarrow Qx)) \rightarrow \exists x~Qx
+[T~\forall x~Px\land \exists x(Px\rightarrow Qx) , just= by (1)
+[F~ \exists x~Qx , just= by (1)
+[T~ \forall x~Px, just =by (2)
+[T~ \exists x(Px\rightarrow Qx), just= by (2)
+[T~Pa\rightarrow Qa, just= by (5)
+[T~ Pa, just= by (4)
+[F~Qa, just= by (3)[F~Pa,close][T~Qa, close, just = both by(6)] ]]]]]]]]
+\end{tableau}
+
+\color{black}
+\fi
+
+\end{minipage}\hfill
+\begin{minipage}{0.4\textwidth}
+\begin{enumerate}
+\item  \label{fol1}
+\vspace{1em}
+\ifKey
+\color{red} We begin by assuming that the propostition is false, and then the ``hope'' is that we can establish that the propostition is NEVER false, meaning it is always true, and therefor a theorem.
+\color{black}
+\else
+\notes{2} 
+\fi
+
+\item  \label{fol2}
+\vspace{1em}
+\ifKey
+\color{red} This follows from the tableau rules for propositional logic (the previous section).  This is the firsst part of the condition that will make an implication false.
+\color{black}
+\else
+\notes{2} 
+\fi
+
+
+\item \label{fol3}
+\vspace{1em}
+\ifKey
+\color{red}  This is the second part of the condition that will make an implication false.
+\color{black}
+\else
+\notes{2} 
+\fi
+
+
+\item \label{fol4}
+\vspace{1em}
+\ifKey
+\color{red} The $\land$ in line \ref{fol2} infers that both $xPx$ and $\exists x(Px\rightarrow Qx)$ are true. So this is the first one....
+\color{black}
+\else
+\notes{2} 
+\fi
+
+\item \label{fol5}
+\vspace{1em}
+\ifKey
+\color{red}and this is the second term in the  $\land$ from line \ref{fol2}. 
+\color{black}
+\else
+\notes{2} 
+\fi
+
+
+\item \label{fol6}
+\vspace{1em}
+\ifKey
+\color{red} Line \ref{fol5} says that $Px\rightarrow Qx$ holds for all $x$, so we allow $a$ to be such an $x$
+\color{black}
+\else
+\notes{2} 
+\fi
+
+\item \label{fol7}
+\vspace{1em}
+\ifKey
+\color{red} Line \ref{fol4} says that $Px$ holds for every $x$, so it has to hold for $Pa$.
+\color{black}
+\else
+\notes{2} 
+\fi
+
+\item \label{fol8}
+\vspace{1em}
+\ifKey
+\color{red} Line \ref{fol3} says tha it is false that there is any $x$ such that $Qx$, and therefore in particular, $Qa$ must be false.
+\color{black}
+\else
+\notes{2} 
+\fi
+
+\item \label{fol9}
+\vspace{1em}
+\ifKey
+\color{red} Line \ref{fol6} branches, forming \ref{fol9}, both terminating.
+\color{black}
+\else
+\notes{2} 
+\fi
+
+\end{enumerate}
+\end{minipage}
+\end{problem}
+We end our exploration of sets and logic here, but I want to leave you with a list of topics to which we have journeyed precariously close.  At this point, if you find these ideas thus far interesting, you might consider reading further into the following topics. I think you have been given the keys that open the door to get to the next level.
+\begin{enumerate}
+\item G\"odel's Incompletness Theorem.  \hfill Totally famous!!
+\item Elementary Arithmetic.   \hfill I kid you not! How do we know it works?
+\item Formal Systems.  \hfill This converts implicit (recursive) definitions into explicit.
+\item Peano Arithmetic. \hfill Who said $1+1=2$?
+\item The Unprovability of Consistency.  \hfill  More from G\"odel.
+\end{enumerate}
+
+\newpage
+\subsection{A Paper on What Lincoln Really Meant to Say}
+I just thought this was soooo nerdy that I had to include it.  Sheldon from the \emph{Big Bang} would probably dig this.
+%Now that we see how the logic tables can be used to solve these riddles, the following paper takes things a step further by introducing more personality types. 
+\fancyfoot[CE CO]{}
+\fancyfoot[RE,RO]{}
+\fancyfoot[LE,LO]{}
+%------------------------------------------------------------------------------------------------------------
+\begin{center}
+\frame{\includegraphics[width = 4.5in]{./papers/Lincoln.pdf}}
+\end{center}
+
+\fancyfoot[CE CO]{Dr. Heavilin}
+\fancyfoot[RE,RO]{Online Version}
+\fancyfoot[LE LO]{Fall 2020}
+

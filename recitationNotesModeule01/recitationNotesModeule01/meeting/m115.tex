@@ -1,0 +1,316 @@
+\section{Mathematical Induction}
+
+No discrete math course would be complete without a discussion on mathematical induction.  It is a powerful tool used in proofs throughout mathematics.  One of the best presentations of the Principle of Mathematical Induction was presented by Dr. Cangelosi in Math 4200.  In this class we will take a less formal approach that I hope will still prove valuable.  Let us begin with a reasoning exercise.
+
+\begin{problem}[Consider an island populated with only two types of people]
+Consider an island populated with only two types of people,  One type can only tell the truth, and the other type can only lie.  We will call the truth-telling people \emph{Knights} and the lying people \emph{Knaves}.  One of the inhabitants of this island says, ``This is not the first time I have said what I am now saying."
+
+The question is, it that person a knight or a knave?
+
+\notes{6}
+
+\end{problem}
+We need to examine the line of reasoning that led you to the answer.  It is an example of \emph{inductive} reasoning.  Here is another example of inductive reasoning.
+\begin{example}
+Suppose the following: if it is raining in Logan on a given day, then it will rain on the following day.  Moreover, it is raining today.  What can you conclude?
+\notes{6}
+\end{example}
+
+\newpage
+The idea of induction is stated more formally by mathematicians in the following theorem.  Let me just note that the symbology $P: \mathbb{N}\to \{T, F \}$ reads something like, ``...The property $P$ maps the natural numbers onto the set true and false."  Once you learn to read these mathematical hieroglyphics you can amaze people at cocktail parties and that special someone you are intereted in impressing will soon be eating out of your hand.  Trust me,...happens all the time.
+\begin{theorem}[Principle of Mathematical Induction.] 
+If a property holds for the number zero, and \underline{whenever} it holds for any number $n$  it also holds for $n+1$, then it holds for all natural numbers
+$$ P(0) = T ~~\land~~ (P(k) = T\to P(k+1) = T) ~~\to ~~P(n) = T ~\forall~ n\in\mathbb{N}.$$
+
+%\begin{proof} We will prove this by contradiction.
+%
+%%Let $A$ be the set of all $n$ such that $P(n)$ is false.
+%
+%\notes{12}
+%
+%\end{proof}
+\label{pmi}
+\end{theorem}
+
+Now we have presented the theorem, we don't expect to immediately understand it, know how to use it, or appreciate its implications.  That will come.  Instead, to begin I want to spent our time constructively discussing the philosophy so that we can cultivate a relationship to this reasoning.  Once we do that, I suspect that all of the other parts will fall into place.  Induction is sort of slippery, but at the same time natural - like a bar of oatmeal soap. So let's work through some more examples.
+
+\begin{example}
+Suppose you live in the 1950's and the milkman delivers milk on a daily milk run.  You decide to leave a note on the doorstep that reads
+\begin{quotation}
+On any day that you leave milk, be sure to leave milk the following day as well!  Thanks.
+
+\hfill -Englebert Humperdink.
+\end{quotation}
+But after a month you still have no milk.  You wait up for the milkman and ask why you don't have any milk.  The reply is, ``I did exactly what you instructed, I never left any milk and nor did I leave any milk on a day following that day."  The milkman is logically correct and you are out of milk.
+
+If instead, your note had read,
+\begin{quotation}
+On any day that you leave milk, be sure to leave milk the following day as well!  Oh,...and please leave me milk today.  Thanks.
+
+\hfill -Englebert Humperdink.
+\end{quotation}
+you would have been receiving milk all along.
+\end{example}
+
+\subsection*{Strong Induction}
+There is a variant on induction called \emph{Strong Induction} and the only difference on the surface is that instead of assuming $P(0)$  (that is to say the property holds for $n=0$), we assume that the property holds for all numbers from zero up to $n$.  Stated similarly to Theorem \ref{pmi}:
+
+\begin{theorem}[Principle of Complete \{\emph{Strong}\} Mathematical Induction.] 
+Suppose if a property $P$ of the natural numbers is true for all natural numbers less than $n$ means it is true for $P(n)$, then it also holds for all $n$.
+$$P: \mathbb{N}\to \{T, F \}~~\land~~ P(0) = T ~~\land~~ (P(k) = T\to P(n) = T~\forall n<k) ~~\to ~~P(n) = T ~\forall~ n\in\mathbb{N}.$$
+\label{psmi}
+\end{theorem}
+
+Interestingly enough, one can prove Theorem \ref{pmi} using \ref{psmi} and alternatively could prove Theorem \ref{psmi} using \ref{pmi}.  These two theorems are very similar.  The preferred use is often context specific; some problems are simply presented in a manner lend to one form or another.  I don't know of any \emph{rule} governing the application of these theorems, one over another.  However, if the property we are trying to prove involves more that once antecedent in the chain of logic, then usually we resort to strong induction.  But you wont build a career from that skill set alone.  Let's just have a look at an example.
+
+\newpage
+\begin{example}[$a_1 =1, a_2 = 8 \land a_n = a_{n-1} + 2a_{n-2}, ~\forall ~n>3$]
+Prove that for the sequence
+\begin{eqnarray}
+ a_n = a_{n-1} + 2a_{n-2}, \label{exinduction02a}
+ \end{eqnarray}
+   with intial conditions $a_1 =1,  ~a_2 = 8$  has a closed form expression 
+ \begin{eqnarray}
+ a_n = 3\cdot 2^{n-1} + 2(-1)^n. \label{exinduction02b}
+ \end{eqnarray}
+ 
+
+\begin{proof} There are basically two steps to an induction proof, the \emph{base case(s)} and the \emph{induction step}.  I am going to name Equation \ref{exinduction02b} $P(n)$, i.e.   
+$$P(n): a_n = 3\cdot 2^{n-1} + 2(-1)^n.$$
+\begin{itemize}
+
+\item[] \begin{minipage}{0.3\textwidth}
+\underline{Steps of the proof}
+\end{minipage}
+\hfill\begin{minipage}{0.6\textwidth}\underline{Running dialog  with the monkeys in my head.}
+\end{minipage}
+
+\item Base Case.
+
+\item[] \begin{minipage}[t]{0.3\textwidth}$P(1)$ and $P(2)$ 
+\end{minipage}
+\hfill\begin{minipage}[t]{0.6\textwidth}Observe through brute force calculations or both Equations \ref{exinduction02a} and \ref{exinduction02b} that indeed $a_1 = 1$ and $a_2 = 8$. These base cases simply get the ball rolling, first to verify that we aren't chasing something completely crazy, but also to satisfy the hypothesis of Theorem \ref{psmi}.
+\end{minipage}
+
+\item Induction Step.
+
+\item[]\begin{align*}
+ a_k = 3\cdot 2^{k-1} + 2(-1)^k.					& &\textrm{Suppose this is true for some $k$}\\
+a_{k+1} = a_k + 2a_{k-1}												& &\textrm{This is the definition of the recurrence.}\\
+a_{k+1} = \left( 3\cdot 2^{k-1} + 2(-1)^k\right)+2\left(3\cdot 2^{k-2} + 2(-1)^{k-1}\right) & & \textrm{Using $P(n)$ for $n=k$ and $n=k-1.$}\\
+a_{k+1} = 3\cdot\left( 2^{k-1} +  2^{k-1} \right)+2\left( (-1)^k + 2(-1)^{k-1}\right) & & \textrm{Some simplifications.}\\
+a_{k+1} = 3\cdot 2^{k}+2(-1)^{k+1} & & \textrm{Algebraic manipulation.}
+\end{align*}
+
+\item Conclusion. 
+\item [] And we find  $P(n)$ for $n = k+1$, so by the strong principle of induction, $P(n) ~\forall ~n\in\mathbb{N}$.
+\end{itemize}
+\end{proof}
+\end{example}
+A lot could be said about this preceding example.  Let's walk through it together.  I will attempt to connect the proof to the pieces and parts of Theorem \ref{pmi}
+\begin{itemize}
+
+\item $\color{red}P: \mathbb{N}\to \{T, F \} \color{black} ~~\land P(0) = T ~~\land~~ (P(k) = T\to P(k+1) = T) ~~\to ~~P(n) = T ~\forall~ n\in\mathbb{N}.$    
+
+This red refers to Eq. \ref{exinduction02a}.  This statement is either true or false.  $P(n)$ is the mapping that takes each number $n$ and decides if the equation holds for it.  If so, then $T$, else $F$.
+
+\item $P: \mathbb{N}\to \{T, F \} \color{red}~~\land~~ P(0) = T \color{black}~~\land~~ (P(k) = T\to P(k+1) = T) ~~\to ~~P(n) = T ~\forall~ n\in\mathbb{N}.$    
+
+Here we are talking about the base case (or cases).  For our problem we considered $n=1$ and $n=2$.  If $P(n)$ isn't true for either of these values, then it is game over, because obviously the statetment isn't true for all $n$.  This is the thread hanging off the sweater that, once we tug on it, the whole sweater falls apart.
+
+
+\item $P: \mathbb{N}\to \{T, F \} ~~\land~~ P(0) = T ~~\land~~ \color{red}(P(k) = T\to P(k+1) = T) \color{black}~~\to ~~P(n) = T ~\forall~ n\in\mathbb{N}.$    
+
+Notice the parenthesis surrounding this entire statement.  It means that the whole shooting match has to fly.  In other words, when there is a $k$ for which $P(n)$ is true, then it must also be true that the NEXT case, $P(k+1)$ must also be true.  Think of this as the continuity of the sweater thread we are pulling on; as we pull, the entire thread is connected by the link of $k\to k+1$.  In our example it is the induction step where we show algebraically that $a_{k+1} = 3\cdot 2^{k}+2(-1)^{k+1} $ FOLLOWS directly from $a_{k} = 3\cdot 2^{k-1}+2(-1)^{k}$ 
+
+
+\item $P: \mathbb{N}\to \{T, F \} ~~\land~~ P(0) = T ~~\land~~(P(k) = T\to P(k+1) = T) ~~\to ~~ \color{red}P(n) = T ~\forall~ n\in\mathbb{N} \color{black}.$    
+
+Finally, having satisfied the conditions (premises) of theorem \ref{pmi}, we can conclude the the whole sweater is going to end up a ball of thread on the floor.
+\end{itemize}
+%\notes{10}
+
+\newpage
+Here are some simple examples to show how things fail.
+\begin{example}[$a_1 =1, a_2 = 8 \land a_n = a_{n-1} + 2a_{n-2}, ~\forall ~n>3$]
+Prove that for the sequence
+\begin{eqnarray}
+ a_n = a_{n-1} + 2a_{n-2}, \label{exinduction03a}
+ \end{eqnarray}
+   with intial conditions $a_1 =1,  ~a_2 = 8$  has a closed form expression 
+ \begin{eqnarray}
+ a_n = 3\cdot 2^{n-1}. \label{exinduction03b}
+ \end{eqnarray}
+ 
+ Let's start this proof the same way we start ALL induction proofs, namely, state the premise, tell the reader you are proving by induction, and then establish some base cases. 
+\begin{proof}
+We will attempt to prove by induction that $a_n = a_{n-1} + 2a_{n-2}$, with intial conditions $a_1 =1, a_2 = 8$ has a closed form solution  $P(n): a_n = 3\cdot 2^{n-1}$.  We begin by observing that for $n=3,~ P(3) = a_3 = 3\cdot 2^2 = 12$.  However, we know that the recursion relattion, $a_n = a_{n-1} + 2a_{n-2}$ yields $a_3 =  8+2\cdot 1 = 9$.  Since $P(3)\neq 9$ we have proved that $P(n): a_n = 3\cdot 2^{n-1}$ is not the closed form solution for the recursion relation $a_n = a_{n-1} + 2a_{n-2}$
+\end{proof}
+Interresting!  This is actually a \emph{proof by contradiction}, not really a complete proof by induction.  With hindsight, now that we realize the statement is false, we can re-tool our proof in the form of a proof by contradition, and abandon the idea of proof by induction.  Essentially, we don't use proof by induction to proove something is false.  
+\end{example}
+
+Here is another more interesting example of failure.
+
+
+\begin{example}[$a_1 =1 \textrm{ and } a_n = a_{n-1} + n, ~\forall n$]
+Prove that for the sequence
+\begin{eqnarray}
+ a_{n+1} = a_{n} + n+1, \label{exinduction04a}
+ \end{eqnarray}
+   with intial conditions $a_1 =1$  has a closed form expression 
+ \begin{eqnarray}
+ P(n): a_n = \frac{-2\,n^3+13\,n^2-21n+12}{2}. \label{exinduction04b}
+ \end{eqnarray}
+Let us begin, as before, by stating what we want to prove and establishing some base cases.
+\begin{proof}
+We will attempt to prove by induction that the recursion relation, $a_n = a_{n-1} + n$, with intial condition $a_1 =1$ has a closed form solution  $P(n): a_n = \frac{-2\,n^3+13\,n^2-21n+12}{2}.$  We begin by observing that for $n=1,~ P(1) = 1 = a_1,~ P(2) = 3 = a_2$, and $P(3) = 6=a_3$.  These are the base cases for our induction proof.  Now that we have established that the relationship holds for at least ``some" $n\in \mathbb{N}$, then next part of Theorem \ref{pmi} begs us to suppose for some $k$, that if $P(k) = \frac{-2\,n^3+13\,n^2-21n+12}{2}$ is true, then it is also true for the next $k$, ie, $k+1$.  Let's follow through the same algebraic form as in a previous example.
+
+\begin{align*}
+ a_{k} &= \frac{-2\,k^3+13\,k^2-21k+12}{2}				& &\textrm{Suppose this is true for some $k$}\\
+ a_{k+1} &= a_{k} + k+1						& &\textrm{Consdier $k+1$}\\
+ a_{k+1}&=  \frac{-2\,k^3+13\,k^2-21k+12}{2} +k+1				& &\textrm{Employ our assumption from two lines above.}\\
+ a_{k+1}&=  \frac{-2\,k^3+13\,k^2-19k+14}{2} 				& &\textrm{Do some algebra.}
+\end{align*}
+
+In order for this proof to be complete, we would expect that this result would be equivalent to Eq \ref{exinduction04b} when $n=k+1$, 
+\begin{align*}
+ P(k+1): a_{k+1}& = \frac{-2\,(k+1)^3+13\,(k+1)^2-21(k+1)+12}{2}			& &\textrm{Suppose this is true for some $k$}\\
+&= \frac{-2\,k^3+7\,k^2-k+2}{2}							& &\textrm{Simplify}\\
+&=  \frac{-2\,k^3+13\,k^2-19k+14}{2} 	+ \frac{-5k^2+18k-12}{2}			& &\textrm{A despirate atttempt to make things look that same.}
+\end{align*}
+
+
+However, there is just now way that we can legitamately arrange the terms to be what we need them to be.  I have seen student go though obscene contortions of algebra, violating all the algebra they learned in high school just to get the answer to look like the back of the book.  Butt the rational conclusion is that we simply can not satisfy the premise to Theorem \ref{pmi}, and as a result must conclude that the closed form solution is not true.
+\end{proof}
+\end{example}
+
+
+
+\newpage
+\subsection*{The Least Number Principle (or \emph{The Well Ordering Principle})}
+We continue in a chain of ideas that are strongly related to one another.  I was never presented with both of these ideas hand-in-hand.  But they are and it is helpful to see them side by side, because one implies the other.  In fact, each is used to provet that the other is true.  It sounds like a house of card, but by assuming \ref{pmi} as an axiom, we can prove \ref{lnp}.  Alternatively, by assuming \ref{lnp} we can prove \ref{pmi}.  
+
+\begin{theorem}[The Least Number Principle]
+Every non-empty set of natural numbers contains a least element.
+\label{lnp}
+\begin{proof}
+%$X\neq \emptyset, ~X\subseteq \mathbb{N}$,
+%$n\in\mathbb{N}-X$.
+I realize it is perhaps considered \emph{bad form} to present a proof in a \textsc{colour by numbers} style.  I do not mean to insult your intelligence, but for a person like me, I find is can be helpful to break something down into little bit-sized pieces so that I make sure I understand what is happening at each step along the way.  So here goes!
+
+The proof is by contradiction. 
+\begin{itemize}
+\item[] \begin{minipage}{0.3\textwidth}
+\underline{Steps of the proof}
+\end{minipage}
+\hfill\begin{minipage}{0.6\textwidth}\underline{Running dialog  with the monkeys in my head.}
+\end{minipage}
+
+\item \begin{minipage}[t]{0.3\textwidth}
+$S\neq \emptyset, ~S\subseteq \mathbb{N}$ 
+\end{minipage}
+\hfill\begin{minipage}[t]{0.6\textwidth}Suppose $S$ is an arbitrary \textbf{non-empty} subset of N, such that $S$ has no least element. Between you and me, we know this doesn't exist, but let's prove it doesn't exist.
+\end{minipage}
+
+\item \begin{minipage}[t]{0.3\textwidth}Let $P(n): n\in\mathbb{N}-S$
+\end{minipage}
+\hfill\begin{minipage}[t]{0.6\textwidth}  The conventional venacular for this type of proof uses a notation requiring  a little getting used to.  The symbols $P(n)$ are read to mean  the property is true for $n$.  So were we write something like, $P(5)$, we mean ``$P(5)$ is true''.  For our purposes, the proposition is that $5$ is not in $S$, or rather, $5\in\mathbb{N}-S$.
+\end{minipage}
+
+\item \begin{minipage}[t]{0.3\textwidth}$\forall~m, n\in \mathbb{N}, m<n : P(m)$
+\end{minipage}
+\hfill\begin{minipage}[t]{0.6\textwidth} This is saying that if we grab another number, say $m$, then it can't possibly be in $S$, because if it were in the set $S$ and if $m<n$, then the set $S$ would have a lesser number than $n$.  By assumption, $S$ has no such element. So $m$ can not be in $S$, or to use our notation, $P(m)$ is true.
+\end{minipage}
+
+\item \begin{minipage}[t]{0.3\textwidth}$\forall ~ n\in\mathbb{N}, P(n)$
+\end{minipage}
+\hfill\begin{minipage}[t]{0.6\textwidth}We have determined in the previous bullet that nothing smaller than $n$ could be in $S$, so $P(m)$ must be true for all $m<n$.  Then by strong induction, our property $P$ of the natural numbers is true for all natural numbers less than $n$, then it also holds for $n$.otherwise, $n$ would be the least element of the set $S$.
+\end{minipage}
+  
+\item \begin{minipage}[t]{0.3\textwidth}$S=\emptyset$
+\end{minipage}
+\hfill\begin{minipage}[t]{0.6\textwidth}Our original set must be empty, since everything is in $\mathbb{N}-S$.
+\end{minipage}
+
+  
+\item \begin{minipage}[t]{0.3\textwidth}$S$  must contain a least element.
+\end{minipage}
+\hfill\begin{minipage}[t]{0.6\textwidth}To begin we supposed that $S$ was non-empty, butt now come to find that only the empty set can have no least element. Therefore by contradiction, every non-empty set must have a least element.
+\end{minipage}
+\end{itemize}
+\end{proof}
+
+\end{theorem}
+
+Theorem \ref{lnp} is also referred to as the \emph{Well Ordering Principle}, but I think the words ``least number'' do a better job of describing the idea, so I will use those words. (Why do mathematicians go out of their way to make stuff cryptic?) 
+
+
+If you stop and think about this, Theorem \ref{lnp} makes senes.  But here is the rub.  Often there is a catch to proving something that makes total sense.  For example, proving that $1+1 = 2$ would probably take several class lectures....but I digress.  Here is a notion that is as important as proving any of Theorems \ref{pmi}, \ref{psmi}, or \ref{lnp}.  To prove any of them, you have to assume one of them as an axiom.
+\begin{definition}[Axiom]
+Wikipedia states: An axiom (or postulate) is a statement that is taken to be true, to serve as a premise or starting point for further reasoning and arguments. 
+\end{definition}
+\begin{remark}
+Frankly, this is about as good as any other definition.  Practically speaking, before you begin building a mathematics, you need to create a framework (using axioms and definitions).  More to the point,...what is a \emph{point}?  Think about it for a minute.  Has anyone proven to you that points exist?  Mathematicians come up with a set of axioms so that they can start describing things, discussing things, proving things.  Once a conjecture is proved, it becomes a theorem.  One theorem leads to another and pretty soon you have a mathematical structure.  
+\end{remark}
+
+%\begin{theorem}[The Principle of Finite Descent]
+%Suppose a property $P$ such that for any natural number $n$, when $P$ holds (i.e when $P$ is true for that $n$) then $P$ also holds for some natrual number less than $n$
+%\end{theorem}
+\newpage
+\begin{problem}[Suppose $Q$ is a property of sets or natural numbers.]
+Suppose $Q$ is a property of sets or natural numbers.  And suppose $Q$ satisfies the following
+\begin{itemize}
+\item $Q$ holds for the empty set.
+\item For any finite set $A$ and any number $n\not\in A$, then if $Q$ holds for $A$, then $Q$ holds for $A\cup \{n\}$.
+\end{itemize}
+Then $Q$ holds for all finite sets of natural numbers.
+
+\begin{proof}Prove that $Q$ holds for all finite sets of natural numbers.
+\notes{5}
+\end{proof}
+\end{problem}
+
+
+\begin{problem}[Prove that no finite set can be put into 1-1 correspondence with any of its proper subsets.]
+Prove that no finite set can be put into 1-1 correspondence with any of its proper subsets. (hint: prove by inducting on the number of elements in the set)
+\notes{5}
+\end{problem}
+
+
+\begin{problem}[Suppose Vladamir is playing a game with the Countess.]
+Suppose Vladamir is playing a game with the Countess (these lovebirds are always playing games together).  He gives her a bag containing an infinite supply of ping pong balls used for BINGO (each ball has a positive number printed on it).  For each number $n$ there are infinitely many of those balls (numbered $n$).  Then Vladamir places a box with infinite capacity on the table.  This box contains similar balls as in the bag, however there are only finitely many, instead of infinitely many as in the bag.  
+Each day, the Countess must remove one ball from the box, and replace it with a \emph{finite} number of balls from the bag - but those balls must be of a lower number.  For example, she can pull out a 51 from the box and replace it with a thousand 48's.  If the box on the table gets emptied, the Countess has to drink holy water and stand in the sun.  Otherwise, Vladamir has to eat raw garlic.  
+
+Is there a strategy by which the Countess can win?  If so, how.
+
+\notes{12}
+\end{problem}\label{ballsGame}
+
+\newpage
+\subsection{A Paper on The Least Number Principle (or \emph{The Well Ordering Principle})}
+This is a fun little paper with some example problems (Theorems and Proofs).  There is very little theory contained in this paper; its strength lies in the presentation of the Well Ordering Principle as an alternative approach to problems most students are told \underline{must} be solved by induction (I am a big fan of subverting the dominant paradigm).  I feel the more versitile your constructs are, the stronger thinker you will become.  I love the idea of solving problems multiple ways, and in the case of \emph{The Well Ordering Principle} and \emph{The Principle of Mathematical Induction} we discover that they are distinct but related approaches.  The former is a more set-theoretic perspective, while the latter is more number-theoretic in nature.  At least that is just my interpretation, take it or leave it.\cite{machale2008}
+\fancyfoot[CE CO]{}
+\fancyfoot[RE,RO]{}
+\fancyfoot[LE,LO]{}
+
+%------------------------------------------------------------------------------------------------------------
+\begin{center}
+\frame{\includegraphics[width = 4.5in]{./papers/theWellOrderingPrincipleForN.pdf}}
+
+%
+%\includepdf[pagecommand=={\thispagestyle{fancy}\fancyhead{}\fancyhead[C]{Paper}},  frame=true,  picturecommand*={}, pages=2-, addtotoc={2,subsection,1,The Empty Set..., TheEmptySet},width = 6.5in]{./papers/TheEmptySet.pdf}
+\end{center}
+
+\fancyfoot[CE CO]{Dr. Heavilin}
+\fancyfoot[RE,RO]{Online Version}
+\fancyfoot[LE LO]{Fall 2020}
+
+
+
+
+
+
+
+
+
+

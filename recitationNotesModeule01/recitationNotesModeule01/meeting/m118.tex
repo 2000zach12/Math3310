@@ -1,0 +1,952 @@
+\section{Introduction to Propositional Logic}
+If we want to develop all of mathematics from a few principles of logic (which would be really cool and is something we can do), then we need to develop propositional logic.  Propositions  can be combined to create more complicated or complex propositions through the use of \emph{connectives}.  The following is a list of connectives:
+\begin{enumerate}
+\item [$\neg$:]negation or ``not''
+\item [$\land$:]conjunction, or ``and''
+\item [$\lor$:]disjunction , or ``or''
+\item [$\implies$:] implication, or ``if-then''
+\item [$\equiv$:] equivalence, ''if and only if'', or ``iff''
+\end{enumerate}
+
+\subsection*{\Huge$\neg$}
+For any proposition $p$ the negation is $\neg p$.  So if $p$ is true, then $\neg p$ is false.  It is helpful to illustrate this in a \emph{truth table}.  
+
+
+\[  \begin{array}{c|c}
+  \hline  
+  p & \neg p\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{F}\\
+  \hline
+     \mathbf{F}&  \mathbf{T}\\
+    \hline
+    \end{array}\]
+    
+ \ifKey
+\color{red}
+\hfill 
+ $ \begin{array}{c|c}
+  \hline  
+  p & \neg p\\
+  \hline
+  \hline
+ \mathbf{T} &  \\
+  \hline
+     \mathbf{F}& \\
+    \hline
+    \end{array}
+ $
+    \color{black}
+\fi
+    
+
+    
+The first row says that if $p$ is true ($\mathbf{T}$), then $\neg p$ is false ($\mathbf{F}$).  The revese hold for the second line.  We will construct truth tables for all of the connectives.
+
+\subsection*{\Huge$\land$}
+Practice reading through, line by line, to make sure the truth table makes sense.  In this case, we have two propositions, $p$ and $q$.  
+\[   \begin{array}{c|c|c}
+  \hline  
+  p & q & p\land q\\
+  \hline
+  \hline
+ \mathbf{T} &  &\\
+  \hline
+ \mathbf{T} &  &  \\
+  \hline
+ \mathbf{F} & & \\
+  \hline
+ \mathbf{F} & & \\
+  \hline
+    \end{array}\]
+
+\ifKey
+\color{red}
+\hfill 
+ $ \begin{array}{c|c|c}
+  \hline  
+  p & q & p\land q\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} &  \mathbf{T}\\
+  \hline
+ \mathbf{T} &  \mathbf{F} &  \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{T} &  \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{F} &  \mathbf{F}\\
+  \hline
+    \end{array}$
+\color{black}
+\fi
+    
+Reading through this table we see that $p \land q$ is true only in the first case, when both are true.  Otherwise the statement is logically false.
+ 
+\subsection*{\Huge$\lor$}
+Again we have two propositions, $p$ and $q$.  
+\[  \begin{array}{c|c|c}
+  \hline  
+  p & q & p\lor q\\
+  \hline
+  \hline
+ \mathbf{T} &   \mathbf{T}  &  \\
+  \hline
+ \mathbf{T} &  \mathbf{F}   &  \\
+  \hline
+ \mathbf{F} &  \mathbf{T}   &  \\
+  \hline
+ \mathbf{F} &   \mathbf{F}  &  \\
+  \hline
+    \end{array}\]
+
+\ifKey
+\color{red}
+\hfill 
+ $ \begin{array}{c|c|c}
+  \hline  
+  p & q & p\lor q\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T}   & \mathbf{T}   \\
+  \hline
+ \mathbf{T} &  \mathbf{F}   & \mathbf{T}   \\
+  \hline
+ \mathbf{F} &  \mathbf{T}   &   \mathbf{T} \\
+  \hline
+ \mathbf{F} &  \mathbf{F}   & \mathbf{F}   \\
+  \hline
+    \end{array}$
+\color{black}
+\fi
+    
+   
+ 
+  In the table we have $p\lor q$ yields false only when both propositions are false, otherwise it is true.
+  
+\subsection*{\Huge$\implies$}
+\[  \begin{array}{c|c|c}
+  \hline  
+  p & q & p\implies q\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T}& \\
+  \hline
+ \mathbf{T} & \mathbf{F}  &\\
+  \hline
+ \mathbf{F} &  \mathbf{T}  &  \\
+  \hline
+ \mathbf{F} &  \mathbf{F}  & \\
+    \hline
+    \end{array}\]
+    
+
+\ifKey
+\color{red}
+\hfill 
+ $\begin{array}{c|c|c}
+  \hline  
+  p & q & p\implies q\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} &  \mathbf{T}\\
+  \hline
+ \mathbf{T} &  \mathbf{F} &  \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{T} &  \mathbf{T}\\
+  \hline
+ \mathbf{F} &  \mathbf{F} &  \mathbf{T}\\
+    \hline
+    \end{array}$
+\color{black}
+\fi
+    
+    
+  In the table we have $p\lor q$ yields false only when both propositions are false, otherwise it is true.  Here the only case where the statement is false is when $p$ is true and $q$ is false.
+  
+  \subsection*{\Huge$\equiv$}
+For equivalence, each proposition, $p$ and $q$, implies the other, so in a sense, they must agree.  If they don't agree, then the proposition $\equiv$ is false
+\[  \begin{array}{c|c|c}
+  \hline  
+  p & q & p\equiv q\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} & \\
+  \hline
+ \mathbf{T} &  \mathbf{F} & \\
+  \hline
+ \mathbf{F} &  \mathbf{T} & \\
+  \hline
+ \mathbf{F} &  \mathbf{F} &\\
+    \hline
+    \end{array}\]
+
+
+\ifKey
+\color{red}
+\hfill 
+ $  \begin{array}{c|c|c}
+  \hline  
+  p & q & p\equiv q\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} &  \mathbf{T}\\
+  \hline
+ \mathbf{T} &  \mathbf{F} &  \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{T} &  \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{F} &  \mathbf{T}\\
+    \hline
+    \end{array}$
+\color{black}
+\fi
+ 
+      
+We can build formulations of these propositions with connectives.  Commonly we employ parenthesis to group notions together, just as with algebra.  We will refer to $p$, $q$, and $r$ as \emph{propositional variables}, and we will refer to \emph{formulas} as any expression constructed according to the following rules:
+\begin{enumerate}
+\item Each propositional variable is a formula.
+\item Given any formulas, $X$ and $Y$ (already constructed), the expressions $\neg X, (X\land Y), (X\lor Y),  (X\implies Y)$, and $(X\equiv Y)$ are also formulas.
+\end{enumerate}  
+
+
+I know it seems geeky, but formally defining things is a big part of mathematics.  But essentially I think I have listed what you already intuitively understood a propositional logic formula to mean.  \smiley
+  
+\subsection*{Compound Truth Tables}
+Now it starts to get interresting.  We can combine propositional expressions composed of $p$ and $q$ and determine the resulting truth value of the formulation.  
+\begin{example}[$p\equiv (q \lor \neg(p \land q))$]
+Once we know the values of $p$ and $q$, we can determine $p\equiv (q \lor \neg(p \land q))$.  Again we will turn to the associated truth table, building it step by step as we assemble the formula.
+\[\begin{array}{c|c|c|c|c|c}
+  \hline  
+  p & q & p\land q	& \neg ( p\land q)	&p \lor  \neg ( p\land q)	& p \equiv p \lor  \neg ( p\land q) \\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} 	& 	& 	& 	& \\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  	&  	&  	&\\
+  \hline
+ \mathbf{F} &  \mathbf{T} 	& 	&  	&   	&  \\
+  \hline
+ \mathbf{F} &  \mathbf{F} 	&   	& 	&   	&  \\
+    \hline
+    \end{array}\]
+
+\ifKey
+\color{red}
+\hfill 
+ $\begin{array}{c|c|c|c|c|c}
+  \hline  
+  p & q & p\land q	& \neg ( p\land q)	&p \lor  \neg ( p\land q)	& p \equiv p \lor  \neg ( p\land q) \\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{F} 	&  \mathbf{T} 	&  \mathbf{T}\\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  \mathbf{F}  	&  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{T}\\
+  \hline
+ \mathbf{F} &  \mathbf{T} 	&  \mathbf{F}  	&  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{F} 	&  \mathbf{F}  	&  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{F}\\
+    \hline
+    \end{array}$
+    \color{black}
+    \fi
+    
+So $X$ is true in the first two cases, and false in the last two cases.
+\end{example}
+  
+  \begin{example}[$(p\lor \neg q) \implies (r \equiv ( p \land q))$]
+Once we know the values of $p, q$ and $r$, we can determine $p\equiv (q \lor \neg(p \land q))$.  Again we will turn to the associated truth table, building it step by step as we assemble the formula. With three variables we have $2^3 = 8$ possible values for $X$.
+\[  \begin{array}{c|c|c|c|c|c|c|c}
+  \hline  
+  p 			& q 				& r				&\neg q&p\lor \neg q	& p \land q&r \equiv ( p \land q)	&(p\lor \neg q) \implies (r \equiv ( p \land q))\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} 	&  \mathbf{T} 	&  &   	&  	&  	&  \\
+  \hline
+ \mathbf{T} &  \mathbf{T} 	&  \mathbf{F}  	& 	&   	&  	&  	&  \\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  \mathbf{T}  	&   	&   	&  	&  	&  \\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  \mathbf{F}  	&   	&   	&  	&  	&  \\
+\hline
+ \mathbf{F} &  \mathbf{T} 	&  \mathbf{T} 	&   	&   	&  	&  	&  \\
+  \hline
+ \mathbf{F} &  \mathbf{T} 	&  \mathbf{F}  	&   	&   	&  	&  	&  \\
+  \hline
+ \mathbf{F} &  \mathbf{F} 	&  \mathbf{T}  	&   	&   	&  	&  	&  \\
+  \hline
+ \mathbf{F} &  \mathbf{F} 	&  \mathbf{F}  	&   	&   	&  	&  	&  \\
+    \hline
+    \end{array}\]
+    
+\ifKey
+\color{red}
+
+\hfill$ \begin{array}{c|c|c|c|c|c|c|c}
+  \hline  
+  p 			& q 				& r				&\neg q&p\lor \neg q	& p \land q&r \equiv ( p \land q)	&(p\lor \neg q) \implies (r \equiv ( p \land q))\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{F} 	&  \mathbf{T} 	&  \mathbf{T}	&  \mathbf{T}	&  \mathbf{T}\\
+  \hline
+ \mathbf{T} &  \mathbf{T} 	&  \mathbf{F}  	&  \mathbf{F} 	&  \mathbf{T} 	&  \mathbf{T}	&  \mathbf{F}	&  \mathbf{F}\\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  \mathbf{T}  	&  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{F}	&  \mathbf{F}	&  \mathbf{F}\\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  \mathbf{F}  	&  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{F}	&  \mathbf{T}	&  \mathbf{T}\\
+\hline
+ \mathbf{F} &  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{F} 	&  \mathbf{F} 	&  \mathbf{F}	&  \mathbf{F}	&  \mathbf{T}\\
+  \hline
+ \mathbf{F} &  \mathbf{T} 	&  \mathbf{F}  	&  \mathbf{F} 	&  \mathbf{F} 	&  \mathbf{F}	&  \mathbf{T}	&  \mathbf{T}\\
+  \hline
+ \mathbf{F} &  \mathbf{F} 	&  \mathbf{T}  	&  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{F}	&  \mathbf{F}	&  \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{F} 	&  \mathbf{F}  	&  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{F}	&  \mathbf{T}	&  \mathbf{T}\\
+    \hline
+    \end{array}$
+\color{black}   
+\fi 
+\end{example}
+  
+\subsection*{Tautology}
+Tautologies are essentially statements that are always true, no matter what.  Consider the following example.
+\begin{example}[ $(p \land (q \lor r))\implies (( p \land q) \lor (p\land r)) $]
+Let's build the truth table 
+\[   \begin{array}{c|c|c|c|c|c|c|c|c}
+  \hline  
+  p 			& q 				& r				& q \lor r & p \land (q \lor r)	& p \land q	& p \land r&( p \land q) \lor (p\land r) &(p \land (q \lor r))\implies (( p \land q) \lor (p\land r)) \\
+  \hline
+  \hline
+ \mathbf{T} &   	&   	&   	&   	& 	&	& & \\
+  \hline
+ \mathbf{T} &   	&    	&   	&   	& 	& 	& & \\
+  \hline
+ \mathbf{T} &   	&    	&   	&   	& 	& 	& & \\
+  \hline
+ \mathbf{T} &   	&    	&   	&   	&  	&	&  &  \\
+\hline
+ \mathbf{F} &   	&   	&   	&   	& 	&  & & \\
+  \hline
+ \mathbf{F} &   	&    	&   	&   	& 	& 	& &  \\
+  \hline
+ \mathbf{F} &   	&    	&   	&   	&  	&  	&  &  \\
+  \hline
+ \mathbf{F} &   	&    	&   	&   	& 	&  	& &  \\
+    \hline
+    \end{array}\]
+    
+  \ifKey
+  \color{red}
+  \hfill $\begin{array}{c|c|c|c|c|c|c|c|c}
+  \hline  
+  p 			& q 				& r				& q \lor r & p \land (q \lor r)	& p \land q	& p \land r&( p \land q) \lor (p\land r) &(p \land (q \lor r))\implies (( p \land q) \lor (p\land r)) \\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{T}	&  \mathbf{T}	&  \mathbf{T}&  \mathbf{T}\\
+  \hline
+ \mathbf{T} &  \mathbf{T} 	&  \mathbf{F}  	&  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{T}	&  \mathbf{F}	&  \mathbf{T}&  \mathbf{T}\\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  \mathbf{T}  	&  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{F}	&  \mathbf{T}	&  \mathbf{T}&  \mathbf{T}\\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  \mathbf{F}  	&  \mathbf{F} 	&  \mathbf{F} 	&  \mathbf{F}	&  \mathbf{F}	&  \mathbf{F}&  \mathbf{T}\\
+\hline
+ \mathbf{F} &  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{F} 	&  \mathbf{F}	&  \mathbf{F}	&  \mathbf{F}&  \mathbf{T}\\
+  \hline
+ \mathbf{F} &  \mathbf{T} 	&  \mathbf{F}  	&  \mathbf{T} 	&  \mathbf{F} 	&  \mathbf{F}	&  \mathbf{F}	&  \mathbf{F}&  \mathbf{T}\\
+  \hline
+ \mathbf{F} &  \mathbf{F} 	&  \mathbf{T}  	&  \mathbf{T} 	&  \mathbf{F} 	&  \mathbf{F}	&  \mathbf{F}	&  \mathbf{F}&  \mathbf{T}\\
+  \hline
+ \mathbf{F} &  \mathbf{F} 	&  \mathbf{F}  	&  \mathbf{F} 	&  \mathbf{F} 	&  \mathbf{F}	&  \mathbf{F}	&  \mathbf{F}&  \mathbf{T}\\
+    \hline
+    \end{array}$
+  \color{black}
+  \fi
+    
+Here the last column is true for all possible values of the variables.  This is an example of a tautology.  
+\end{example}  
+
+\begin{definition}[Tautology]
+A formula is a tautology if it is always true.
+\end{definition}
+\begin{definition}[Contradiction]
+A formula contradictoy if it is always false.
+\end{definition}
+\begin{definition}[Contingent]
+A formula contingent if it is neither a tautology or a contradiction.
+\end{definition}
+
+\newpage
+\begin{problem}[Which of the following are tautologies]
+Which of the following are tautologies, contradictions, and contingencies.
+\begin{enumerate}[a.]
+\item $(p \implies q) \implies (q \implies p)$
+
+This equation is simply an application of this table, but on steroids:
+
+   $\begin{array}{c|c|c}
+  \hline  
+  p & q & p\implies q\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} &  \mathbf{T}\\
+  \hline
+ \mathbf{T} &  \mathbf{F} &  \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{T} &  \mathbf{T}\\
+  \hline
+ \mathbf{F} &  \mathbf{F} &  \mathbf{T}\\
+    \hline
+    \end{array}$
+    
+Pay attention to the $T/F$ values of each proposition and just follow the logic table,...
+ $$\begin{array}{c|c|c|c|c}
+  \hline  
+  p & q &(p \implies q)	& (q \implies p)	&(p \implies q) \implies (q \implies p) \\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} 	& 	& 	& 	\\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  	&  	& 	\\
+  \hline
+ \mathbf{F} &  \mathbf{T} 	&  	&  	&  	\\
+   \hline
+ \mathbf{F} &  \mathbf{F} 	&  	&   	&  	\\
+    \hline
+    \end{array}$$
+
+
+
+\ifKey
+\color{red}
+\hfill\begin{minipage}{0.75\textwidth}
+ $\begin{array}{c|c|c|c|c}
+  \hline  
+  p & q &(p \implies q)	& (q \implies p)	&(p \implies q) \implies (q \implies p) \\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{T} 	\\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  \mathbf{F}  	&  \mathbf{T} 	&  \mathbf{T} 	\\
+  \hline
+ \mathbf{F} &  \mathbf{T} 	&  \mathbf{T}  	&  \mathbf{F} 	&  \mathbf{F} 	\\
+   \hline
+ \mathbf{F} &  \mathbf{F} 	&  \mathbf{T}  	&  \mathbf{T} 	&  \mathbf{T} 	\\
+    \hline
+    \end{array}$
+    
+Looking at the table we see that this formula is \emph{contingent}
+    \end{minipage}
+        \color{black}
+    \fi
+
+\item $(p \implies q) \implies (\neg p \implies \neg q)$
+
+Pay attention to the $T/F$ values of each proposition and just follow the logic table,...
+ $$\begin{array}{c|c|c|c|c|c|c}
+  \hline  
+  p & q &(p \implies q)&\neg p & \neg q& (\neg p \implies \neg q)	& (p \implies q) \implies (\neg p \implies \neg q) \\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} 	& 	& 	& 	&	 & 	\\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  	&  	& 	& 	& 	\\
+  \hline
+ \mathbf{F} &  \mathbf{T} 	&  	&  	& 	& 	&  	\\
+   \hline
+ \mathbf{F} &  \mathbf{F} 	&  	&   	& 	& 	&  	\\
+    \hline
+    \end{array}$$
+
+
+
+\ifKey
+\color{red}
+\hfill\begin{minipage}{0.75\textwidth}
+ $\begin{array}{c|c|c|c|c|c|c}
+  \hline  
+  p & q &(p \implies q)&\neg p & \neg q& (\neg p \implies \neg q)&(p \implies q) \implies (\neg p \implies \neg q)\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{F}	&  \mathbf{F}	&  \mathbf{T} 	&  \mathbf{T} 	\\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  \mathbf{F} 	&  \mathbf{F}	&	  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{T} 	\\
+  \hline
+ \mathbf{F} &  \mathbf{T} 	&  \mathbf{T}  	&  \mathbf{T}	&	  \mathbf{F}	&  \mathbf{F} 	&  \mathbf{F} 	\\
+   \hline
+ \mathbf{F} &  \mathbf{F} 	&  \mathbf{T}  	&  \mathbf{T}	&	  \mathbf{T}	&  \mathbf{T} 	&  \mathbf{T} 	\\
+    \hline
+    \end{array}$
+    
+Looking at the table we see that this formula is \emph{contingent}
+    \end{minipage}
+        \color{black}
+    \fi
+
+
+\item $(p \implies q) \implies (\neg q \implies \neg p)$
+
+Pay attention to the $T/F$ values of each proposition and just follow the logic table,...
+ $$\begin{array}{c|c|c|c|c|c|c}
+  \hline  
+  p & q &(p \implies q)&\neg p & \neg q& (\neg q \implies \neg p)	& (p \implies q) \implies (\neg p \implies \neg q) \\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} 	& 	& 	& 	&	 & 	\\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  	&  	& 	& 	& 	\\
+  \hline
+ \mathbf{F} &  \mathbf{T} 	&  	&  	& 	& 	&  	\\
+   \hline
+ \mathbf{F} &  \mathbf{F} 	&  	&   	& 	& 	&  	\\
+    \hline
+    \end{array}$$
+
+
+
+\ifKey
+\color{red}
+\hfill\begin{minipage}{0.75\textwidth}
+ $\begin{array}{c|c|c|c|c|c|c}
+  \hline  
+  p & q &(p \implies q)&\neg p & \neg q& (\neg q \implies \neg p)&(p \implies q) \implies (\neg p \implies \neg q)\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} 	&  \mathbf{T} 	&  \mathbf{F}	&  \mathbf{F}	&  \mathbf{T} 	&  \mathbf{T} 	\\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  \mathbf{F} 	&  \mathbf{F}	&	  \mathbf{T} 	&  \mathbf{F} 	&  \mathbf{T} 	\\
+  \hline
+ \mathbf{F} &  \mathbf{T} 	&  \mathbf{T}  	&  \mathbf{T}	&	  \mathbf{F}	&  \mathbf{T} 	&  \mathbf{T} 	\\
+   \hline
+ \mathbf{F} &  \mathbf{F} 	&  \mathbf{T}  	&  \mathbf{T}	&	  \mathbf{T}	&  \mathbf{T} 	&  \mathbf{T} 	\\
+    \hline
+    \end{array}$
+    
+Looking at the table we see that this formula is \emph{tautological}
+    \end{minipage}
+        \color{black}
+\fi
+
+\item $p \implies \neg p$
+
+\ifKey
+\color{red}
+\hfill Contingent
+\color{black}
+\fi
+
+
+\item $p \equiv \neg p$
+
+\ifKey
+\color{red}
+\hfill Contradictory
+\color{black}
+
+\fi\item $(p \equiv q) \equiv (\neg p \equiv \neg q)$
+
+\ifKey
+\color{red}
+\hfill Tautological 
+\color{black}
+\fi
+
+\item $\neg (p \land q) \equiv (\neg p \land \neg q)$
+
+\ifKey
+\color{red}
+\hfill Contingent
+\color{black}
+\fi
+
+\item $\neg (p \land q) \equiv (\neg p \lor \neg q)$
+
+\ifKey
+\color{red}
+\hfill Tautological 
+\color{black}
+\fi
+
+\item $ (\neg p \lor \neg q) \equiv \neg( p \lor  q)$
+
+\ifKey
+\color{red}
+\hfill Contingent 
+\color{black}
+\fi
+
+\item $\neg (p \lor q) \equiv (\neg p \land \neg q)$
+
+\ifKey
+\color{red}
+\hfill Tautological 
+\color{black}
+\fi
+
+\item $(p \equiv (p \land q)) \equiv (q \equiv (p \lor  q))$
+
+\ifKey
+\color{red}
+\hfill Tautological 
+\color{black}
+\fi
+
+\end{enumerate}
+\end{problem}  
+
+\newpage
+\subsection*{Logial Implication and Equivalence}  
+We say that $X$  logically implies $Y$ if $Y$ is true in all the cases when $X$ true, (i.e. $X \implies Y$ is a tautology!)  Moreover, if we have a set of formulas and some formula $X$, we say that $X$ is logically implied by $S$ when $X$ is true in all cases which all elements of $S$ are true.  Finally, two formulas are logically \emph{equivalent} if they are true in the same cases, and false in the same cases (i.e. $X\equiv Y$ is a tautology!)
+
+\subsection*{Working Backwards}
+Suppose we have a table of values, but we don't know what the formula is.  We can actually determine the formula from the truth table.  Consdier the following example.
+
+\begin{problem}[Truth Tables]
+\[  \begin{array}{c|c|c|c}
+  \hline  
+  p & q &r	& ? \\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} 	&  \mathbf{T} 		&  \mathbf{T}\\
+  \hline
+ \mathbf{T} &  \mathbf{T} 	&  \mathbf{F}  		&  \mathbf{F}\\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  \mathbf{T}  		&  \mathbf{T}\\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  \mathbf{F}  		&  \mathbf{F}\\
+    \hline
+ \mathbf{F} &  \mathbf{T} 	&  \mathbf{T} 		&  \mathbf{T}\\
+  \hline
+ \mathbf{F} &  \mathbf{T} 	&  \mathbf{F}  		&  \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{F} 	&  \mathbf{T}  		&  \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{F} 	&  \mathbf{F}  		&  \mathbf{F}\\
+    \hline
+    \end{array}\]
+If we look at the situations when the formula is true, rows one, three, and five, we  can assemble a formula that is logically equivalent.    Look row one.  It says when $p, q$, and $r$ are true, then the formula is true.  In other words, $p\land q \land r$ must hold.  Using this idea, we can build the rest of the formula for the other cases, and then put everything together.
+\notes{5}
+
+
+\ifKey
+\color{red}
+Let us consider only the results that are true, 
+\begin{itemize}
+\item The first line in the table - $p =T, q = T, r = T \implies T$.  This implies $p \land q \land r$ is $T$.
+\item The third line in the table - $p =T, q = F, r = T \implies T$.  This implies $p \land \neg q \land r$ is $T$.
+\item The fifth line in the table - $p =F, q = T, r = T \implies T$.  This implies $\neg p \land  q \land r$ is $T$.
+\end{itemize}
+These are the only cases when the formula is true, when any of these three conditions hold.  In other words, when the first, second, OR third hold.
+$$(p \land q \land r) \lor (p \land \neg q \land r) \lor (\neg p \land  q \land r)$$
+Naturally, one may choose to rearrange, or simplify this expression to make the equation more readable.  Remember how your high school teacher had such a hard time justifying all that work you spent on ``simplifying" expressions!!  There is a real benefit to simplifying.  It often reveals an underlying relationship that is otherwise obscured by all of the redundant terms in an expression.  I am sure you can imagine how a simpler version of this might be desirable.
+\color{black}
+\fi
+\end{problem}
+
+\newpage
+\begin{problem}[Another Truth Table]
+\[  \begin{array}{c|c|c}
+  \hline  
+  p & q 	& ? \\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} 	&  \mathbf{F}\\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{T} 	&  \mathbf{T}\\
+  \hline
+ \mathbf{F} &  \mathbf{F}  	&  \mathbf{T}\\
+    \hline
+    \end{array}\]
+Use the preceding technique to arrive at the expression.
+
+\begin{itemize}
+\item Begin by considering all of the cases resulting in truth.
+
+\notes{5}
+
+\item Now build a expression that includes them all.
+
+\notes{5}
+
+\item Verify that you have the correct answer by constructing a truth table and filling it in.  The resulting table of values must match the given table with the mysterious expression.
+
+\notes{5}
+
+\item Realize that this is not the only way of expressing this statement.  In fact, construct a truth table for the following expression:
+  Build the table for $\neg p \land(p \implies q)$
+
+ $$\begin{array}{c|c|c|c|c}
+  \hline  
+  p & q &\neg p &(p\implies q)		& \neg p \land (p\implies q)\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} 	& 	& 	& \\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&  	&	& \\
+  \hline
+ \mathbf{F} &  \mathbf{T} 	&	& 	&  \\
+   \hline
+ \mathbf{F} &  \mathbf{F} 	&	&	&  \\
+    \hline
+    \end{array}$$
+    
+\item We (should) conclude that these two expressions are logically equivalent.  
+\end{itemize}
+
+
+\ifKey
+\color{red}
+Let us consider only the results that are true, 
+\begin{itemize}
+\item The third line in the table - $p =F, q = T\implies T$.  This implies $\neg p  \land r$ is $T$.
+\item The fourth line in the table - $p =F, q = F, \implies T$.  This implies $\neg p \land  \neg q $ is $T$.
+\end{itemize}
+These are the only cases when the formula is true, when any of these three conditions hold.  In other words, when the first OR second hold.
+$$(\neg p  \land q) \lor (\neg p \land  \neg q)$$
+Check to make sure this works!
+
+ $$\begin{array}{c|c|c|c||c|c|c|c}
+  \hline  
+  p & q &\neg p & \neg q				& (\neg p  \land q)& (\neg p \land  \neg q) &(\neg p  \land q) \lor (\neg p \land  \neg q) \\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} 	&   \mathbf{F}	&  \mathbf{F}	&  \mathbf{F} 	&  \mathbf{F} 	&	 \mathbf{F} \\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&   \mathbf{F}	&  \mathbf{T} 	&  \mathbf{F} 	&  \mathbf{F} 		&	 \mathbf{F} \\
+  \hline
+ \mathbf{F} &  \mathbf{T} 	&  \mathbf{T}	& \mathbf{F}	&  \mathbf{T} 	&  \mathbf{F} 		& \mathbf{T} 	\\
+   \hline
+ \mathbf{F} &  \mathbf{F} 	&   \mathbf{T}	&\mathbf{T}	&  \mathbf{F} 	&  \mathbf{T} 		& \mathbf{T} 	\\
+    \hline
+    \end{array}$$
+But this can be simplified.  Build the table for $\neg p \land(p \implies q)$
+$$\begin{array}{c|c|c|c|c|}
+  \hline  
+  p & q &\neg p &(p\implies q)		& \neg p \land (p\implies q)\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} 	&   \mathbf{F}	&  \mathbf{T}	&  \mathbf{F}\\
+  \hline
+ \mathbf{T} &  \mathbf{F} 	&   \mathbf{F}	&  \mathbf{F} &   \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{T} 	&  \mathbf{T}	& \mathbf{T}	&  \mathbf{T} \\
+   \hline
+ \mathbf{F} &  \mathbf{F} 	&   \mathbf{T}	&\mathbf{T}  &  \mathbf{T} \\
+    \hline
+    \end{array}$$
+\fi
+\end{problem}
+
+
+%\section{Interdependence of the Logical Connectives}
+%Something that is curious about the logical connectives, is that they can be expressed in terms of each other.  By this I mean that we can use $\implies$ and $\neg$ to define $\land$.  This will give us some greater comfort with these connectives, so together, let's start by working through some derivations of this sort. 
+%
+%\begin{example}
+%Suppose you are stuck on a dererted island, and suddenly an alien appears.  You wish to establish a way to communicate logic with this alien.  The alien shows you and $\land$ and negation $\neg$. The alien does this my waving its tenticles and piling up sand, then pointing with a stick (I don't know, just predend it fugures out how to show you these two connectives) You need to understand ``or''  $\lor$ in terms of the alien's $\land$ and $\neg$.  Mainly because you are sharing dinner and can offer the alien either a coconut or a papaya, but you want something to eat too.
+%
+%...Anyway, let's defing $\lor$ in terms of $\land$ and $\neg$.
+%\end{example}
+%
+%\begin{problem}[Define $\lor$ in terms of $\neg$ and $\land$]
+%To say that $(p \lor q)$ is true, it is equivalent to saying that they are both not simultaneously false. That should help you construct the formula that is logically equivalent to $(p \lor q)$
+%
+%%\notes{4}
+%Let's do this one together,...
+%%\ifKey
+%%\color{red}
+%%\hfill \begin{minipage}{0.5\textwidth}
+%\begin{proof}
+%For $p\lor q$ to be true, then one of them must be true.  In other words, BOTH are not false ($\neg p \land \neg q$). Now to say that this is not the case, simply negate ($\neg (\neg p \land \neg q)$). Therefore
+%$$p \lor q \equiv \neg (\neg p \land \neg q)$$
+%%\end{minipage}
+%%\color{black}
+%%\fi
+%\end{proof}
+%\end{problem}
+%
+%Now let's keep building the logical connectives.
+%\begin{problem}[Define $\implies$ in terms of $\neg$ and $\lor$]
+%Say $(p \implies q)$ is true using $\neg$ and $\lor$.
+%\notes{4}
+%
+%\ifKey
+%\color{red}
+%\hfill \begin{minipage}{0.5\textwidth}
+%For $p\land q$ to be true, then none them can be false.  In other words, BOTH are not false $\neg (\neg p \land \neg q$). So we have
+%$$p \land q \equiv \neg (\neg p \lor \neg q)$$
+%This can be verified by a truth table.
+%\end{minipage}
+%\color{black}
+%\fi
+%\end{problem}
+%
+%\begin{problem}[Define $\implies$ in terms of $\neg$ and $\land$]
+%Define $\implies$ in terms of $\neg$ and $\land$
+%\notes{4}
+%
+%\ifKey
+%\color{red}
+%\hfill \begin{minipage}{0.5\textwidth}
+%$$\neg (p \land \neg q) $$
+%\end{minipage}
+%\color{black}
+%\fi
+%\end{problem}
+%
+%\begin{problem}[Define $\implies$ in terms of $\neg$ and $\lor$]
+%Define $\implies$ in terms of $\neg$ and $\lor$
+%\notes{4}
+%
+%\ifKey
+%\color{red}
+%\hfill \begin{minipage}{0.5\textwidth}
+%$$\neg p \lor q $$
+%\end{minipage}
+%\color{black}
+%\fi
+%\end{problem}
+%
+%%\newpage
+%\begin{problem}[Define $\land$ in terms of $\neg$ and $\implies$]
+%Define $\land$ in terms of $\neg$ and $\implies$
+%\notes{4}
+%
+%
+%\ifKey
+%\color{red}
+%\hfill \begin{minipage}{0.5\textwidth}
+%$$\neg(p \implies \neg q) $$
+%\end{minipage}
+%\color{black}
+%\fi
+%
+%\end{problem}
+%
+%\begin{problem}[Define $\lor$ in terms of $\neg$ and $\implies$]
+%Define $\lor$ in terms of $\neg$ and $\implies$
+%\notes{4}
+%
+%
+%\ifKey
+%\color{red}
+%\hfill \begin{minipage}{0.5\textwidth}
+%$$\neg p\implies q$$
+%\end{minipage}
+%\color{black}
+%\fi
+%\end{problem}
+%
+%
+%\begin{problem}[Define $\lor$ in terms of only $\implies$]
+%Define $\lor$ in terms of only $\implies$
+%\notes{4}
+%
+%
+%\ifKey
+%\color{red}
+%\hfill \begin{minipage}{0.5\textwidth}
+%$$ (p \implies q )\implies q$$
+%\end{minipage}
+%\color{black}
+%\fi
+%\end{problem}
+%
+%
+%\begin{problem}[Define $\equiv$ in terms of $\land$ and $\implies$]
+%Define $\equiv$ in terms of $\land$ and $\implies$
+%\notes{4}
+%
+%\ifKey
+%\color{red}
+%\hfill \begin{minipage}{0.5\textwidth}
+%$$ (p \implies q )\land (q \implies p)$$
+%\end{minipage}
+%\color{black}
+%\fi
+%
+%\end{problem}
+%
+%\begin{problem}[Define $\equiv$ in terms of $\neg$, $\land$, and $\lor$]
+%Define $\equiv$ in terms of $\neg$, $\land$, and $\lor$
+%\notes{4}
+%
+%\ifKey
+%\color{red}
+%\hfill \begin{minipage}{0.5\textwidth}
+%$$ (p \land q )\lor (\neg q \land \neg p)$$
+%\end{minipage}
+%\color{black}
+%\fi
+%\end{problem}
+%
+%\subsection*{Joint Denial}
+%In the preceding section we saw that the connectives can be expressed in terms of each other, and in fact all of them can be generated from just two, $\neg$ and $\land$.  We could say that $\neg$ and $\land$ form a \emph{basis} for the connectives.  (in fact, I am going to say that, right now!)
+%
+%Even more interesting is that there is a connective that, all by itself, forms all the other connectives.  The \emph{joint denial} $\downarrow$ will create all five connectives ($\land, \lor, \neg, \implies$, and $\equiv$).  Joint denial means ``$p$ and $q$ are BOTH false''.  Here us the table.
+%
+%\[  \begin{array}{c|c|c}
+%  \hline  
+%  p & q & p\downarrow q\\
+%  \hline
+%  \hline
+% \mathbf{T} &  \mathbf{T} &  \mathbf{F}\\
+%  \hline
+% \mathbf{T} &  \mathbf{F} &  \mathbf{F}\\
+%  \hline
+% \mathbf{F} &  \mathbf{T} &  \mathbf{F}\\
+%  \hline
+% \mathbf{F} &  \mathbf{F} &  \mathbf{T}\\
+%    \hline
+%    \end{array}\]
+%    
+%%  \newpage  
+%\begin{problem}[Derive all five connectives from $\downarrow$ (hint: start with $\neg$)]Derive all five connectives from $\downarrow$ (hint: start with $\neg$)
+%\notes{8}
+%
+%\ifKey
+%\color{red}
+%\hfill \begin{minipage}{0.5\textwidth}
+%\begin{itemize}
+%\item Start with $\neg$ from $\downarrow$:   $$ (p \land q )\lor (\neg q \land \neg p)$$
+%\end{itemize}
+%\end{minipage}
+%\color{black}
+%\fi
+%
+%
+%\end{problem}
+%
+%\subsection*{Alternative Denial}
+%There is a second connective that can also generate all five connectives, the \emph{alternative denial}.  The alternative denial say that at least $p$ or $q$ is false, $p |  q$.  
+%
+%
+%\[  \begin{array}{c|c|c}
+%  \hline  
+%  p & q & p| q\\
+%  \hline
+%  \hline
+% \mathbf{T} &  \mathbf{T} &  \mathbf{F}\\
+%  \hline
+% \mathbf{T} &  \mathbf{F} &  \mathbf{T}\\
+%  \hline
+% \mathbf{F} &  \mathbf{T} &  \mathbf{T}\\
+%  \hline
+% \mathbf{F} &  \mathbf{F} &  \mathbf{T}\\
+%    \hline
+%    \end{array}\]
+%    
+%\begin{problem}[Derive all five connectives from $|$ ]
+%Derive all five connectives from $|$ 
+%\notes{8}
+%\end{problem}
+%
+%\subsection*{The Whole Enchelada}
+%Stop and think about the truth tables we have been making.  For propositions $p$ and $q$, each connective has a unique truth table.   In other words $\lor$ not logically equivalent to $\land$, and so on.  
+%
+%\begin{problem}[How many connectives could there possibly be for $p$ and $q$?]
+%We might then ask ourselves, how many connectives could there possibly be for $p$ and $q$?  There is to be a ``symbol'' for every possible table entry.
+%
+%\notes{2}
+%\end{problem}
+%

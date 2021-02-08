@@ -1,0 +1,686 @@
+\section{Sets.}
+The development of mathematical (symbolic) logic went hand in hand with the development of set theory.  The big issues with set theory revolves around infinite sets.  The name that should come to mind is \emph{George Cantor}
+
+\begin{definition}[Set]
+A set is any collection of objects.
+\end{definition}
+
+The main idea, or the basic notion of sets is \emph {membership}.  If $\Phi$ is a bunch of things, then the follow are all saying the same thing:
+
+\begin{itemize}
+\item $x$ is a \emph{member} of $\Phi$.
+\item $x$ is an element of $\Phi$.
+\item $x\in\Phi$.
+\item $x$ belongs to $\Phi$.
+\end{itemize}
+
+\begin{example}
+If $\Phi$ is the set of all positive integers from 1 to 10, then 7 is in $\Phi$ (i.e. $7\in\Phi$).  But $12\not\in\Phi$.  The slash throught the symbol $\in$ means the negation of $\in$.  
+\end{example}
+
+\begin{definition}[Subset]
+A set $\Phi$ is a subset of another set $\Psi$  if every element in $\Phi$ is also an element of $\Psi$ ($\Phi\subset \Psi$ or $\Phi\subseteq \Psi$).
+\end{definition}
+
+
+\begin{definition}[Proper Subset]
+If set $\Phi$ is a subset of another set $\Psi$, and there are elements in $\Psi$ that are not  in $\Phi$, then we say $\Phi$ is a proper subset of $\Psi$. ($\Phi\subset \Psi$ or $\Phi\subsetneq \Psi$)
+\end{definition}
+
+\begin{example}[Subsets] Perhaps a couple of examples to keep things straight.
+\begin{itemize}
+\item If $\Phi = \{1, 2, 3\}$, and  $\Psi = \{1, 2, 3, 4, 5 \}$.  Then $\Phi\subset \Psi$ and $\Phi\subseteq \Psi$.
+\item If $\Phi = \{1, 2, 3\}$, and  $\Psi = \{1, 2, 3 \}$.  Then $\Phi\subset \Psi$ and $\Psi\subset \Phi$ or alternatively $\Phi\subseteq \Psi$ and $\Psi\subseteq \Phi$.  However, $\Phi\subsetneq \Psi$
+\item If $\Phi =\emptyset$, and  $\Psi = \{1, 2, 3, 4, 5 \}$.  Then $\Phi\subset \Psi$ and $\Phi\subseteq \Psi$.
+\end{itemize}
+My point is not to confuse you.  Some people get all excited about the difference between cases of $\Phi\subset \Psi$, $\Phi\subseteq \Psi$ and $\Phi\subsetneq \Psi$, but usually I don't care and often it is unimportant to make the distinction.  By that I mean, $5<7$ and $5\le7$ are both true. Whether we use $<$ or $\le$ often comes down to what we are trying to prove (if it is in the context of an argument).  Pay attention but don't loose sleep over these distinctions.  Some teacher will dream up diabolcal problems on this topic, but frankly I think our time could be better spent.  It will become clear to you when the distinction serves a practical purpose.
+
+Before we go any further, just a few more examples.
+\begin{itemize}
+\item The set of all golden retreivers is a subset of the set of all dogs.
+\item The set of all pennies is a subset of the set of all coins.
+\item The set of all verbs is a subset of the set of all words.
+\item The set $\{2, 4, 6  \}$ is a subset of all even integers.
+\end{itemize}
+\end{example}
+\begin{remark}Strictly speaking, two identical sets are each subsets of each other, so a set is a subset of itself.  Also, the empty set is a subset of all sets, because, although it may seem vacuous, \emph{every element of the empty set is in every other set}
+\end{remark}
+
+
+
+
+\begin{problem}[Is $W$ a subset of $H$?]
+Let $H$ be the set of all humans, and let $W$ be the set of all women.   Is $W$ a subset of $H$?
+\vspace{1em}
+
+\notes{1}
+\end{problem}
+
+
+\begin{problem}[Describe two sets being equal to one another?]
+Using the ideas presented so far, how would we describe two sets being equal to one another?
+\vspace{1em}
+
+
+\notes{3}
+\end{problem}
+
+\subsection*{The Empty Set}
+Thus far we have discussed sets in a general sense that most find straight forward.  \emph{The empty set} is a little bit strange.  Let's begin by example.
+
+\begin{example}[The Student Club]
+Suppose the president of a student club says, ``All members with red hair wear berets." But also suppose that there are no members with red hair in the club.  Is the president's statement to be considered true, false, or neither?  (In this case, the set of red haired club members is empty.)
+
+\vspace{1em}
+\notes{2}
+\end{example}
+
+\begin{problem}[Generalize the Empty Set]
+Let's generalize this idea.  Given any property $P$ about the empty set, should it be considered true, false, or neither?  The choice universally agreed apon by mathematicians is \emph{true}.
+
+How might you defend this conclusion?
+
+\vspace{1em}
+
+\notes{5}
+\end{problem}
+
+
+\subsection*{If-Then}
+
+The phrase ``if-then'' is used a lot in logic and mathematics.  Since we are practicing mathematics, it is worth noting a distinction between how mathematicians approach ``if-then'' compared to how many other people do.
+
+\begin{example}[If you earn an `A' in Math 3310, I will buy you a Porche.]
+Suppose a teacher tells a student, "If you earn an `A' in Math 3310, I will buy you a Porche."  Then if they get an `A', and the teacher buys them a Porshe, the teacher has keeped their word.  If the student earns an `A' and the teacher does not buy the student a Porche, the teacher has obviously broken their word.  Moreover, suppose the student doesn't earn an `A', but the teacher buys the student a Porche just the same.  We will agree that the teacher has still kept their word (after all, we didn't say that we \emph{wouldn't} buy the Porche if the student \emph{didn't} get an `A').  
+
+But the real question comes about if the student doesn't get an `A' and the teacher does not buy them a Porche.  What can we say about this case; has the teacher broken their word, kept their promise, or neither?
+
+\vspace{1em}
+\notes{3}
+
+\end{example}
+
+Mathematicians agree that as long as you don't break your word, then you kept your word (who ever said mathematicians are a cynical bunch anyway?)
+
+
+In general, given a pair of propositions, $p$ and $q$, the statement, ``If $p$, then $q$.'' ($p\rightarrow q$) is regarded as false only if $p$ is true and $q$ is false.  This type of statement is called \emph{material implication}.  Here is the kicker!  It posesses the property that a false propostion  implies \emph{any} proposition.
+
+\begin{example}[Irritating Material Implication]  The following implication is judged \emph{true}:  If Portland is the capital of Utah, then $2+2 = 5$.
+\end{example}
+
+\begin{example}[Non-irritating Material Implication]  The following implication is judged \emph{true}:  Choose a card from a deck of cards.  I say, ``If the card is the Queen of Spades, it is black.''.  Then you turn the card over and see that it is the 5 of  Hearts.  Would you feel I had lied to you?
+\end{example}
+
+\subsection*{Conneting Implications to the Empty Set}
+Now let's tie these two ideas together.  
+\begin{itemize}
+\item Given a set, $S$, that posesses property $P$, we mean that every element in the set $S$ possesses the property $P$.  For example, if the set $USU$ is the set of all Utah State University students, then if $x\in USU$, we know that $x$ is a student of Utah State University.  
+\item We can say that all elements of the empty set posess a property, $P$.
+\item Now it gets thick!  To say that $x$ is an element of the empty set, $x\in \emptyset$, then $x$ posesses $P$.  We denote this by $P(x)$
+\item But!!! $x\in \emptyset$ is a false statement (since the empty set is,...well, empty)
+\item So since a false proposition implies any proposition,  if $x$ is in the empty set, then $x$ posesses that property.  Said differently, if $x\in\emptyset$, then $P(x)$.  This means that $P$ holds for all elements of the empty set.
+\end{itemize}
+\begin{problem}[Why the empty set is a subset of every set.]
+Use the preceding reasoning to explain why the empty set is a subset of every set.
+\vspace{1em}
+\notes{5}
+\end{problem}
+
+\begin{problem}[Consider the following true false questions.]
+ The empty set, $\emptyset$, can sometime be tricky.  Consider the following true false questions.  There are 6 true and 4 false.Can you justify your answers?
+
+
+\begin{minipage}{0.3\textwidth}
+\begin{enumerate}
+\item $\emptyset \in\emptyset$ \hfill \underline{\hspace{3em}}
+\item $\emptyset \subseteq \emptyset$\hfill \underline{\hspace{3em}}
+\item $\emptyset \in \{\emptyset\}$\hfill \underline{\hspace{3em}}
+\item $\emptyset = \emptyset$\hfill \underline{\hspace{3em}}
+\item $\emptyset = \{\emptyset\}$\hfill \underline{\hspace{3em}}
+\item $\emptyset \subseteq \{ \emptyset\}$\hfill \underline{\hspace{3em}}
+\item $\emptyset \subseteq A, \forall A$\hfill \underline{\hspace{3em}}
+\item $\emptyset = 0$\hfill \underline{\hspace{3em}}
+\item $\emptyset = \{ 0 \}$\hfill \underline{\hspace{3em}}
+\item $\emptyset \subseteq \{0\}$\hfill \underline{\hspace{3em}}
+\end{enumerate}
+\end{minipage}
+
+\vspace{1em}
+\notes{5}
+\end{problem}
+
+
+
+%\subsection{The Empty Set}
+%Thus far we has discussed sets in a general sense that most find straight forward.  \emph{The empty set} is a little bit strange.  Let's begin by example.
+%
+%\begin{example}[The Student Club of Frenchmen]
+%Suppose the president of a student club says, ``All members with red hair wear berets." But also suppose that there are no members with red hair in the club.  Is the president's statement to be considered true, false, or neither?  (In this case, the set of red haired club members is empty.)
+%
+%\vspace{1em}
+%\notes{2}
+%\end{example}
+%
+%\begin{problem}
+%Let's generalize this idea.  Given any property $P$ about the empty set, should it be considered true, false, or neither?  The choice universally agreed apon by mathematicians is \emph{true}.
+%
+%How might you defend this conclusion?
+%
+%\vspace{1em}
+%
+%\notes{5}
+%\end{problem}
+%
+%
+%\subsection{If-Then}
+%
+%The phrase ``if-then'' is used a lot in logic and mathematics.  Since we are practicing mathematics, it is worth noting a distinction between how mathematicians approach ``if-then'' compared to how many other people do.
+%
+%\begin{example}[If you earn an `A' in Math 3310, I will buy you a Porche.]
+%Suppose a teacher tells a student, "If you earn an 'A' in Math 3310, I will buy you a Porche."  Then if they get an `A', and the teacher buys them a Porshe, the teacher has keeped their word.  If the student earns an 'A' and the teacher does not buy the student a Porche, the teacher has obviously broken their word.  Moreover, suppose the student doesn't earn an `A', but the teacher buys the student a Porche just the same.  We will agree that the teacher has still kept their word.  
+%
+%But the real question comes about if the student doesn't get an `A' and the teacher does not buy them a Porche.  What can we say about this case; has the teacher broken their word, kept their promise, or neither?
+%
+%\vspace{1em}
+%\notes{3}
+%
+%\end{example}
+%
+%Mathematicians agree that as long as you don't break your word, then you kept your word (who ever said mathematicians are a cynical bunch anyway?)
+%
+%
+%In general, given a pair of propositions, $p$ and $q$, the statement, ``If $p$, then $q$.'' ($p\rightarrow q$) is regarded as false only if if $p$ is true and $q$ is false.  
+%
+%This type of statement is called \emph{material implication}.  Here is the kicker!  It posesses the property that a false propostion  implies \emph{any} proposition.
+%
+%\begin{example}[Irritating Material Implication]  The following implication is judged \emph{true}:  If Portland is the capital of Utah, then $2+2 = 5$.
+%\end{example}
+%
+%\begin{example}[Non-irritating Material Implication]  The following implication is judged \emph{true}:  Choose a card from a deck of cards.  I say, ``If the card is the Queen of Spades, it is black.''.  Then you turn the card over and see that it is the 5 of  Hearts.  Would feel I had lied to you?
+%\end{example}
+%
+%\subsection{Conneting Implications to the Empty Set}
+%Now let's tie these two ideas together.  
+%\begin{itemize}
+%\item Given a set, $S$, that posesses property $P$, we mean that every element in the set $S$ possesses the property $P$.  For example, if the set $USU$ is the set of all Utah State University students, then if $x\in USU$, we know that $x$ is a student of Utah State University.  
+%\item We can say that all elements of the empty set posess a property, $P$.
+%\item Now it gets thick!  To say that $x$ is an element of the empty set, $x\in \emptyset$, then $x$ posesses $P$.  We denote this by $P(x)$
+%\item But!!! $x\in \emptyset$ is a false statement (since the empty set is,...well, empty)
+%\item So since a false proposition implies any proposition,  if $x$ is in the empty set, then $x$ posesses that property.  Said differently, if $x\in\emptyset$, then $P(x)$.  This means that $p$ holds for all elements of the empty set.
+%\end{itemize}
+%\begin{problem}
+%Use the preceding reasoning to explain why the empty set is a subset of every set.
+%\vspace{1em}
+%\notes{5}
+%\end{problem}
+%
+%\section{Boolean Operations on Sets}
+%
+%\subsubsection{Unions: $A\cup B$}
+%The union of two sets results in a set that contains all things belonging to either set.
+%
+%\begin{example}The set of all negative integers unioned with the set of all positive integers and zero is the set of all integers.
+%\end{example}
+%
+%\begin{example}
+%$A = \{1, 3, 5  \}$ and $B = \{ 10, 4\}$.  Then $A\cup B = \{1, 3, 4, 5, 10 \}$.\end{example}
+%
+%
+%\subsubsection{Intersections: $A\cap B$}
+%The intersection of two sets is the set of elements that are contained in both sets (or \emph{common} to both sets).
+%
+%
+%\begin{example}The intersection of the set of all negative integers unioned with the set of all positive integers and zero is the set of all integers is $\emptyset$.
+%\end{example}
+%
+%\begin{example}
+%$A = \{1, 3, 5  \}$ and $B = \{ 1, 4, 6\}$.  Then $A\cap B = \{1\}$.\end{example}
+%
+%\subsection{Complementation}
+%Some people may refer to this as \emph{the inverse of discourse}.  This sort of means that there is some ``discourse'' going on.  I know that sounds vague, but really it will make sense.  If we are talking about planer geometry, then the set of intererest could be the points on the plane.  If we are talking about sociology, then the set could be all people.  For number theory, the set could be all natural numbers. In any case, the context will be made clear to you from the problem you are working on.  
+%
+%Let us refer to the set, $I$  (i.e the set of all people might be $I$). 
+%\begin{definition}[Complement: $A'$]
+%For a set, $A\subset I$, the complement of $A$ is the set of all elements of $I$ that are not in $A$.  
+%\end{definition}
+%\begin{example}
+%Let $I$ be the set of all natural numbers and $A\subset I$ is the set of all even natural numbers.  Then $A'$ is the set of all odd natural numbers.
+%\end{example}
+%\begin{remark} $A'' = A$
+%\end{remark}
+%
+%Final comment:  These operations, union, intersection and complementation, are the fundamental operations on sets (Boolean operations).  We can define other operations in terms of these. 
+%\begin{example}[$A-B$]
+%The difference of two sets, $A-B$, can be expressed as $A\cap B'$.
+%\end{example}
+%
+%\subsection{Venn Diagrams}
+%A great way to visualize the Boolean operations on a set is by using Venn Diagrams.   Below are some illustrations of how the operations can be represented.
+%%\begin{tikzpicture}
+%%% left hand
+%%\scope [fill=gray, opacity=0.5]
+%%\clip (-2,-2) rectangle (2,2)
+%%      (1,0) circle (1);
+%%\fill (0,0) circle (1);
+%%\endscope
+%%% right hand
+%%\scope[fill=gray, opacity=0.5]
+%%\clip (-2,-2) rectangle (2,2)
+%%      (0,0) circle (1);
+%%\fill (1,0) circle (1);
+%%\endscope
+%%% outline
+%%\draw (0,0) circle (1) (0,1)  node [text=black,above] {$A$}
+%%      (1,0) circle (1) (1,1)  node [text=black,above] {$B$}
+%%      (-2,-2) rectangle (3,2) node [text=black,above] {$H$};
+%%\end{tikzpicture}
+%
+%%
+%%
+%%\def\firstcircle{(0,0) circle (1.5cm)}
+%%\def\secondcircle{(60:2cm) circle (1.5cm)}
+%%\def\thirdcircle{(0:2cm) circle (1.5cm)}
+%%\begin{tikzpicture}
+%%    \begin{scope}[shift={(3cm,-5cm)}, fill opacity=0.05]
+%%        \fill[red, opacity=0.05] \firstcircle;
+%%        \fill[green] \secondcircle;
+%%        \fill[blue] \thirdcircle;
+%%        \draw \firstcircle node[below] {$A$};
+%%        \draw \secondcircle node [above] {$B$};
+%%        \draw \thirdcircle node [below] {$C$};
+%%    \end{scope}
+%%\end{tikzpicture}
+%%
+%%
+%%\begin{tikzpicture}
+%% \begin{scope}[blend group=soft light] 
+%%%\begin{scope} [opacity=0.5]
+%%     \fill[red!30!white, fill opacity=0.5]   ( 90:1.2) circle (2);
+%%    \fill[green!30!white, fill opacity=0.5] (210:1.2) circle (2);
+%%    \fill[blue!30!white, fill opacity=0.5]  (330:1.2) circle (2);
+%% \end{scope}
+%%%  \node at ( 90:2)    {Typography};
+%%%  \node at (210:2)    {Design};
+%%%  \node at (330:2)    {Coding};
+%%%  \node [font=\Large] {\LaTeX};
+%%\end{tikzpicture}
+%%
+%
+%
+%
+%% Definition of circles
+%\def\firstcircle{(0,0) circle (1.5cm)}
+%\def\secondcircle{(0:2cm) circle (1.5cm)}
+%
+%\colorlet{circle edge}{black}
+%\colorlet{circle area}{blue!20}
+%
+%\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+%    outline/.style={draw=circle edge, thick}}
+%
+%\setlength{\parskip}{5mm}
+%% Set A and B
+%\begin{tikzpicture}[scale=0.75]
+%    \begin{scope}
+%        \clip \firstcircle;
+%        \fill[filled] \secondcircle;
+%    \end{scope}
+%    \draw[outline] \firstcircle node {$A$};
+%    \draw[outline] \secondcircle node {$B$};
+%    \node[anchor=south] at (current bounding box.north) {$A \cap B$};
+%\end{tikzpicture}
+%%Set A or B but not (A and B) also known a A xor B
+%\begin{tikzpicture}[scale=0.75]
+%    \draw[filled, even odd rule] \firstcircle node {$A$}
+%                                 \secondcircle node{$B$};
+%    \node[anchor=south] at (current bounding box.north) {$\overline{A \cap B}$};
+%\end{tikzpicture}
+%% Set A or B
+%\begin{tikzpicture}[scale=0.75]
+%    \draw[filled] \firstcircle node {$A$}
+%                  \secondcircle node {$B$};
+%    \node[anchor=south] at (current bounding box.north) {$A \cup B$};
+%\end{tikzpicture}
+%% Set A but not B
+%\begin{tikzpicture}[scale=0.75]
+%    \begin{scope}
+%        \clip \firstcircle;
+%        \draw[filled, even odd rule] \firstcircle node {$A$}
+%                                     \secondcircle;
+%    \end{scope}
+%    \draw[outline] \firstcircle
+%                   \secondcircle node {$B$};
+%    \node[anchor=south] at (current bounding box.north) {$A - B$};
+%\end{tikzpicture}
+%% Set B but not A
+%\begin{tikzpicture}[scale=0.75]
+%    \begin{scope}
+%        \clip \secondcircle;
+%        \draw[filled, even odd rule] \firstcircle
+%                                     \secondcircle node {$B$};
+%    \end{scope}
+%    \draw[outline] \firstcircle node {$A$}
+%                   \secondcircle;
+%    \node[anchor=south] at (current bounding box.north) {$B - A$};
+%\end{tikzpicture}
+%This tool can be extended to include three sets in the following manner.
+%
+%\begin{center}
+%\def\firstcircle{ (0.0, 0.0) circle (1.5)}
+%\def\secondcircle{(2.0, 0.0) circle (1.5)}
+%\def\thirdcircle{ (1.0,-1.5) circle (1.5)}
+%\def\rectangle{ (-1.5,-3.0) rectangle (3.5,1.0) }
+%\colorlet{circle edge}{black}
+%\colorlet{circle area}{blue!20}
+%
+%\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+%    outline/.style={draw=circle edge, thick}}
+%
+%%\setlength{\parskip}{5mm}
+%%############################################################################
+%%############################################################################
+%%############################################################################
+%%\noindent
+%\begin{tikzpicture}[scale=0.75]
+%    \begin{scope}
+%        \clip  \firstcircle;
+%        \clip  \secondcircle;
+%        \fill[filled]   \thirdcircle ;
+%    \end{scope}
+%    \draw[outline] \firstcircle  node[left]  {$A$};
+%    \draw[outline] \secondcircle node[right] {$B$};
+%    \draw[outline] \thirdcircle  node[below] {$C$};
+%    \node[anchor=south] at (current bounding box.north) {$A \cap B \cap C$};
+%\end{tikzpicture} \qquad
+%%############################################################################
+%%############################################################################
+%%############################################################################
+%\begin{tikzpicture}[scale=0.75]
+%    \begin{scope}
+%        \clip \firstcircle \secondcircle \thirdcircle;
+%        \fill[filled]  \firstcircle \secondcircle \thirdcircle;
+%    \end{scope}
+%    \draw[outline] \firstcircle  node[left]  {$A$};
+%    \draw[outline] \secondcircle node[right] {$B$};
+%    \draw[outline] \thirdcircle  node[below] {$C$};
+%    \node[anchor=south] at (current bounding box.north) {$A \cup B \cup C$};
+%\end{tikzpicture} \qquad
+%%############################################################################
+%%############################################################################
+%%############################################################################
+%\begin{tikzpicture}[scale=0.75]
+%    \begin{scope}
+%        \clip \firstcircle;
+%        \fill[filled] \secondcircle;
+%    \end{scope}
+%    \draw[outline] \firstcircle  node[left]  {$A$};
+%    \draw[outline] \secondcircle node[right] {$B$};
+%    \draw[outline] \thirdcircle  node[below] {$C$};
+%    \node[anchor=south,align=center] at (current bounding box.north) 
+%      {$(A\cap B)=$\\$(A \cap B \cap C) + (A \cap B \cap C')$};
+%\end{tikzpicture} 
+%%############################################################################
+%%############################################################################
+%%############################################################################
+%\begin{tikzpicture}[scale=0.75]
+%    \begin{scope}
+%        \clip \firstcircle;
+%        \fill[filled] \thirdcircle;
+%    \end{scope}
+%    \begin{scope}
+%        \clip \firstcircle;
+%        \clip \secondcircle;
+%        \fill[white] \thirdcircle;
+%    \end{scope}
+%    \draw[outline] \firstcircle  node[left]  {$A$};
+%    \draw[outline] \secondcircle node[right] {$B$};
+%    \draw[outline] \thirdcircle  node[below] {$C$};
+%    \node[anchor=south] at (current bounding box.north) 
+%      {$(A\cap B' \cap C)$};
+%\end{tikzpicture} \qquad \\[1.5cm]
+%%############################################################################
+%%############################################################################
+%%############################################################################
+%\begin{tikzpicture}[scale=0.75]
+%    \begin{scope}
+%        \fill[filled] \thirdcircle;
+%        \fill[white]  \firstcircle;
+%        \fill[white]  \secondcircle;
+%    \end{scope}
+%    \draw[outline] \firstcircle  node[left]  {$A$};
+%    \draw[outline] \secondcircle node[right] {$B$};
+%    \draw[outline] \thirdcircle  node[below] {$C$};
+%    \node[anchor=south] at (current bounding box.north) 
+%      {$(A' \cap B' \cap C)$};
+%\end{tikzpicture} \qquad
+%%############################################################################
+%%############################################################################
+%%############################################################################
+%\begin{tikzpicture}[scale=0.75]
+%     \begin{scope}
+%        \clip \secondcircle;
+%        \fill[filled] \thirdcircle;
+%    \end{scope}
+%    \fill[filled]  \firstcircle;
+%    \draw[outline] \firstcircle  node[left]  {$A$};
+%    \draw[outline] \secondcircle node[right] {$B$};
+%    \draw[outline] \thirdcircle  node[below] {$C$};
+%    \node[anchor=south] at (current bounding box.north) 
+%      {$A \cup (B \cap C)$};
+%\end{tikzpicture} %\\[1.5cm]
+%%############################################################################
+%%############################################################################
+%%############################################################################
+%\begin{tikzpicture}[scale=0.75]
+%     \begin{scope}
+%        \clip \firstcircle \secondcircle;
+%        \fill[filled] \thirdcircle;
+%    \end{scope}
+%    \draw[outline] \firstcircle  node[left]  {$A$};
+%    \draw[outline] \secondcircle node[right] {$B$};
+%    \draw[outline] \thirdcircle  node[below] {$C$};
+%    \node[anchor=south] at (current bounding box.north) 
+%      {$(A \cup B) \cap C$};
+%\end{tikzpicture} \qquad
+%\end{center}
+%
+%For fun, we can see what the figure in the syllabus was implying,
+%\begin{center}
+%\begin{tikzpicture}
+%
+%\begin{scope}[blend group=soft light]
+%  \fill[red!30!white]   ( 90:1.2) circle (2);
+%    \fill[green!30!white] (210:1.2) circle (2);
+%    \fill[blue!30!white]  (330:1.2) circle (2);
+%     \end{scope}
+%     
+%       \node at ( 90:2)    {\large Hacking Skills};
+%  \node[rotate=310] at (215:1.8)    {\large  Math and Stats};
+%  \node[rotate=310] at (215:2.25)    {\large Knowledge};
+%  \node[rotate=45]  at (325:2)    {\large Substantive};
+%  \node[rotate=45]  at (325:2.5)    {\large Expertise};
+%  \node at (90:0.1) {\bf Data};
+%  \node at (90:-0.3) {\bf Science};
+%
+%  \node[rotate=45]  at (1.2,.7)    {\tiny Danger};
+%  \node[rotate=45]  at (1.4,0.5)    {\tiny Zone!};
+%
+%  \node [rotate=90] at (-0.1,-1.5)    {\tiny Traditional};
+%  \node[rotate=90]  at (0.1,-1.4)    {\tiny Research};
+%
+%  \node [rotate=-45] at (-1.2,0.7)    {\tiny Machine};
+%  \node[rotate=-45]  at (-1.4,0.5)    {\tiny Learning};
+%\end{tikzpicture}
+%\end{center}
+%
+%\newpage
+%\subsection{Boolean Equations}
+%I recently read about a fascinating and practical way combine Venn diagrams with equations to actually solve problems.  Let my try to explain how this works.  
+%
+%Let's assign letters $A, B, C, D$ and $E$ to be arbitrary sets (i.e. socks in a drawer, students on a campus, pens in a top draw of a desk...) An important thing to remember is that each set exists in a universe, the drawer, the campus, and so on.  We will also use $x, y$, and $z$ to represent elements of a set. For example, $A$ could be all of my socks in a drawer, and $x\in A$ is a specific sock in the drawer.  Now we need to define a \emph{term}
+%\begin{definition}[Term]  A term is any expression constructed according to the following rules.
+%\begin{enumerate}
+%\item Each set variable (i.e. $A$) standing alone is a term.
+%\item For any term, $t_1$, $t_2$ the expression $(t_1\cup t_2)$, $(t_1\cap t_2)$, or $t_1'$ is also called a term.
+%\end{enumerate}
+%\end{definition}
+%So a \emph{term} can be a variable on its own, like $B$, or some Boolean operations on sets, like $(A \cap B')\cup C$.
+%
+%\begin{definition}[Boolean Equation]  A Boolean equation is an expression of the form $t_1=t_2$, where $t_i$ are Boolean terms.  A Boolean equation is called \emph{valid} if it is true no matter what sets the variables represent.
+%\end{definition}
+%
+%It all seems simple enough.  
+%\begin{example}
+%Here are some examples of Boolean equations:
+%\begin{enumerate}
+%\item $A \cup B = A \cap B$
+%\item $A' = B$
+%\item $A \cup B = B \cup A$ \label{booleq03}
+%\item $A \cup B' = A' \cup B'$
+%\item $(A \cup B)' = (A \cup B)\cap C$
+%\end{enumerate}
+%Example, Eq. \ref{booleq03} is valid for any sets $A$ and $B$.  The rest are invalid.  
+%\end{example}
+%Now let's do something with this new construct.  
+%
+%\begin{example}
+%In this diagram, the universe is broken into four sets, $1, 2, 3$, and $4$.  These sets (or regions) contain all the points in the universe. Moreover, these sets are disjoint, meaning there are no points in common between any sets.  Now we can identify any region with its set of indices. 
+%\begin{center}
+%\begin{tikzpicture}[scale=0.75]
+%\begin{scope}
+%\draw    (-2.5,-2.5) rectangle (5.0,2.5) ;
+%%\clip (-2,-2) rectangle (2,2)
+%        \clip \firstcircle;
+%%        \fill[filled] \secondcircle;
+%    \end{scope}
+%    \draw[outline] \firstcircle node[above,xshift=-4em]  {$A$};
+%    \draw[outline] \secondcircle node[above,xshift=4em] {$B$};
+%    \node[anchor=north] at (current bounding box.north) {$4$};
+%    \node at (1,0) {$1$};
+%    \node at (0,0){$2$};
+%    \node at (2,0){$3$};
+%\end{tikzpicture}
+%\end{center}
+%
+%For example, $A = (1,2)$ and $B = (1,3)$.  Also, $A\cup B = (1, 2, 3)$, and $A\cap B = (1)$.
+%\end{example}
+%
+%\begin{problem}
+%What are the indices for $A'$, $A\cap A'$, $A\cup A'$?
+%\notes{4}
+%\end{problem}
+%
+%This indexing of sets is more than just fun.  We can use it to prove theorems.  
+%
+%\begin{theorem}[De Morgan Law]
+%De Morgan law states $(A\cup B)' = A'\cap B'$.
+%\begin{proof}
+%When I was first introduced to this proof as an undergraduate, it struck as a tedious exercise in manipulating a bunch of set notation until I could get the answer I wanted.  But with indexing, it is strikingly straight forward.  Observe:
+%
+%\begin{enumerate}
+%\item $A\cup B = (1, 2, 3)$ so $(A\cup B)' = (4)$
+%\item $A' = (3, 4)$ and $B'=(2, 4)$, so $A'\cap B' = (4)$
+%\end{enumerate}
+%Thus $(4)$ is the set of indecies for the left hand and right hand side of De Morgan law, hense $(A\cup B)' = A'\cap B'$.
+%\end{proof}
+%\end{theorem}
+%
+%\begin{problem} Consider the three sets, $A$, $B$, and $C$.
+%%\begin{center}
+%%\begin{tikzpicture}[scale=0.75]
+%%\begin{scope}
+%%\draw    (-2.5,-2.5) rectangle (5.0,2.5) ;
+%%        \clip \firstcircle;
+%%        \clip \secondcircle;        
+%%        \clip \thirdcircle ;
+%%    \end{scope}
+%%    \draw[outline] \firstcircle node[above,xshift=-4em]  {$A$};
+%%    \draw[outline] \secondcircle node[above,xshift=4em] {$B$};
+%%    \draw[outline] \thirdcircle node[above,xshift=4em] {$C$};
+%%    \node[anchor=north] at (current bounding box.north) {$4$};
+%%    \node at (1,0) {$1$};
+%%    \node at (0,0){$2$};
+%%    \node at (2,0){$3$};
+%%\end{tikzpicture}
+%%\end{center}
+%
+%%\begin{tikzpicture}[scale=0.75]
+%%    \begin{scope}
+%%    \draw    (-2.5,-2.5) rectangle (5.0,2.5) ;
+%%        \clip  \firstcircle;
+%%        \clip  \secondcircle;
+%%        \fill[filled]   \thirdcircle ;
+%%    \end{scope}
+%%    \draw[outline] \firstcircle  node[left]  {$A$};
+%%    \draw[outline] \secondcircle node[right] {$B$};
+%%    \draw[outline] \thirdcircle  node[below] {$C$};
+%%    \node[anchor=south] at (current bounding box.north) {$A \cap B \cap C$};
+%%\end{tikzpicture} \qquad
+%
+%\def\firstcircle{ (0.0, 0.0) circle (1.5)}
+%\def\secondcircle{(2.0, 0.0) circle (1.5)}
+%\def\thirdcircle{ (1.0,-1.5) circle (1.5)}
+%\def\rectangle{ (-3,-4.0) rectangle (5,3 )}
+%\colorlet{circle edge}{black}
+%\colorlet{circle area}{blue!20}
+%
+%\begin{center}
+%\begin{tikzpicture}[scale=0.75]
+%%     \begin{scope}
+%%        \clip
+%         \firstcircle \secondcircle \thirdcircle;
+%%        \fill[filled] \thirdcircleb;
+%%    \end{scope}
+%\draw \rectangle;
+%    \draw[outline] \firstcircle  node[left]  {$4$};
+%    \draw[outline] \secondcircle node[right] {$7$};
+%    \draw[outline] \thirdcircle  node[below] {$6$};
+%    \node at (1,2)  {$8$};
+%    \node at (1,-0.5) {$1$};
+%    \node at (0.0,-1){$2$};
+%    \node at (1,0.75){$3$};
+%    \node at (2,-1){$5$};
+%    \node  at (-2,0) {$A$};
+%    \node  at (4,0) {$B$};
+%    \node  at (1,-3.5) {$C$};
+% \end{tikzpicture} 
+%\end{center}
+%\begin{enumerate}
+%\item Identify the sets $A, B$, and $C$ in terms of their indices.
+%\notes{3}
+%\item Prove or disprove $A \cup(B\cap C) = (A\cup B) \cap (A \cup C)$.
+%\notes{5}
+%\item Prove or disprove $A \cap(B\cup C) = (A\cap B) \cup (A \cap C)$.
+%\notes{5}
+%\item Prove or disprove $(A\cup B)'\cap C = (C\cap A') \cup (C \cap B')$.
+%\notes{5}
+%\end{enumerate}
+%\end{problem}
+%But we are not done.  This is where the approach using indices really shines.  Drawing a Venn diagram to illustrate the Boolean operations with a fourth circle is not possible (i.e. $A, B, C$, and $D$).  Why?
+%\notes{3}
+%
+%How many regions will now be created with four sets, $A, B, C$, and $D$?
+%In order to identify these regions by their indices, we need to \emph{generalize} the preceeding approach.  This is often what happens once math problems leave the comfortable realm of 2D or 3D representations.
+%
+%\begin{problem}
+%Consdier the regions created from the four sets, $A, B, C$, and $D$?  How many regions are there?
+%
+%\notes{2}
+%\end{problem}
+%
+%
+%\begin{problem}
+%Consdier the regions created from the four sets, $A, B, C, D$, and $E$?  How many regions are there?
+%\notes{2}
+%\end{problem}
+%
+%\begin{problem}
+%Consdier the regions created from the four sets, $A, B, C, D, E$, and $F	$?  How many regions are there?
+%\notes{2}
+%\end{problem}
+%
+%This sequence may lead us to hypothesize the number of regions created by $n$ arbitrary sets.  It is common to look for patterns before setting about to prove something.  In fact, all to often, when a mathematician is trying to prove something, they have already convinced themself, by some other means, that it is true.  This is a strength, but can be dangerous.
+%
+%
+%
+%

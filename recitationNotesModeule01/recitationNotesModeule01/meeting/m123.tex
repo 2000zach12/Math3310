@@ -1,0 +1,215 @@
+\section{Introducing $\forall$ and $\exists$}
+Let us begin by recognizing $x$, $y$, and $z$ to represent arbitrary object in some ``thing" (say a \emph{domain}).  This domain is determined by the context of the question we are dealing with, i.e it should be obvious as we have discussed before.
+
+Given a property $P$ and an object $x$, we say that $x$ has property $P$ by noting $Px$.
+
+If we want to say that every object in the domain has property $P$ we use the \emph{universal quantifyer} $\forall$, 
+\[\forall x~ Px\]
+and read this to be, ``For all $x$, $x$ has property $P$."  or ``For all $x,~ Px$''
+
+Now suppose we want to say that some $x$ posesses property $P$ (could be more than one, or simply one $x$).   For this we use the \emph{existential quantifyer}.  This is expressed
+\[\exists x~ Px\]
+and we read this, ``There exists an $x$ having property $P$."
+
+Combine these new quantifiers with the logical connectives.  
+\begin{example}[The Good Guys and Bad Guys]
+Let $G$ be the property of being good.  Then $Gx$ means $x$ is a good guy.  Now $\forall x~Gx$ says that everyone is good, and $\exists x~Gx$ means that there is a good person, at least one good person (Noah).
+
+The question is now, how do we say that no one is good?  Perhaps $\neg\exists x~Gx$ might work.  Alternatively, $\forall x~(\neg Gx)$  
+
+\end{example}
+
+\begin{example}[Good People Go To Heaven]
+Let $H$ be the property of going to heaven.  How do we say, ``All good people go to heaven."?  We can equivalently say, ``There is a person who is good, and they go to heaven."   Write that using propositional logic.
+\notes{3}
+\end{example}
+
+\begin{example}[Some Good People Go To Heaven]
+Let $H$ be the property ofgoing to heaven.  How do we say, ``Some good people go to heaven."?  We can equivalently say, ``For some good persons, if that person is good, then they go to heaven."   Write that using propositional logic.
+\notes{3}
+\end{example}
+
+
+\begin{example}[God Helps Those Who Help Themselves]
+Curiously, this statement contains some ambiguity.  Does God help all people who help themselves, or does God help only people who help themselves?  Or even, that God helps all and only those people who help themselves?
+
+\notes{3}
+\end{example}
+
+\newpage
+\begin{problem}[Sherlock Holmes and Dr. Moriarty]
+Let $h$ stand for Sherlock Holmes and $m$ for Dr. Moriarty.  Let's denote the relation ``$x$ can catch $y$'' as $xCy$.  Now interpret the following statements in symbolic form.
+\begin{enumerate}[(a)]
+\item Sherlock can catch anyone who can catch Moriarty.\hfill
+\ifKey 
+\color{red}$\forall x(xCm \rightarrow hCx)$.
+\color{black}
+ \else
+\notes{3}		 
+\fi  
+
+
+\item Sherlock can catch anyone whom Moriarty can catch.\hfill \ifKey 
+\color{red}$\forall x(mCx \rightarrow hCx)$.
+\color{black}
+ \else
+\notes{3}		 
+\fi  
+
+\item Sherlock can catch anyone who can be caught by Moriarty.\hfill\ifKey 
+\color{red}$\forall x(mCx \rightarrow hCx)$.
+\color{black}
+ \else
+\notes{3}		 
+\fi  
+\item If anyone can catch Moriarty, then Sherlock can.\hfill
+\ifKey 
+\color{red}$\exists x(xCm \rightarrow hCm)$.
+\color{black}
+ \else
+\notes{3}		 
+\fi  
+\item If everyone can catch Moriarty, then Sherlock can.\hfill
+\ifKey 
+\color{red}$\forall x(xCm \rightarrow hCm)$.
+\color{black}
+ \else
+\notes{3}		 
+\fi  
+\item Anyone who can catch Sherlock can catch Moriarty.\hfill
+\ifKey 
+\color{red}$\forall x(xCh \rightarrow xCm)$.
+\color{black}
+ \else
+\notes{3}		 
+\fi  
+\item No one can catch Sherlock unless they can catch Moriarty.\hfill
+\ifKey 
+\color{red}$\forall x(xCh \rightarrow xCm)$.
+\color{black}
+ \else
+\notes{3}		 
+\fi  
+
+\item Everyone can catch someone who cannot catch Moriarty.\hfill\ifKey 
+\color{red}$\forall x\exists y(xCy \land \neg yCm$.
+\color{black}
+ \else
+\notes{3}		 
+\fi  
+
+\item Anyone who can catch Holmes can catch anyone whom Holmes can catch.
+\ifKey 
+\hfill \color{red}$\forall x(xCh \rightarrow \forall y(hCy\rightarrow xCy))$
+
+\hfill or $\forall x\forall y((xCh \land hCy)\rightarrow xCy)$.
+\color{black}
+ \else
+\notes{3}		 
+\fi  
+
+\end{enumerate}
+\end{problem}
+
+\newpage
+\begin{problem}[Interpret the following statements in symbolic form.]
+ Let's use $x$ knows $y$ are the relation $xKy$.   Interpret the following statements in symbolic form.
+\begin{enumerate}
+\item Everyone knows someone. \hfill
+\ifKey 
+\color{red}$\forall x \exists y(xKy)$.
+\color{black}
+ \else
+ 
+\vspace{1em} 
+\notes{3}		 
+\fi
+
+\item Someone knows everyone.\hfill
+\ifKey 
+\color{red}$\exists x \forall y(xKy)$.
+\color{black}
+ \else
+\notes{3}		 
+\fi
+
+\item Someone is known by everyone.\hfill
+\ifKey 
+\color{red}$\exists x\forall y(yKx)$.
+\color{black}
+ \else
+\notes{3}		 
+\fi
+\item Every person, $x$, knows someone who doesn't know $x$.\hfill
+\ifKey 
+\color{red}$\forall x\exists y(xKy \land \neg yKx)$.
+\color{black}
+ \else
+\notes{3}		 
+\fi
+
+\item There is someone, $x$, who knows everyone who knows $x$.\hfill
+\ifKey 
+\color{red}$\exists x\forall y(yKx \rightarrow xKy)$.
+\color{black}
+ \else
+\notes{3}		 
+\fi
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}[Express the following] 
+Let's use $x$ and $y$ to be natural numbers $\{0, 1, 2,\cdots\}$. Use the relation $x<y$ to mean ``$x$ is less than $y$." and $x>y$ to mean, ``$x$ is greater than $y$."  Express the following  
+
+\begin{enumerate}
+\item For every number $x$ there is a greater number.\hfill
+\ifKey 
+\color{red}$\forall x\exists y(y>x)$.
+\color{black}
+ \else
+\notes{3}		 
+\fi
+\item Every number other than $0$ is greater than some number.\hfill
+\ifKey 
+\color{red}$\forall x(\neg(x=0)\rightarrow \exists y(x>y))$.
+\color{black}
+ \else
+\notes{3}		 
+\fi
+\item $0$ is the one and only number having the property that no number is less than it.
+
+\ifKey 
+\color{red}
+\hfill$\neg\exists y(y<0)\land \forall x(\neg\exists y(y<x)\rightarrow(x=0))$ 
+
+\hfill or $\forall x(\neg \exists y (y<x)\equiv (x=0)$.
+\color{black}
+ \else
+\notes{3}		 
+\fi
+\item Without using the identity symbol, $=$, but using $<$ and $>$ express, ``$x$ is equal to $y$." and ``$x$ is unequal to $y$."
+\end{enumerate}
+\hfill
+\ifKey 
+\color{red}$x$ equals $y$:  $\neg(x<y) \land \neg(y<x)$.  For $x$ not equal $y$: $(x<y)\lor(y<x)$
+\color{black}
+ \else
+\notes{3}		 
+\fi
+\end{problem}
+
+%\subsection{A Paper on What Lincoln Really Meant to Say}
+%%Now that we see how the logic tables can be used to solve these riddles, the following paper takes things a step further by introducing more personality types. 
+%\fancyfoot[CE CO]{}
+%\fancyfoot[RE,RO]{}
+%\fancyfoot[LE,LO]{}
+%%------------------------------------------------------------------------------------------------------------
+%\begin{center}
+%\frame{\includegraphics[width = 4.5in]{./papers/Lincoln.pdf}}
+%\end{center}
+%
+%\fancyfoot[CE CO]{Dr. Heavilin}
+%\fancyfoot[RE,RO]{Online Version}
+%\fancyfoot[LE LO]{Fall 2020}
+

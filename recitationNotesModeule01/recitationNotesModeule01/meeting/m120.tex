@@ -1,0 +1,475 @@
+\section{Introduction to Propositional Tableaux}
+For the following two topics, \textbf{Propositional Tableaux} and \textbf{First Order Logic}, I would like us to explore examples to gain an understanding of the potential of these logic methods.  We will focus even less on theorems.  But these ideas are so powerful and provide such a nice way of translating logic questions into a fomat that a computer can solve that it would be a shame to come this far in the topic of set theory and logic without offering a glimps into how these topics are leading the way in \textbf{Formal Systems} and systems thinking.  
+
+Let's recap before we proceed.  There are eight facts that hold for any formula $X$ and $Y$  (for example, $X$ could be $p\land q \lor (\neg p)$):
+
+\begin{enumerate}
+\item If $\neg X$ is true, then $X$ is false.\label{fs1} \ifKey \hfill\begin{minipage}{0.3\textwidth}\color{red}Simply put, a statement is true or it is false.  \end{minipage}\fi
+
+\item If $\neg X$ is false, then $X$ is true.\label{fs2} \ifKey\hfill\begin{minipage}{0.3\textwidth}\color{red}...and this is the opposite of the previous statement.  \end{minipage}\fi
+
+\item If $X\land Y$ is true, then $X$ and $Y$ are both true.\label{fs3}  \ifKey\hfill\begin{minipage}{0.3\textwidth}\color{red} Just read this outloud and it should make sense. \end{minipage}\fi
+
+\item If $X\land Y$ is false, then either $X$ is false or $Y$ is false.\label{fs4} \ifKey\hfill\begin{minipage}{0.3\textwidth}\color{red}Now we need to pay attention, but still, if even just one of them is true, then they cant \emph{both} be false.  \end{minipage}\fi
+
+\item If $X\lor Y$ is true, then either $X$ is true or $Y$ is true.\label{fs5} \ifKey\hfill\begin{minipage}{0.3\textwidth}\color{red} again, this is the realm of the obvious, basically the definition we are used to. \end{minipage}\fi
+
+\item If $X\lor Y$ is false, then both $X$ and  $Y$ are false.\label{fs6} \ifKey\hfill\begin{minipage}[t]{0.3\textwidth}\color{red} I wonder if we should make a truth table for these to make more sense.  
+\[  \begin{array}{c|c|c|c}
+  \hline  
+X	&Y	& X\lor Y	& \neg(X\lor Y)\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} &  \mathbf{T} & \mathbf{F}\\
+  \hline
+ \mathbf{T} &  \mathbf{F} &  \mathbf{T}& \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{T} &  \mathbf{T}& \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{F} &  \mathbf{F}& \mathbf{T}\\
+    \hline
+    \end{array}\]
+ ...yep, for this statement to be true, both $X$ and $Y$ must be false.
+ \end{minipage}
+ \fi
+
+\item If $X\rightarrow Y$ is true, then either $X$ is false or $Y$ is true. \label{fs7} \ifKey\hfill\begin{minipage}{0.3\textwidth}\color{red} Have a look at the truth table associated with this if you think it will help.
+\[  \begin{array}{c|c|c}
+  \hline  
+X	&Y	& X\rightarrow Y	\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} &  \mathbf{T} \\
+  \hline
+ \mathbf{T} &  \mathbf{F} &  \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{T} &  \mathbf{T}\\
+  \hline
+ \mathbf{F} &  \mathbf{F} &  \mathbf{T}\\
+    \hline
+    \end{array}\]
+ I think we are now sort of reading the tables ``backwards'' - from right to left.  Look at when the table says $\mathbf{T}$, and then collect the arrangement of values for $X$ and $Y$ that describes these cases.     \end{minipage} \fi
+
+\item If $X\rightarrow Y$ is false, then  $X$ is true and  $Y$ is false. \label{fs8}\ifKey\hfill\begin{minipage}{0.3\textwidth}\color{red}  This table is just the reverse of the last one.  Definately worth having the students complete it by now if you haven't already.\end{minipage}\fi
+
+\end{enumerate}
+These  facts are what we need to build the \emph{tableaux} method.  There is one other thing to add.  We will use $T$ and $F$ to indicate true and false, respectively.  In such cases as $TX$ we will read as, ``$X$ is true.''  Conversely we read $FX$ as, ``$X$ is false''.  But keep in mind we are talking about statements, so $TX$ could be true or false, i.e. if $X$ is false, then $TX$ is false, and if $X$ is true, then $TX$ is true. Keep in mind that if $X$ is false then $FX$ is a true statement.  
+
+ \ifKey\hfill\begin{minipage}{0.3\textwidth}\color{red}  Just a hint - the pronounciation of  \emph{tableaux} is like ``Tah' - Blowz'', with emphasis on the first syllable. \end{minipage}\fi
+
+Let's work through an example.
+
+\newpage
+
+\begin{example}[Prove $p \lor (q \land r)\rightarrow \left( ( p \lor q) \land (p \lor r)\right)$]  In this example, we already have the table contructed for us.  We will walk through line by line to see what this table is telling us.
+
+\begin{minipage}{0.35\textwidth}
+\begin{tableau}
+{
+to prove={p \lor (q \land r)\rightarrow \left( ( p \lor q) \land (p \lor r)\right)},
+close with=\ensuremath{\times}
+}
+[F (p \lor (q \land r))\rightarrow( \left( ( p \lor q) \land (p \lor r)\right))
+[T p\lor(q \land r )
+[F(p\lor q) \land (p\lor r)
+[T p[F p\lor q[F p[F q, close]]][F p \lor r[F p[F r, close]]]]
+[T q \land r[T q[T r [F p \lor q[F p[F q, close]]][F p \lor r[F p[F r, close]]]]]]]]]
+\end{tableau}
+\end{minipage}
+\begin{minipage}{0.65\textwidth}
+\ifKey 
+\hfill\color{red}  \begin{enumerate}
+\item I just put parenthesis around the whole enchelada.  This is the statement we are analyzing.   We want to proves this statement is true.  We want to discover if there are any contraditions along the way.  We preceed the formula by an $F$, because we know, from \ref{fs8} above, that a conditional $X\rightarrow Y$ is \textbf{false} $(F)$ when either $X$ is true or $Y$ is false.
+\item A direct consequence of the preceding (that is to say $FX\rightarrow Y$) is $TX$ or $FY$, or in this case, $p\lor(q \land r )$ is true or $(p\lor q) \land (p\lor r)$ is false.  So we place these two statements beneath the first line.
+\item Building off line 2, we know that either $p$ is true or $q\lor r$ is true.  So far we don't know which, so we branch the table here. In order for line 2 to be true, we only need one of these to hold. Line 4 is not just considering these two possibilities.  The left branch is sort of trivial, but the right branch tells us \textbf{both} $q$ qand $r$ true.
+\item Line 5, following the \textbf{left} branch, we see that if $p$ is true, then the implication arrow says that the consequence must be false in order for the original statement to be false.  So both of the terms in the consequence of the implication statement $X\rightarrow (Y\land Z)$ must be false in order that the original statement is false (as proposed).
+\item Follow down to line 6 and 7.  If it is false that $p \lor q$, then from item \ref{fs6} of the formal system we know that $p$ is false (line 6) and $q$ is false (line7).  At this point we have a conclusion along this branch and must stop.
+\item Similar reasoning explains the right  fork at line 5.
+\item Line 8 is following the \textbf{right} branch down from line 4.  Item \ref{fs3} from the formal system tell us that both of the statement, $q$ and $r$ must be true.  So we present these in lines 8 and 9.
+\item Line 10 is once again the same result that we saw in line 5, following from the premis being true.  and we build the same tree following from this as we did at line 5.
+\end{enumerate}
+Now the consequence(s) of any formula appears.  Every line has been exhausted.  Now for the analysis.
+
+\begin{itemize}
+\item Look at the left most branch at line 6, and compare this to line 4.  This branch of the tableau leads us to a contradiction. So I placed a $\times$ here to signify a contradition.  This branch is not a possibility.
+\item We see the same thing occur with the right side of line 6 and line 4.  So we place a symbol there to signify a contradiction too.
+\item Line 12 on the left, we have a contradiction with line 8.
+\item And line 12 on the right contradicts line 9.
+\end{itemize}
+All branches lead to contraditions, so our original line, 1, can not be false under any circumstance.  This is the meaning of a tautology!  
+\else
+ \notes{30}
+ \fi
+\end{minipage}
+
+\end{example}
+
+\newpage
+%
+%\begin{prooftree}[template=(\textbf\inserttext)]
+%  \hypo{ foo }
+%  \hypo{ bar }
+%  \infer1{ baz }
+%  \infer2{ quux }
+%\end{prooftree}
+%
+%\begin{mathpar}
+%\inferrule[Foo]{A \\ B \\\\ C}{D}
+%\and
+%\inferrule[Bar]{X}{Y}
+%\end{mathpar}
+
+%\begin{prooftree}
+%\[ 
+%  \[ A \justifies B \]
+%  \quad
+%  C 
+%  \justifies
+%  D
+%\]
+%\quad
+%\[ 
+%  \[ E \quad F \justifies G \]
+%  \justifies 
+%  H 
+%\]
+%\justifies
+%J
+%\end{prooftree}
+Let's look more closely at how we construct a tableau.  We will consider each case of logical connective, $\land, \lor, \rightarrow$ and $\neg$.  For each of these there are two cases, $T$ and $F$
+\begin{example}[$T ~\neg X$]
+In the tableau this takes the form:
+		\AxiomC{$T ~\neg X$}
+		\UnaryInfC{$F~X$}
+		 \DisplayProof
+
+\vspace{1em}
+\ifKey 
+\color{red}We can directly conclude that $X$ is false if we know that it is true that $\neg X$ is true.  It seems like a lot of double-speak, and perhaps it is, but this is just how negations work in mathematics, a negative times a negative is a positive and two wrongs make a right.
+\else
+\notes{5}		 
+\fi
+\end{example}
+
+\begin{example}[$F ~\neg X$]
+In the tableau this takes the form:
+		\AxiomC{$F ~\neg X$}
+		\UnaryInfC{$T~X$}
+		 \DisplayProof
+
+\vspace{1em}
+\ifKey 
+\color{red}This case is just like the previous one, because if the negation of $X$ is false, then we can directly conclude that $X$ must be true.
+\else
+\notes{5}		 
+\fi
+\end{example}
+
+\begin{example}[$T ~ X\land Y$]
+In the tableau this takes the form:
+		\AxiomC{$T ~ X\land Y$}
+		\UnaryInfC{$T~X$}	
+		 \DisplayProof
+and
+		\AxiomC{$T ~ X\land Y$}
+		\UnaryInfC{$T~Y$}
+		 \DisplayProof
+
+\vspace{1em}
+\ifKey 
+\color{red}If it is true that $X$ and $Y$, then there are two consequences, namely that $X$ is true \textbf{and} $Y$ is true.  We therefore stack both of these in the tableau beneath the statement $T ~ X\land Y$ as in line 7 and 8 beneath line 4.
+\else
+\notes{5}		 
+\fi  
+\end{example}
+
+\begin{example}[$F~ X\lor Y$]
+In the tableau this takes the form:
+		\AxiomC{$F~ X\lor Y$}
+		\UnaryInfC{$F~X$}	
+		 \DisplayProof
+and
+		\AxiomC{$F~ X\lor Y$}
+		\UnaryInfC{$F~Y$}
+		 \DisplayProof
+
+\vspace{1em}
+\ifKey 
+\color{red}Again, if it is false that $X$ or $Y$, then there are two consequences, namely that $X$ is false \textbf{and} $Y$ is false.   We stack both of these in the tableau beneath the statemen as done under the left fork of line 10, followed by line 11 and 12.
+\else
+\notes{5}		 
+\fi  
+		 
+\end{example}
+
+\begin{example}[$F~ X\rightarrow Y$]
+In the tableau this takes the form:
+		\AxiomC{$F~ X\rightarrow Y$}
+		\UnaryInfC{$T~X$}	
+		 \DisplayProof
+and
+		\AxiomC{$F~ X\rightarrow Y$}
+		\UnaryInfC{$F~Y$}
+		 \DisplayProof
+
+\vspace{1em}
+\ifKey 
+\color{red}Have a look at the very first three lines in the example tableau.  This is how we construct $F~ X\rightarrow Y$ since this statement directly infers that $X$ is true and $Y$ is false.
+\else
+\notes{5}		 
+\fi  
+  
+\end{example}
+
+\newpage
+\begin{example}[$T ~X \lor Y$]
+In the tableau this takes the form:
+		\begin{tableau}{}
+			[T ~X \lor Y
+			[T~X]
+			[T~Y]]
+		\end{tableau}
+
+\vspace{1em}
+\ifKey 
+\color{red}Now for the remaining three, each of them imply a couple of results.  We can not conclude directly as in the preceding five cases.  So for $T ~X \lor Y$ we have to entertain both the possibility that $X$ is true and also that maybe $Y$ is true.
+ \else
+\notes{5}		 
+\fi  
+  		
+\end{example}
+
+\begin{example}[$T ~X \rightarrow Y$]
+In the tableau this takes the form:
+		\begin{tableau}{}
+			[T ~X \rightarrow Y
+			[F~X]
+			[T~Y]]
+		\end{tableau} \label{ipt7}
+
+\vspace{1em}
+\ifKey 
+\color{red}For $T X \rightarrow Y$ we have  two possibilities; namely that $X$ is false and also that maybe $Y$ is true.
+ \else
+\notes{5}		 
+\fi    		
+\end{example}
+
+\begin{example}[$F ~X \land Y$]
+In the tableau this takes the form:
+		\begin{tableau}{}
+			[F ~X \land Y
+			[F~X]
+			[F~Y]]
+		\end{tableau}
+
+\vspace{1em}
+\ifKey 
+\color{red}Finally, the last case, $F ~X \land Y$ we have  two possibilities; namely that $X$ is false and also that maybe $Y$ is false.
+ \else
+\notes{5}		 
+\fi  
+		
+\end{example}
+
+
+\newpage
+
+\begin{problem}[Prove the following formulas by the tableaux method.]
+Prove the following formulas by the tableaux method.
+\begin{enumerate}
+\item $q\rightarrow (p\rightarrow q)$
+
+\ifKey 
+\color{red}
+\begin{tableau}
+{
+to prove=q\rightarrow (p\rightarrow q),
+close with=\ensuremath{\times}
+}
+[F (q\rightarrow (p\rightarrow q))
+[T q 
+[Fp\rightarrow q
+[T p
+[F q, close]]]]]
+\end{tableau}
+
+It is never possible for this statement to be false; this is a tautology.  So the equation is always true.
+\color{black}
+\else
+\notes{5}
+\fi
+
+\item $[(p\rightarrow  q) \land (q\rightarrow r)] \rightarrow (p\rightarrow r)$
+
+\ifKey 
+\color{red}
+\begin{tableau}
+{
+to prove=F((p\rightarrow  q) \land (q\rightarrow r)) \rightarrow (p\rightarrow r)),
+close with=\ensuremath{\times}
+}
+[T (p\rightarrow  q) \land (q\rightarrow r)
+[F p\rightarrow r
+[Tp\rightarrow q [T q\rightarrow r
+[F p [Fq [Tp [F r,close] ]]
+[T r  [Tp [F r,close]]] ]
+[T q [Fq [Tp [F r,close]] ]
+[T r  [Tp [F r,close]] ]] ]
+]]]
+\end{tableau}
+
+This is also tautalogical. The branches end in contradictions, indicating that those situations are not possible.  Let's look at a table.
+
+\[   \begin{array}{c|c|c|c|c|c|c|c}
+  \hline  
+  p 	& q 	& r	& p\rightarrow q & q\rightarrow r	&(p\rightarrow q) \land (q\rightarrow r)	& p \rightarrow r& (p\rightarrow q) \land (q\rightarrow r) \implies (p \rightarrow r) \\
+  \hline
+  \hline
+ \mathbf{T} & \mathbf{T}   	&\mathbf{T}    	&  \mathbf{T}  	&  \mathbf{T}  	& 	\mathbf{T}		 & \mathbf{T} 	 &\mathbf{T}  \\
+  \hline
+ \mathbf{T} &  \mathbf{T}  	& \mathbf{F}    	& \mathbf{T}   	&  \mathbf{F}  &	 \mathbf{F}  	& \mathbf{F} 	&\mathbf{T}  \\
+  \hline
+ \mathbf{T} & \mathbf{F}   	& \mathbf{T}    	& \mathbf{F}   	&   \mathbf{T} 	& \mathbf{F} 	 	& \mathbf{T} 	& \mathbf{T} \\
+  \hline
+ \mathbf{T} &  \mathbf{F}  	&  \mathbf{F}   	& \mathbf{F}   	&   \mathbf{T} &	\mathbf{F}   	& \mathbf{F}  	& \mathbf{T}  \\
+\hline
+ \mathbf{F} &   \mathbf{T} 	&  \mathbf{T}  	& \mathbf{T}   	&   \mathbf{T} &	 \mathbf{T}   	& \mathbf{T} 	& \mathbf{T} \\
+  \hline
+ \mathbf{F} &   \mathbf{T} 	&  \mathbf{F}   	&  \mathbf{T}  	&   \mathbf{F} &	\mathbf{F}	 	& \mathbf{T} 	& \mathbf{T}  \\
+  \hline
+ \mathbf{F} &  \mathbf{F}  	& \mathbf{T}    	& \mathbf{T}   	&   \mathbf{T} &	\mathbf{T}   	  & \mathbf{T}  	& \mathbf{T}  \\
+  \hline
+ \mathbf{F} &  \mathbf{F}  	&  \mathbf{F}   	&  \mathbf{T}  	&  \mathbf{T}  &	\mathbf{T}  	  & \mathbf{T} 	& \mathbf{T}  \\
+    \hline
+    \end{array}\]
+
+
+\color{black}
+\else
+\notes{5}
+\fi
+
+\item $[p\rightarrow (q\rightarrow r)] \rightarrow [(p\rightarrow q)\rightarrow (q\rightarrow r)]$
+
+\ifKey 
+\color{red}
+\begin{minipage}{0.4\textwidth}
+\begin{tableau}
+{
+to prove=F(p\rightarrow (q\rightarrow r)) \rightarrow ((p\rightarrow q)\rightarrow (q\rightarrow r)),
+close with=\ensuremath{\times}
+}
+				[T p\rightarrow (q\rightarrow r)
+				[F (p\rightarrow q)\rightarrow (q\rightarrow r)
+[F p [T p\rightarrow q [F q\rightarrow r [Tp[Tq[Fr, close]]][Fq[Tq[Fr, close]]]]]]			[T q\rightarrow r[T p\rightarrow q[F q\rightarrow r [Fq[Fp[Tq[Fr, close]]]  [Tq[Tq[Fr, close]]]]    [Tr [Fq[Tq[Fr, close]]] [Tr [Tq[Fr, close]] ]]]
+]]
+]]
+%[Tp\rightarrow q [T q\rightarrow r
+%[F p [Fq [Tp [F r,close] ]]
+%[T r  [Tp [F r,close]]] ]
+%[T q [Fq [Tp [F r,close]] ]
+%[T r  [Tp [F r,close]] ]] ]
+\end{tableau}
+\end{minipage}
+\hfill\begin{minipage}{0.6\textwidth}
+\begin{enumerate}[1.]
+\item The first line is just the statement we want to show is true,..
+\item and the second line false.  This arrangement will make the original theorem false.
+\item Here we branch according to \ref{ipt7}, assuming the premis is false or the conclusion is true.
+\item Line 4 has a left and right branch to follow, so looking at the left, we include the information from line 2 above, namely that the premis is true and the conclusion is false in order to make an implication statement false.  On the right branch we are doing the same.
+\item Line 5 is just the second part of line 4.
+\item Here we branch  because of  \ref{ipt7} once again from line 4.  But on the right side we are branching from line 3.
+\item By line 7 we have branched as far as we need to, and the remaining statemnts follow from the false implications on line 5.
+\item Lines 8-13 resolve in condraditions, meaning we have a tautology and the theorem is proved.
+\end{enumerate}
+\end{minipage}
+
+\color{black}
+\else
+\notes{5}
+\fi
+
+\item $[(p\rightarrow r)\land (q\rightarrow r)]\rightarrow [(p\lor q)\rightarrow r]$
+
+\ifKey 
+\color{red}
+\color{black}
+\else
+\notes{5}
+\fi
+
+\item $[(p\rightarrow q)\land (p\rightarrow r)]\rightarrow [p\rightarrow (q\land r)]$
+
+\ifKey 
+\color{red}
+\color{black}
+\else
+\notes{5}
+\fi
+
+\item $\neg (p\lor q) \rightarrow (\neg p \land \neg q)$
+
+\ifKey 
+\color{red}
+\color{black}
+\else
+\notes{5}
+\fi
+\newpage
+
+\item $(\neg p\land \neg q) \rightarrow \neg( p \lor  q)$
+
+
+\ifKey 
+\color{red}
+\begin{tableau}
+{
+to prove=F((\neg p\land \neg q) \rightarrow \neg( p \lor  q)),
+close with=\ensuremath{\times}
+}
+[F (\neg p\land \neg q)
+[T\neg( p \lor  q)
+[F\neg p [T p [F (p \lor q)[F p [F q, close]]]  ]]
+[F\neg q [T q [F (p \lor q)[F p [F q, close]]]  ]]
+]]
+\end{tableau}
+
+\color{black}
+\else
+\notes{5}
+\fi
+
+
+\item $[p \land (q\lor r)] \rightarrow [(p \land q) \lor (p \land r)]$
+
+\ifKey 
+\color{red}
+\color{black}
+\else
+\notes{5}
+\fi
+
+\item $[(p \rightarrow q) \land (p \rightarrow \neg q)] \rightarrow  p$
+
+
+\ifKey 
+\color{red}
+\color{black}
+\else
+\notes{5}
+\fi
+
+%\item $[((p\land q) \rightarrow  r) \land (p\rightarrow (q\lor r))]\rightarrow (p \rightarrow  r)$
+%
+%\ifKey 
+%\color{red}
+%\color{black}
+%\else
+%\notes{5}
+%\fi
+
+\end{enumerate}
+\end{problem}
+
+

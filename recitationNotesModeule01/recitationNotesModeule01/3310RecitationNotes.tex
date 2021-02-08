@@ -1,0 +1,472 @@
+\documentclass[10pt,twoside,reqno]{book}
+\usepackage[marginparsep=1em]{geometry}
+\geometry{lmargin=.50in,rmargin=.50in, tmargin=0.75in, bmargin=0.75in}
+\geometry{letterpaper}                
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{tikz}
+\usepackage{enumerate}
+\usepackage{amsthm}
+ \usepackage{pgfplots, pgfplotstable}
+ \usepackage{tikz-3dplot}
+ \usetikzlibrary{shapes.geometric}
+ \usepackage{float}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{lmodern}
+\usepackage{chngcntr}
+\usepackage{multicol}
+\usepackage{adjustbox}
+\usepackage{comment}
+\usepackage{stackengine,scalerel}
+\usepackage{calc}
+\usepackage{adjustbox}
+\usepackage{vwcol}
+\usepackage{esvect}
+\usepackage{xspace}
+\usepackage{ifthen}
+\usepackage[sectionbib]{natbib}
+\usepackage{pdfpages}
+\usepackage{wasysym}
+\usepackage{mathtools}
+%\usepackage{pstricks} %  interferring with opacity in Tikz
+%\usepackage{pst-barcode} % interferring with opacity in Tikz
+\usepackage{forest,mathtools,siunitx}
+\usepackage{xinttools}
+\usepackage{thmtools}
+\usepackage[outline]{contour}
+\usepgfplotslibrary{fillbetween}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{dramatist}
+\usetikzlibrary{lindenmayersystems}
+%\usepackage[symbol*]{footmisc}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand*\lif{\mathbin{\to}}% added thanks to egreg's suggestion
+\usepackage{bussproofs}
+%\usepackage{prooftrees}
+\usepackage[tableaux]{prooftrees}
+
+\usetikzlibrary{decorations.pathmorphing,decorations.text}
+\usetikzlibrary{arrows,calc,intersections}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning}
+
+\usepgfplotslibrary{patchplots}
+\pgfplotsset{width=4in,compat=1.14}
+\setlength{\parindent}{0in}
+%==================================================================
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+\lhead{\fancyplain{}{\rightmark }} 
+\fancyhead[RE,RO]{Math 3310}
+\fancyfoot[LE LO]{Fall 2019}
+\fancyfoot[CE CO]{Dr. Heavilin}
+\fancyfoot[RE,RO]{Online Version}
+%==================================================================
+\definecolor{notepadrule}{RGB}{105,105,105}
+%==================================================================
+\makeatletter
+    \def\cleardoublepage{\clearpage%
+        \if@twoside
+            \ifodd\c@page\else
+                \vspace*{\fill}
+                \vspace{\fill}
+                \thispagestyle{empty}
+                \newpage
+                \if@twocolumn\hbox{}\newpage\fi
+            \fi
+        \fi
+    }
+\makeatother
+
+\makeatletter
+\tikzset{
+    /caesar/.cd,
+    inner radius/.store in=\qrr@caesar@innerR,
+    middle radius/.store in=\qrr@caesar@middleR,
+    outer radius/.store in=\qrr@caesar@outerR,
+    inner letters/.store in=\qrr@caesar@innerL,
+    outer letters/.store in=\qrr@caesar@outerL,
+    number of letters/.code=\pgfmathtruncatemacro\qrr@caesar@number{#1},
+    shift/.store in=\qrr@caesar@shift,
+    % defaults:
+    outer letters=,
+    shift=0
+}
+\newcommand*{\drawCaesarsDisk}[2][]{%
+    \begingroup
+    \pgfqkeys{/caesar}{#1}%
+    \foreach \radius in {\qrr@caesar@innerR,\qrr@caesar@middleR,\qrr@caesar@outerR}
+        \draw (#2) circle [radius=\radius];
+    \foreach \step in {0,...,\numexpr\qrr@caesar@number-1}{
+        \draw[shift={(#2)}] (\step*360/\qrr@caesar@number:\qrr@caesar@innerR) -- (\step*360/\qrr@caesar@number:\qrr@caesar@outerR);
+        \node[shift={(#2)},rotate=(\step+.5)*360/\qrr@caesar@number-90] at ({(\step+.5)*360/\qrr@caesar@number}:{.5*(\qrr@caesar@innerR)+.5*(\qrr@caesar@middleR)} ) {\@Alph{\numexpr26-\step}};
+        \pgfmathtruncatemacro\pgf@temp{mod(\step+\qrr@caesar@shift,\qrr@caesar@number)}%
+        \node[shift={(#2)},rotate=(\step+.5)*360/\qrr@caesar@number-90] at ({(\step+.5)*360/\qrr@caesar@number}:{.5*(\qrr@caesar@outerR)+.5*(\qrr@caesar@middleR)} ) {\@Alph{\numexpr26-\pgf@temp}};
+    }
+    \endgroup
+}
+\newcount\qrr@caesar@c
+\newcommand*{\drawCaesarsList}[2][]{%
+    \begingroup
+    \pgfqkeys{/caesar}{#1}%
+    \foreach \radius in {\qrr@caesar@innerR,\qrr@caesar@middleR,\qrr@caesar@outerR}
+        \draw (#2) circle [radius=\radius];
+    \qrr@caesar@c=0\relax
+    \foreach \element in \qrr@caesar@innerL {\global\advance\qrr@caesar@c1}
+    \ifx\pgfutil@empty\qrr@caesar@outerL
+        \let\qrr@caesar@outerL\qrr@caesar@innerL
+    \fi
+    \edef\qrr@caesar@number{\number\qrr@caesar@c}%
+    \foreach \innerLetter[count=\step from 0] in \qrr@caesar@innerL {
+        \draw[shift={(#2)}] (\step*360/\qrr@caesar@number:\qrr@caesar@innerR) -- (\step*360/\qrr@caesar@number:\qrr@caesar@outerR);
+        \node[shift={(#2)},rotate=-(\step+.5)*360/\qrr@caesar@number-90] at ({-(\step+.5)*360/\qrr@caesar@number}:{.5*(\qrr@caesar@innerR)+.5*(\qrr@caesar@middleR)} ) {\innerLetter};
+    }
+    \foreach \outerLetter[count=\step@ from 0] in \qrr@caesar@outerL {
+        \ifnum\step@=\qrr@caesar@number\breakforeach\fi
+        \pgfmathtruncatemacro\step{mod(\step@+\qrr@caesar@shift,\qrr@caesar@number)}%
+        \node[shift={(#2)},rotate=-(\step+.5)*360/\qrr@caesar@number-90] at ({-(\step+.5)*360/\qrr@caesar@number}:{.5*(\qrr@caesar@outerR)+.5*(\qrr@caesar@middleR)} ) {\outerLetter};
+    }
+    \endgroup
+}
+\makeatother
+
+%==================================================================
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+%==================================================================
+\newcommand{\fullnotes} {
+\newpage
+\begin{center}
+Notes
+
+\vspace{2em}
+
+  \begin{tikzpicture}%
+    [
+      normal lines/.style={notepadrule, very thin},
+      every node/.append style={notepadrule, align=center, opacity=1}
+    ]
+    \foreach \y in {1,2,...,19}
+          \draw[normal lines] (0,\y) -- (6.5in,\y);
+  \end{tikzpicture}%
+\end{center}
+\newpage
+}
+%==================================================================
+\newcommand{\notes}[1] {
+\vspace{0.15em}
+
+  \begin{tikzpicture}    [
+      normal lines/.style={notepadrule, very thin},
+      every node/.append style={notepadrule, align=center, opacity=1}
+    ]
+    \foreach \y in {1,...,#1}
+          \draw[normal lines] (0,\y/1.5) -- (0.9\textwidth,\y/1.5);
+  \end{tikzpicture}
+}
+%%%%%  SHORTCUT COMMANDS  %%%%
+\newcommand{\ds}{\displaystyle}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\arc}{\rightarrow}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\e}{\epsilon}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\DD}{\mathbb{D}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\l}{\lambda}
+%==================================================================
+\pgfdeclarefunctionalshading{eightball}{\pgfpointorigin}{\pgfpoint{100bp}{100bp}}{}{
+% Compute distance difference (horizontally weighted twice). (50bp,50bp) is the center
+65 sub dup mul exch               %Change the coordinate to move vertically
+40 sub dup mul 0.5 mul add sqrt   %Change the coordinate to move horizontally
+% In MATLAB notation : d=distance diff
+% x=1.003^(-d^2)
+dup mul neg 1.003 exch exp
+% x is the only variable in the stack now but we need 3 values at the top of the stack
+% so we duplicate these values putting new values in the stack.
+dup % Duplicates with the current value and pushes the stack down (value of green)
+dup % Duplicates with the current value and pushes the stack down (value of blue)
+}
+%==================================================================
+% Setting up variable for the icons next to homework problems
+\newlength{\IconLength}
+\setlength{\IconLength}{1.5\labelwidth}
+\addtolength{\IconLength}{\labelsep}
+\newlength{\IconHeight}
+\setlength{\IconHeight}{\labelwidth}\addtolength{\IconHeight}{-2\labelsep}
+%==================================================================
+\newcommand{\matlab}{\textsc{Matlab}\xspace}
+%==================================================================
+\newcommand{\curl}{\textrm{curl}\xspace}
+\newcommand{\divg}{\textrm{div}\xspace}
+%==================================================================
+\newcommand{\fallingfactorial}[1]{%
+  ^{\mspace{2mu}\underline{\mspace{-2mu}#1\mspace{-2mu}}\mspace{2mu}}%
+}
+\newcommand{\raisingfactorial}[1]{%
+  ^{\mspace{2mu}\overline{\mspace{-2mu}#1\mspace{-2mu}}\mspace{2mu}}%
+}
+%===============================================================
+% toc of tips
+%\newtheoremstyle{theorem}
+%{\topsep}{\topsep}{}{}{\bfseries}{:}{\newline}
+%{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}%
+%    \ifstrempty{#3}%
+%    {\addcontentsline{theorem}{subsection}{#1~\thetheorem}}%
+%    {\addcontentsline{theorem}{subsection}{#1~\thetheorem~(#3)}}}
+%%
+\newtheoremstyle{mystyle1} % list of theorems and lemmas
+{\topsep}{\topsep}{}{}{\bfseries}{:}{\newline}
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}%
+    \ifstrempty{#3}%
+    {\addcontentsline{other}{subsection}{#1~\thetheorem}}%
+    {\addcontentsline{other}{subsection}{#1~\thetheorem~(#3)}}}
+%  {1em} % Space above
+%  {1em} % Space above
+%%  {\topsep  1pt} % Space above
+%%  {\topsep 1pt} % Space below
+  {\bfseries} % Body font
+%  {} % Indent amount
+%  {\bfseries} % Theorem head font
+%  {.} % Punctuation after theorem head
+%  {.5em} % Space after theorem head
+%%  {} % Theorem head spec (can be left empty, meaning `normal')
+%  {\thmname{#1}\thmnumber{ #2}%
+%  \thmnote{: #3\addcontentsline{toc}{subsubsection}{{\it#1}: #3}}. }
+
+\newtheoremstyle{mystyle2}  %list of definitions
+{\topsep}{\topsep}{}{}{\bfseries}{:}{\newline}
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}%
+    \ifstrempty{#3}%
+    {\addcontentsline{def}{subsection}{#1~\thedefinition}}%
+    {\addcontentsline{def}{subsection}{#1~\thedefinition~(#3)}}}
+
+\newtheoremstyle{exampstyle}
+{\topsep}{\topsep}{}{}{\bfseries}{:}{\newline}
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}%
+    \ifstrempty{#3}%
+    {\addcontentsline{other}{subsection}{#1~\thetheorem}}%
+    {\addcontentsline{other}{subsection}{#1~\thetheorem~(#3)}}}
+%  {1em} % Space above
+%  {1em} % Space above
+%%  {\topsep  1pt} % Space above
+%%  {\topsep 1pt} % Space below
+%  {} % Body font
+%  {} % Indent amount
+%  {\bfseries} % Theorem head font
+%  {.} % Punctuation after theorem head
+%  {.5em} % Space after theorem head
+%%  {} % Theorem head spec (can be left empty, meaning `normal')
+%  {\thmname{#1}\thmnumber{ #2}%
+%  \thmnote{: #3\addcontentsline{toc}{subsubsection}{{\it#1}: #3}}. }
+\newcounter{probs}
+\newtheorem{theorem}{Theorem}[section]
+%\declaretheoremstyle[headfont=bfseries,postheadspace=\newline]{theorem}{Theorem}[section]
+%==================================================================
+\theoremstyle{exampstyle} \newtheorem{mytheorem}[theorem]{Theorem}
+\theoremstyle{exampstyle} \newtheorem{example}[theorem]{Example}
+\theoremstyle{exampstyle} \newtheorem{remark}[theorem]{Remark}
+\theoremstyle{exampstyle} \newtheorem{definition}[theorem]{Definition}
+\theoremstyle{exampstyle} \newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{exampstyle} \newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{exampstyle} \newtheorem{geometric}[theorem]{Geometrically}
+\theoremstyle{exampstyle} \newtheorem{idea}[theorem]{Idea}
+\theoremstyle{exampstyle} \newtheorem{exercise}[section]{Exercise}
+\theoremstyle{exampstyle} \newtheorem{extracredit}[subsection]{Extra Credit}
+\theoremstyle{exampstyle} \newtheorem{axiom}[theorem]{Axiom}
+
+\newtheoremstyle{problem}% name of the style to be used
+  {\topsep}% measure of space to leave above the theorem. E.g.: 3pt
+  {\topsep}% measure of space to leave below the theorem. E.g.: 3pt
+  {\scshape}% name of font to use in the body of the theorem
+  {}% measure of space to indent
+  {\bfseries}% name of head font
+  {\\}% punctuation between head and body
+  { 5em}% space after theorem head; " " = normal interword space
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+\theoremstyle{problem} \newtheorem{problem}{Problem}[section]
+%
+%% toc of theorems
+\makeatletter
+\newcommand\thrmname{Theorems}
+\newcommand\listthrmname{List of Theorems}
+\newcommand\listofThrms{
+    \section*{\listthrmname}\@starttoc{thrm}}
+\makeatother
+
+% toc of definitions
+\makeatletter
+\newcommand\defname{Definitions}
+\newcommand\listdefname{List of Definintions}
+\newcommand\listofDefs{
+    \section*{\listdefname}\@starttoc{def}}
+\makeatother
+% list of problems
+\makeatletter
+\newcommand\probname{Problems}
+\newcommand\listprobname{List of Problems}
+\newcommand\listofProbs{
+    \section*{\listprobname}\@starttoc{probs}}
+\makeatother
+\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+%==================================================================
+\DeclareMathOperator{\proj}{proj}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+%==================================================================
+\newcommand*{\parallelogramm}{%
+\rlap{\rotatebox{-30}{\rule[.05ex]{.4pt}{.77em}}}%
+\kern.04em%
+\rlap{\kern.36em\raisebox{0.649519052835em}{\rule{.6em}{.4pt}}}%
+\rule{.6em}{.4pt}\kern-.04em%
+\rotatebox{-30}{\rule[.05ex]{.4pt}{.77em}}}
+\newcommand*{\Parallelogramm}[1][]{%
+\pgfpicture\pgfsetroundjoin
+\pgftransformxslant{.6}%
+\pgfpathrectangle{\pgfpointorigin}{\pgfpoint{.60em}{.65em}}%
+\pgfusepath{stroke,#1}%
+\endpgfpicture}    
+%==================================================================
+%  Turn on the keys for the recitation instructors.
+%==================================================================
+\newif\ifKey
+\Keytrue
+%\Keyfalse
+%==================================================================
+\title{Math 3310 Notes}
+\author{Dr. Heavilin\\Mark Xiang Gao\\Safia Mughal\\Zach Liang\\Caitlynn Clawson\\Olivia Gornichec\\}
+\date{Copyright \copyright\ 2020  All Rights Reserved}
+%THE FOLLOWING ADJUSTS SPACING WITHIN EQNARRAY (FOR ALL EQUATIONS THROUGHOUT THE DOCUMENT).
+%\addtolength{\jot}{10\jot} %If you mess with this setting, you'll need to check places in the notes that have been manually adjusted.
+%==================================================================
+\title{Math 3310\\  Module on
+\ifone{Sets~}\fi
+\iftwo{Induction~}\fi
+\ifthree{Finite Differences~}\fi
+\iffour{Logic~}\fi
+\iffive{Recursion~}\fi
+\ifsix{Graph Theory~}\fi
+\ifseven{Number Theory~}\fi
+\ifeight{Groups~}\fi
+\ifeight{Generating Functions~}\fi
+\ifeight{10~}\fi
+}
+%==================================================================
+\begin{document}
+%==================================================================
+%define the module switches
+%==================================================================
+\newif\ifone
+\newif\iftwo
+\newif\ifthree
+\newif\iffour
+\newif\iffive
+\newif\ifsix
+\newif\ifseven
+\newif\ifeight
+\newif\ifnine
+\newif\iften
+%==================================================================
+% Which chapter do you want to print?  ...turn it on
+\onetrue % Sets, Infinite Sets, Cantor's Theorem
+%\twotrue  % Induction 
+%\threetrue % Differences/Discrete Calculus
+%\fourtrue  % Logic 
+%\fivetrue  % Recursion
+%\sixtrue  % Graph Theory
+%\seventrue % Number Theory
+%\eighttrue  % Groups
+%\ninetrue  % Generating Functions
+%==================================================================
+%\renewcommand*\thesection{\arabic{section}}
+%\renewcommand*\thechapter{}
+%==================================================================
+
+%==================================================================
+\maketitle
+%==================================================================
+\renewcommand*\thesection{M\arabic{section}}
+%==================================================================
+\thispagestyle{empty}
+Math 3310 Handouts and Homework
+\vfill
+\begin{minipage}[b]{0.9\textwidth}
+\footnotesize\raggedright
+\setlength{\parskip}{0.5\baselineskip}
+Copyright \copyright \ 2020 Justin Heavilin\par
+These materials are made available only for personal use by Math 3310 students.   Students may not distribute or reproduce the materials for commercial purposes without express written consent. 
+\end{minipage}
+\vspace*{2\baselineskip}
+%==================================================================
+%\tableofcontents
+%\listtheoremname
+
+%\renewcommand{\listtheoremname}{List of Theorems}
+%\listoftheorems[numwidth=4em, ignoreall, show={theorem}]
+%\listoftheorems[numwidth=4em, ignoreall, show={theorem}, onlynamed={axiom, theorem}]
+
+%\renewcommand{\listtheoremname}{List of Lemmas and Corollaries}
+%\listoftheorems[numwidth=4em, ignoreall, show={corollary, lemma, theorem}, onlynamed={lemma, corollary, theorem}]
+%
+%\renewcommand{\listtheoremname}{List of Definitions}
+%\listoftheorems[numwidth=4em, ignoreall, show={definition}]
+%\listoftheorems[numwidth=4em, ignoreall, show={definition}, onlynamed={definition}]
+
+%\renewcommand{\listtheoremname}{List of Problems}
+%\listoftheorems[numwidth=4em, ignoreall, show={problem}, onlynamed={Problem}]
+%
+%\setlength\parindent{0pt}
+\cleardoublepage
+
+%======================
+%Module 1
+%======================
+\setcounter{probs}{0}
+\setcounter{chapter}{0}
+\setcounter{section}{0}
+\ifone
+\input{meeting/m101}
+\newpage
+%\chapter{Sets}
+\input{meeting/m102}
+\newpage
+\input{meeting/m103}
+\newpage
+\input{meeting/m104}
+\newpage
+\input{meeting/m105}
+\newpage
+\input{meeting/m106} % The Size of a Set
+\newpage
+\input{meeting/m107} % Infinite Sets
+\newpage
+\input{meeting/m108}  % Vampires
+\newpage
+\input{meeting/m109}
+\newpage
+\input{meeting/m110}
+\newpage
+\input{meeting/m111}
+\newpage
+\setcounter{section}{11}
+\input{meeting/m112}
+\newpage
+\input{meeting/m113}
+\newpage
+\input{meeting/m114}
+\newpage
+\fi
+
+
+\end{document}  

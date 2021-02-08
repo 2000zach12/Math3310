@@ -1,0 +1,117 @@
+\section{Interdependence of the Logical Connectives}
+Something that is curious about the logical connectives, is that they can be expressed in terms of each other.  By this I mean that we can use $\implies$ and $\neg$ to define $\land$.  This will give us some greater comfort with these connectives, so together, let's start by working through some derivations of this sort. 
+
+\begin{example}
+Suppose you are stuck on a dererted island, and suddenly an alien appears.  You wish to establish a way to communicate logic with this alien.  The alien shows you and $\land$ and negation $\neg$. The alien does this my waving its tenticles and piling up sand, then pointing with a stick (I don't know, just predend it fugures out how to show you these two connectives) You need to understand ``or''  $\lor$ in terms of the alien's $\land$ and $\neg$.  Mainly because you are sharing dinner and can offer the alien either a coconut or a papaya, but you want something to eat too.
+
+...Anyway, let's defing $\lor$ in terms of $\land$ and $\neg$.
+\end{example}
+
+\begin{problem}[Define $\lor$ in terms of $\neg$ and $\land$]
+To say that $(p \lor q)$ is true, it is equivalent to saying that they are both not simultaneously false. That should help you construct the formula that is logically equivalent to $(p \lor q)$
+
+\notes{4}
+\end{problem}
+
+Now let's keep building the logical connectives.
+\begin{problem}[Define $\implies$ in terms of $\neg$ and $\lor$]
+Say $(p \implies q)$ is true using $\neg$ and $\lor$.
+\notes{4}
+\end{problem}
+
+Now let's keep building the logical connectives.
+\begin{problem}[Define $\implies$ in terms of $\neg$ and $\land$]
+Define $\implies$ in terms of $\neg$ and $\land$
+\notes{4}
+\end{problem}
+
+\begin{problem}[Define $\implies$ in terms of $\neg$ and $\lor$]
+Define $\implies$ in terms of $\neg$ and $\lor$
+\notes{4}
+\end{problem}
+
+\newpage
+\begin{problem}[Define $\lor$ in terms of $\neg$ and $\implies$]
+Define $\lor$ in terms of $\neg$ and $\implies$
+\notes{4}
+\end{problem}
+
+\begin{problem}[Define $\land$ in terms of $\neg$ and $\implies$]
+Define $\land$ in terms of $\neg$ and $\implies$
+\notes{4}
+\end{problem}
+
+
+\begin{problem}[Define $\land$ in terms of only $\implies$]
+Define $\land$ in terms of only $\implies$
+\notes{4}
+\end{problem}
+
+
+\begin{problem}[Define $\equiv$ in terms of $\land$ and $\implies$]
+Define $\equiv$ in terms of $\land$ and $\implies$
+\notes{4}
+\end{problem}
+
+\begin{problem}[Define $\equiv$ in terms of $\neg$, $\land$, and $\lor$]
+Define $\equiv$ in terms of $\neg$, $\land$, and $\lor$
+\notes{4}
+\end{problem}
+
+\subsection*{Joint Denial}
+In the preceding section we saw that the connectives can be expressed in terms of each other, and in fact all of them can be generated from just two, $\neg$ and $\land$.  We could say that $\neg$ and $\land$ form a \emph{basis} for the connectives.  (in fact, I am going to say that, right now!)
+
+Even more interesting is that there is a connective that, all by itself, forms all the other connectives.  The \emph{joint denial} $\downarrow$ will create all five connectives ($\land, \lor, \neg, \implies$, and $\equiv$).  Joint denial means ``$p$ and $q$ are BOTH false''.  Here us the table.
+
+\[  \begin{array}{c|c|c}
+  \hline  
+  p & q & p\downarrow q\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} &  \mathbf{F}\\
+  \hline
+ \mathbf{T} &  \mathbf{F} &  \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{T} &  \mathbf{F}\\
+  \hline
+ \mathbf{F} &  \mathbf{F} &  \mathbf{T}\\
+    \hline
+    \end{array}\]
+    
+  \newpage  
+\begin{problem}[Derive all five connectives from $\downarrow$ (hint: start with $\neg$)]Derive all five connectives from $\downarrow$ (hint: start with $\neg$)
+\notes{8}
+\end{problem}
+
+\subsection*{Alternative Denial}
+There is a second connective that can also generate all five connectives, the \emph{alternative denial}.  The alternative denial say that at least $p$ or $q$ is false, $p |  q$.  
+
+
+\[  \begin{array}{c|c|c}
+  \hline  
+  p & q & p| q\\
+  \hline
+  \hline
+ \mathbf{T} &  \mathbf{T} &  \mathbf{F}\\
+  \hline
+ \mathbf{T} &  \mathbf{F} &  \mathbf{T}\\
+  \hline
+ \mathbf{F} &  \mathbf{T} &  \mathbf{T}\\
+  \hline
+ \mathbf{F} &  \mathbf{F} &  \mathbf{T}\\
+    \hline
+    \end{array}\]
+    
+\begin{problem}[Derive all five connectives from $|$ ]
+Derive all five connectives from $|$ 
+\notes{8}
+\end{problem}
+
+\subsection*{The Whole Enchelada}
+Stop and think about the truth tables we have been making.  For propositions $p$ and $q$, each connective has a unique truth table.   In other words $\lor$ not logically equivalent to $\land$, and so on.  
+
+\begin{problem}[How many connectives could there possibly be for $p$ and $q$?]
+We might then ask ourselves, how many connectives could there possibly be for $p$ and $q$?
+\notes{2}
+\end{problem}
+

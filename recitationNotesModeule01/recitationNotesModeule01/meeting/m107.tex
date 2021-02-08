@@ -1,0 +1,45 @@
+\section{Infinite Sets}
+
+Now is where things start to get a little sticky.  We decided that the size of a set could be determined by simply counting the number of elements in the set.  But what if there are infinite elements?
+\begin{example}[Bad Example] Although most people will condsier it ``bad style'' to break things into bullet points, I hope this will make the reasoning easier to follow.  Just don't tell my colleagues. 
+\begin{itemize}
+\item Let $A = \{2, 4, 6, 8, \cdots \}$ and let $B = \{1, 3, 5, 7, \cdots\}$, two sets, one even natural numbers and the other the odd numbers. 
+\item Now consider a subset of $B$, namely every other odd number, i.e. let $\hat{B} = \{1, 5, 9, \cdots  \}$.   (i.e. $\hat{B}\subset B$)
+\item We can construct a 1-1 correspondence between $A$ and $\hat B$ (e.g. $(2, 1), (4, 5), (6, 9), (8, 13),\cdots$. 
+\item  By our previous reasoning in Section \ref{section1_6}, Definition \ref{finitesets}, $A$ is smaller than $B$.  
+\item But now consider a subset of $A$, namely every other even number, i.e. let $\hat{A} = \{2, 6, 10, \cdots  \}$
+\item  Now we can also construct a 1-1 correspondence between $\hat A$ and the entire set $B$, making $B$ smaller than $A$.  
+\item  So we have shown that $B$ can be mapped to a subset of $A$, implying that $B$ is smaller than $A$, and at the same time we have shown that $A$ can be mapped to a subset of $B$, implying that $A$ is smaller than $B$.
+\item It doesn't seem possible to have two sets that are each smaller than the other.  Indeed, this is a problem.
+\end{itemize}
+\end{example}
+
+So ideas \ref{setsize} seems to work fine for finite sets, but fails to behave itself when working with infinite sets.
+
+Before we go too far, let's build up to things a little.  Consider a pair of infinite sets in the following example.
+
+\begin{example}[$\mathbb{N}$ and $\mathbb{E}$]
+Let $\mathbb{N}$ be the set of  numbers, $\{1, 2, 3, \cdots\}$ and let $\mathbb{E}$ be the set of even numbers, $\{2, 4, 6, \cdots\}$.  We can construct a 1-1 correspondence between $\mathbb{N}$ and $\mathbb{E}$ by taking every $n\in \mathbb{N}$, and mapping it to $2n\in \mathbb{E}$.  This would look something like $ (1 , 2), (2 , 4), (3 , 6), \cdots$.  By our previous reasoning, we have established a 1-1 correspondence between these two sets, and so we can conclude that they are the same size.  
+\end{example}
+Are we cheating?  It almost seems like one of those should be larger than the other, after all there are numbers in one set that aren't in the other!  But in terms of our evolving understanding of the size of sets, we have to consider them to be the same size.  Keep in mind there are infinite elements in each set.  
+
+\begin{example}[$\mathbb{N}$ and Perfect Squares, $\mathbb{S}$]
+Again, let $\mathbb{N}$ be the set of  numbers, $\{1, 2, 3, \cdots\}$ and let $\mathbb{S}$ be the set of perfect squares $\{1, 4, 9, 16, \cdots\}$.  We can construct a 1-1 correspondence between $\mathbb{N}$ and $\mathbb{E}$ by simply squaring every $n\in \mathbb{N}$, and mapping it to $n^2\in \mathbb{S}$.  This would look something like $(1 , 1), (2 , 4), (3 , 9), \cdots$.  These two sets are also the same size.  This observation was actually made by Galelieo in 1630, long before the development of Set Theory.
+\end{example}
+In the two preceding examples we determined that these infinite sets are the same size (numerically) as $\mathbb{N}$.  In fact this is the definition of \emph{denumerable}.
+
+\begin{definition}[Denumerable Sets]
+A set is denumerable if it can placed in a 1-1 correspondence with $\mathbb{N}$.
+\end{definition}
+Personally, I like the term \emph{countably infinite} better than denumerable, although saying denumerable makes me sound smarter and undermines the confidence of my enemies, allowing me to gain the strategic upper hand when battling wits.  Basically, either term works.
+People have become accustomed to using indices to associate a set with $\mathbb{N}$, and this is what you likely encountered in Calculus when you studied sequences.
+
+\begin{definition}[Enumeration]
+An enumeration of a set $A$ is an infinite list, e.g $a_1, a_2, a_3, \cdots$, where each element in $A$ is placed in a 1-1 correspondence with $\mathbb{N}$.
+\end{definition}
+
+\begin{example}[$a_n$]
+Recall a sequence in Calculus, $S = \left\{1, \dfrac 12, \dfrac 13, \dfrac 14,\cdots \right\}$.  This was expressed as $a_n = \dfrac 1n, ~ n\in \mathbb{N}$.  From this we can see that the set $S$ is the same size as $\mathbb{N}$, obviously because each element of $S$ is identifies with a subscript $n$, meaning we were handed the problem with the solution attached.  That indexing is actually the 1-1 correspondence that related the natural numbers to the elements of the set $S$. 
+\end{example}
+
+Now let's get to the good stuff.  

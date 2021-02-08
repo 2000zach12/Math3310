@@ -1,0 +1,122 @@
+\section{Using the Principle of Mathematical Induction (PMI)} Theroem \ref{pmi} is used to prove statements of the form $(\forall~ n \in \mathbb{N}: ~P(n))$ where $P(n)$ is some statement.  Our goal is to prove that the set of all $n$ where $P(n)$ is true  (Call this $\mathcal{T}$) is $\mathbb{N}$. To verify the hypothesis of the PMI, we must do two things:
+\begin{enumerate}
+\item Prove that $1\in \mathcal{T}$ (i.e. show that $P(1)$ is true)\label{base}
+\item Prove that if $k\in \mathcal{T}$, then $k+1\in \mathcal{T}$ (i.e show that if $P(k)$ is true, then $P(k+1)$ is true.)\label{inductive}
+\end{enumerate}
+
+As review, step \ref{base} is called the \emph{base case} and step \ref{inductive} is called the  \emph{inductive step}, which includes an induction hypothesis.
+The recursive nature of a proof by induction, i.e., that the truth of a proposition $P(k + 1)$ must be demonstrated from the truth of $P(k)$, may seem confusing. However, many familiar functions on the natural numbers such as $f(x) = x!$ or $f(x) = 2x$ can be defined recursively.  There is a nice little two-page article at the end of these notes that migth be helpful. %\cite{gersting1975}
+
+%\begin{example}
+When writing a proof by mathematical induction, we should rememeber to always keep the reader informed. This means that at the beginning of the proof, we should state that a ``proof by induction'' will be used, and early on in the proof we should define $P(n)$.  Remember, 
+\begin{quotation}
+``Don't do unto others what you would not want done unto you.''
+
+\hfill - Some long haired, bearded, sandal wearing, desert nomadic socialist.
+\end{quotation}
+
+Consdier the following examples.  To prove the theorem that 4 divides $\left( 5^n-1\right)^n$ we need a base case, and the inductive step.  The base case can come from exploring the statement for a few values of $n$.  The inductive step (also called the inductive hypothesis) is assuming the $k$-th case, i.e. 4 divides $\left( 5^k-1\right)^n$ and exploring the relationship for $k+1$.  In this proof, the statement, $P(n)$, is ``4 divides $\left( 5^n-1\right)$''.  
+
+Before we go any further, I advise you to grab a  pencil and follow along with this problem on a separate piece of paper.  Doing mathematics is like juggling machetes, in that it looks simple when I watch someone else do it, but when I try it on your own, I am glad I have health insurance.
+
+\begin{theorem}[Prove 4 divides $\left( 5^n-1\right)$] $\forall ~n\in \mathbb{N}$, let $P(n)$ be ``4 divides $\left( 5^n-1\right)$''.   
+
+
+\begin{proof}[Proof by Mathematical Induction]To begin, observe that when $n=1$, $\left( 5^1-1\right) =4$ and 4 divides 4.  For the inductive step, we prove that $\forall k\in \mathbb{N}$, if $P(k)$ is true, then $P(k+1)$ is also true.  So let $ k\in \mathbb{N}$ and assume that $P(k)$ is true, i.e assume that 4 divides $\left( 5^k-1\right)$.  From the definition of divisibility, this means there exists an integer, $m$, such that $4m = 5^k-1$, or $5^k = 4m+1$.  In order to show that $P(k+1)$ is true, we must show that 4 divides $5^{k+1}-1$.
+\begin{align*}
+5^{k+1}-1&=5\cdot 5^k - 1  &\textrm{Since $5^{k+1} = 5^k\cdot 5$.}\\
+&=5\left(4m+1\right) - 1  &\textrm{Above we determined $5^k = 4m+1$.}\\
+&=20m+5 - 1  &\textrm{Distribute.}\\
+&=20m+4  &\textrm{Simplify.}\\
+&=4\left(5m+1\right)  &\textrm{Factor 4.}
+\end{align*}
+We see that $\left(5m+1\right)\in \mathbb{Z}$.  Therefore 4 divides the quantity $5^{k+1}-1 = 4\left(5m+1\right)$. We have thus proved that $P(k+1)$ is true, and by The Principle of Mathematical Induction, we have proved the proposition true for all $n\in\mathbb{N}$.
+\end{proof}
+\end{theorem}
+
+Notice how the structure of this proof differs slightly from our first example.
+
+\notes{8}
+
+
+\newpage
+Did you ever notice that all of your Calculus homework problems were, in and of themselves, \textbf{Theorems} - and solving the problem constituted a \emph{proof}.  I wonder if students understood that, they migth have less anxiety about proofs in general.
+
+\begin{theorem}[For $n \in \N$, $\ds \sum_{i = 0}^n i= \frac{n(n+1)}{2}$]
+
+\begin{proof} [Proof by Mathematical Induction]
+We will argue by way of induction that if $n =1$ and $2$, then the relationship, $\ds P(n)$ is $ \ds \sum_{i = 0}^n i= \frac{n(n+1)}{2}$ is true for all $n\in\mathbb{N}$.
+Consider the base case(s).  $$P(1)=0+1=\frac{1(1+1)}{2} = 1;~~P(2)=0+ 1+2 = \frac{2(2+1)}{2} = 3.$$
+
+Now  assume $P(k)$ holds for some $k \in\mathbb{N}$. We will show this relationship implies $\ds\sum_{i=0}^{k+1} i = \frac{(k+1)(k+2)}{2}$.
+
+%consider $\ds\sum_{i=0}^{k+1} i$:
+
+\begin{align*}
+ \sum_{i=0}^{k+1} i &= \sum_{i=0}^{k} i + (k+1) \\ 
+ 	&= \frac{k(k+1)}{2} + (k+1) \\ 
+ 	&= \frac{(k+1)(k+2) + 2(k+1)}{2} \\ 
+ 	&= \frac{(k+1)(k+2)}{2}
+\end{align*}
+The first equality follows from the induction assumption, and the others from algebraic manipulations.
+The relationship is true for $n=1$, and if $P(k)$ is true, then $P(k+1)$ is true. So the relationship is true for all nonnegative integers by the Principle of Mathematical Induction. 
+\end{proof}
+\end{theorem}
+
+\begin{remark}It is considered \emph{bad form}, and usually  marked incorrect in math classes, if a mathematician only provides a string of mathematical expressions under the impression that they speak for themselves and are sufficient to qualify as a proof.  Do not just write a bunch of mathematical symbols down without sufficient expository narration to support, explain, and guide the reader through your thought process.  It might even be helpful to assume I have the IQ of Cool Whip, and you need to hold my hand through the work you do so that I don't get lost.
+\end{remark}
+Something to remember.  If a proposition is false, the proposed proof is of course incorrect. For example:
+
+
+
+\begin{theorem}[All dogs are the same breed]
+
+\begin{proof}    We will prove this proposition using mathematical induction. For each natural number $n$, we let $P(n)$ be ``Any set of $n$ dogs consists entirely of dogs of the same breed.''
+
+
+We will prove that for $n\in\mathbb{N}, P(n)$ is true, which will prove that all dogs are the same breed. 
+
+As a base case, consider a set with only one dog consisting entirely of dogs of the same breed and, hence, $P(1)$ is true.
+
+Let $k\in\mathbb{N}$ and assume that $P(k)$ is true, that is,  every set of $k$ dogs consists of dogs of the same breed. Now consider a set $D$ of $k+1$ dogs, where $D=\{dog_1, dog_2,..., dog_k, dog_{k+1}\}$.
+
+If we remove $dog_1$ from the set $D$, we then have a set $D_1$ of $k$ dogs, and using the assumption that $P(k)$ is true, these dogs must all be of the same breed. Similarly, if we remove $dog_{k+1}$ from the set $D$, we again have a set $D_{k+1}$of $k$ dogs, and these dogs must all be of the same breed. Since $D = D_1\cup D_2$, we have proved that all of the dogs in $D$ must be of the same breed.
+
+This proves that if $P(k)$
+is true, then $P(k+1)$ is true and, hence, by mathematical induction, we have proved that for each natural number $n$, any set of $n$ dogs consists entirely of dogs of the same breed.
+\end{proof}
+What is wrong with this Theorem?
+\notes{8}
+\end{theorem}
+
+\newpage
+\begin{problem}[Any Finite Non-Empty Set of Billiard Balls Must Be The Same Color]
+Let $P(n)$ be the property that for every set of $n$ Billiard balls, they are all the same color.  Consider the set of one ball.  This set is non-empty, and obviously the ball(s) are of one color, since there is only one ball.  So $P(1)$ is true.
+
+We now show that if $P(n)$ holds, then also $P(n+1)$ holds.  So suppose $n$ is a number for which $P$ holds.  Now consider any set of $n+1$ balls, numbering them from 1 to $n+1$.  The balls one through $n$ all have the same color (by our assumption that said sets with $n$ balls all have the same color).  Likewise the balls gathered from 2 to $n+1$ are also a set of $n$ balls, consequently this set has all the same colored balls.  Thus all the balls are of the same color, proving that $P(n+1)$ holds if $P(n)$ holds.  So by Theorem \ref{pmi}, the property holds for all billiard balls.
+
+What is wrong with this proof?
+
+\notes{10}
+\end{problem}
+
+\newpage
+\subsection{A Paper on Induction}
+There are so many papers that introduce induction, and I don't know if this is the best - but it is one of the shortest.  So let's start here, and see how people ``talk'' about induction in mathematics.  There is almost a  \emph{formularic} approach to some problems, but at the same time, induction can be tricky.  There have been cases where a ``proof'' by induction turned out later to actually be false.  Don't look for a formula, look for a way of thinking!\cite{gersting1975}
+\fancyfoot[CE CO]{}
+\fancyfoot[RE,RO]{}
+\fancyfoot[LE,LO]{}
+
+%------------------------------------------------------------------------------------------------------------
+\begin{center}
+\frame{\includegraphics[width = 4.5in]{./papers/MathematicalInduction.pdf}}
+
+%
+%\includepdf[pagecommand=={\thispagestyle{fancy}\fancyhead{}\fancyhead[C]{Paper}},  frame=true,  picturecommand*={}, pages=2-, addtotoc={2,subsection,1,The Empty Set..., TheEmptySet},width = 6.5in]{./papers/TheEmptySet.pdf}
+\end{center}
+
+\fancyfoot[CE CO]{Dr. Heavilin}
+\fancyfoot[RE,RO]{Online Version}
+\fancyfoot[LE LO]{Fall 2020}
+
+
