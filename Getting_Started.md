@@ -17,7 +17,7 @@ You probably know how to use this.
 
 You can probably do this better then me
 
-##Getting Git Desktop Setup
+## Getting Git Desktop Setup
 
 1) Create a GitHub account
 2) Download Git Desktop
